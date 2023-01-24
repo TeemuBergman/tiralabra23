@@ -1,7 +1,7 @@
 # Tieteellinen laskin
 
-- [Vaatimusmäärittely]( [vaatimusmäärittely.md](documentation\vaatimusmäärittely.md) )
+- [Vaatimusmäärittely](documentation\vaatimusmäärittely.md)
 
 ## Viikkoraportit
 
-- [1. Viikkoraportti]( [viikkoraportti_1.md](documentation\viikkoraportti_1.md) )
+- [1. Viikkoraportti](documentation\viikkoraportti_1.md)
