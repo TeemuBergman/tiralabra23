@@ -38,3 +38,7 @@ class TestShuntingYard(unittest.TestCase):
     def test_with_basic_arithmetic_3(self):
         rpn = shunting_yard('(23+-27)/(3*3)')
         self.assertEqual(rpn, '23 + 27 - 3 3 * /')
+
+    def test_with_basic_arithmetic_with_errors_1(self):
+        rpn = shunting_yard('(1/2)*(1/2')
+        self.assertEqual(rpn, '1 2 / 1 2 / ( *')
