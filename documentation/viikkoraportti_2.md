@@ -23,7 +23,9 @@ Myös lukujen suurempi kuin yhdeksän ryhmittely omiin osajoukkoihin algoritmin 
 
 Projektiin on myös lisätty riippuvuuksien hallintaa hoitamaan Poetry, johon on asetettu muun muassa projektin kehityksen aikana käytettävät riippuvuudet: Pytest, Coverage, Autopep8 ja Pylint.
 
-Olen lisäksi kirjoittanut projektin ensimmäiset yksikkötestit, jotka vertailevat eri syötteitä ja tulosteita Shunting yard -algoritmin suhteen ja ne menevät tällä hetkellä kaikki läpi. Tulen kuitenkin seuraavalla viikkolla lisäämään testikattavuutta ja otan siitä myös Coveragen tuottaman raportoinnin käyttöön.
+Olen lisäksi kirjoittanut projektin ensimmäiset yksikkötestit, jotka vertailevat eri syötteitä ja tulosteita Shunting yard -algoritmin suhteen ja ne menevät tällä hetkellä kaikki läpi. Coveragen raportin mukaan testikattavuus on 100%.
+
+![Screenshot 2023-01-30 at 06-22-57 Coverage report](images/viikkoraportti_2/Screenshot%202023-01-30%20at%2006-22-57%20Coverage%20report.png)
 
 Seuraavalla viikolla on tarkoitus laajentaa projektia ohjelmomalla Postfix expression stack evaluator -algoritmi, joka suorittaa varsinaiset laskutoimitukset Shunting yard -algoritmin tulosteista.
 
