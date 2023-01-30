@@ -5,7 +5,7 @@
 - Toteutettavat algoritmit:
   - Shunting yard algorithm [Dijkstra, 1961]
   - Postfix expression stack evaluator (reverse Polish notation) [Hamblin, 1962]
-- Ohjelmointikieli: Python (^3.9)
+- Ohjelmointikieli: Python (^3.10)
   - Riippuvuuksien hallinta: Poetry
   - Yksikkötestaus: Pytest
   - Testauksen raportointi: Coverage
