@@ -32,5 +32,9 @@ class TestShuntingYard(unittest.TestCase):
         self.assertEqual(rpn, '10 5 2 ^ *')
 
     def test_with_basic_arithmetic_2(self):
-        rpn = shunting_yard('10*(5^20)/3')
-        self.assertEqual(rpn, '10 5 20 ^ * 3 /')
+        rpn = shunting_yard('25*((5^10)/5)')
+        self.assertEqual(rpn, '25 5 10 ^ 5 / *')
+
+    def test_with_basic_arithmetic_3(self):
+        rpn = shunting_yard('(23+27)/(3*3)')
+        self.assertEqual(rpn, '23 27 + 3 3 * /')
