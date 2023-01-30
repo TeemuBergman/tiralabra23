@@ -1,6 +1,6 @@
 # Viikkoraportti 2
 
-Tällä viikolla olen ohjelmoinut Shunting yard -algoritmia ja olen onnistunut saamaan sen toimimaan peruslaskutoimituksilla. Haasteita tässä ohjelmointityössä oli saada algoritmin sijoittamaan tulosteessa olevat laskutoimitusten symbolit niiden oikeaan "reverse Polish notation" -järjestykseen. Löysin tähän liittyen Dijkstran alkuperäistä julkaisua hieman selkeämmän materiaalin [Brilliant], jossa löytyvä algoritmin pseudokoodiesitys avasi sen toiminnan hieman ymmärrettävämmin.
+Tällä viikolla olen ohjelmoinut Shunting yard -algoritmia ja olen onnistunut saamaan sen toimimaan peruslaskutoimituksilla. Haasteita tässä ohjelmointityössä oli saada algoritmin sijoittamaan tulosteessa olevat laskutoimitusten symbolit niiden oikeaan "reverse Polish notation" -järjestykseen. Löysin tähän liittyen Dijkstran alkuperäistä julkaisua hieman selkeämmän materiaalin [[Brilliant]], jossa löytyvä algoritmin pseudokoodiesitys avasi sen toiminnan hieman ymmärrettävämmin.
 
 ```pseudocode
 # Shunting Yard Algorithm
