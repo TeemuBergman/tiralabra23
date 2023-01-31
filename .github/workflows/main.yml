@@ -30,7 +30,7 @@ jobs:
         run: poetry run coverage run --branch -m pytest
 
       - name: Run pylint
-        run: poetry run pylint src ----exit-zero
+        run: poetry run pylint src --exit-zero
 
       - name: Coverage report
         run: poetry run coverage xml
