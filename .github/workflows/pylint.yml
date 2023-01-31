@@ -3,7 +3,7 @@ name: Python Linting and Dependency Management
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
