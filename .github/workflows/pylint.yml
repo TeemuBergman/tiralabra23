@@ -1,4 +1,4 @@
-name: CI
+name: Pylint
 
 on:
   push:
@@ -20,4 +20,4 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - name: Run pylint
-        run: poetry run pylint src
+        run: pylint src
