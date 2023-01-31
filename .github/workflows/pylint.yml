@@ -20,6 +20,7 @@ jobs:
 
     - name: Install dependencies
       run: |
+        pip install poetry
         python -m venv env
         source env/bin/activate
         poetry install
