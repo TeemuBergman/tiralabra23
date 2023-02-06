@@ -1,4 +1,16 @@
 def shunting_yard(expr):
+    """
+    Convert an infix mathematical expression to postfix notation.
+    :param expr: The infix mathematical expression to be converted to postfix notation.
+    :type expr: str
+    :return: The postfix expression in string format.
+    :rtype: str
+    """
+
+    # Check if the input expression is empty
+    if not expr:
+        return None
+
     # Create stacks for operators and output
     operator_stack = []
     output_queue = []
@@ -26,10 +38,12 @@ def shunting_yard(expr):
         # If the symbol is an operator, pop operators from the stack
         # and add them to the output until a lower precedence operator is found
         if symbol in operator_precedence:
-            while operator_stack and operator_precedence.get(symbol) <= operator_precedence.get(operator_stack[-1], 0):
+            while operator_stack and operator_precedence.get(
+                    symbol) <= operator_precedence.get(operator_stack[-1], 0):
                 output_queue.append(operator_stack.pop())
             operator_stack.append(symbol)
-        # If the character is an open parenthesis, push it to the operator stack
+        # If the character is an open parenthesis, push it to the operator
+        # stack
         elif symbol == '(':
             operator_stack.append(symbol)
         # If the character is a close parenthesis, pop operators from the stack

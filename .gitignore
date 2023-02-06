@@ -1,6 +1,7 @@
 /venv
 /.idea
 /.pytest_cache
+/test_temp
 __pycache__
 *.pyc
 .DS_Store

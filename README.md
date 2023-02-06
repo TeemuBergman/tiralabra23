@@ -3,9 +3,11 @@
 # Tieteellinen laskin
 
 - [Vaatimusmäärittely](documentation/vaatimusmäärittely.md)
+- [Testausdokumentti](documentation/testausdokumentti.md)
 
 ## Viikkoraportit
 
 - [1. Viikkoraportti](documentation/viikkoraportti_1.md)
 - [2. Viikkoraportti](documentation/viikkoraportti_2.md)
+- [3. Viikkoraportti](documentation/viikkoraportti_3.md)
 
