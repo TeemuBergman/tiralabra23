@@ -3,16 +3,19 @@ from decimal import Decimal, DivisionByZero, Overflow
 
 def basic_operations(operator, value_1, value_2):
     """
-    Perform an arithmetic operation on two decimal values using the given operator.
-    :param operator: The symbol of the operator to perform (+, -, *, /, or ^)
-    :type operator: str
-    :param value_1: The first value to perform the operation on
-    :type value_1: decimal.Decimal
-    :param value_2: The second value to perform the operation on
-    :type value_2: decimal.Decimal
-    :return: The result of the operation as a decimal value
-    :rtype: decimal.Decimal
-    :raises ValueError: If the operator symbol is not recognized or if a division by zero occurs
+    Perform basic arithmetic operations on two values.
+
+    Args:
+        operator (str): The symbol representing the desired operation (+, -, *, /, or ^).
+        value_1 (float or str): The first value to be operated on.
+        value_2 (float or str): The second value to be operated on.
+
+    Returns:
+        float: The result of the operation, as a float.
+
+    Raises:
+        ValueError: If the operator is not found, if a division by zero occurs,
+            or if an overflow occurs.
     """
 
     # Convert the values to Decimal objects to ensure decimal precision

@@ -1,8 +1,13 @@
-from algorithms.shunting_yard import shunting_yard
-from algorithms.postfix_evaluator import postfix_evaluator
+from algorithms.scientific_calculator import ScientificCalculator
 
 
-EXP = '4+188/(9-3)'
-result_sy = shunting_yard(EXP)
-result_pe = postfix_evaluator(result_sy)
-print(result_pe)
+def main():
+    # Quick setup before UI is beign implemented
+    expression = 'x+x*y^3/x'
+    variables = 'x=2,y=3,z=5'
+    scientific_calc = ScientificCalculator(expression, variables)
+    print(scientific_calc.calculate())
+
+
+if __name__ == "__main__":
+    main()

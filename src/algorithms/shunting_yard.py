@@ -1,15 +1,22 @@
-def shunting_yard(expr):
+def shunting_yard(expr, var=None):
     """
     Convert an infix mathematical expression to postfix notation.
-    :param expr: The infix mathematical expression to be converted to postfix notation.
-    :type expr: str
-    :return: The postfix expression in string format.
-    :rtype: str
+
+    Parameters:
+        expr (str): The infix mathematical expression to be converted to postfix notation.
+        var (dict): Dictionary of variables used in expresssion.
+
+    Returns:
+        output_queue (str): The postfix expression in string format.
     """
 
     # Check if the input expression is empty
     if not expr:
         return None
+
+    # Replace variables in `expr` with values from `var` if `var` is True
+    if var:
+        expr = introduce_variables(expr, var)
 
     # Create stacks for operators and output
     operator_stack = []
@@ -59,3 +66,19 @@ def shunting_yard(expr):
 
     # Return the postfix notation as a string
     return ' '.join(output_queue)
+
+
+def introduce_variables(expression, variables):
+    """
+    Replace variables in an expression with values from a dictionary.
+
+    Args:
+        expression (str): The expression to replace variables in.
+        variables (dict): A dictionary of variable names (as keys) and values.
+
+    Returns:
+        str: The expression with variables substituted by values from the dictionary.
+    """
+    for key, value in variables.items():
+        expression = expression.replace(key, value)
+    return expression

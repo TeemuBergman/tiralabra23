@@ -4,14 +4,18 @@ from algorithms.basic_operations import basic_operations
 
 def postfix_evaluator(expr):
     """
-    Evaluate a postfix expression and return the result.
-    :param expr: The postfix expression to evaluate.
-    :type expr: str
-    :return: The result of the expression, or None if the expression is empty.
-    :rtype: decimal.Decimal or None
-    :raises ValueError: If there are not enough values in the expression.
-    """
+    Evaluate a postfix expression.
 
+    Args:
+        expr (str): The postfix expression to evaluate.
+
+    Returns:
+        Decimal: The result of the expression.
+
+    Raises:
+        ValueError: If there are not enough values in the expression to perform
+            the arithmetic operation.
+    """
     # Check if the input expression is empty
     if not expr:
         return None
