@@ -10,16 +10,26 @@ class ScientificCalculator:
     which can be provided as a comma-separated string of key-value pairs.
     """
 
-    def __init__(self, expression, variables=None):
+    def calculate(self, expression, variables=None):
         """
-        Initialize the scientific calculator.
+        Evaluate the expression provided in the constructor.
 
-        Args:
-            expression (str): The expression to evaluate.
-            variables (str, optional): A string of variables to use in the expression.
+        Returns:
+            float: The result of evaluating the expression.
         """
-        self.expression = expression
-        self.variables = self.variables_to_dictionary(variables)
+
+        # Convert a string of variables to dictionary of variables
+        if variables:
+            variables = self.variables_to_dictionary(variables)
+
+        # Use the shunting yard algorithm to convert the expression to
+        # reverse polish notation
+        result_rpn = shunting_yard(expression, variables)
+
+        # Use the postfix evaluator to calculate the result from the
+        # reverse polish notation
+        result = postfix_evaluator(result_rpn)
+        return result
 
     def variables_to_dictionary(self, variables):
         """
@@ -31,21 +41,7 @@ class ScientificCalculator:
         Returns:
             dict: A dictionary representation of the variables string.
         """
+
         if not variables:
             return None
         return dict(variable.split("=") for variable in variables.split(","))
-
-    def calculate(self):
-        """
-        Evaluate the expression provided in the constructor.
-
-        Returns:
-            float: The result of evaluating the expression.
-        """
-        # Use the shunting yard algorithm to convert the expression to reverse
-        # polish notation
-        result_rpn = shunting_yard(self.expression, self.variables)
-        # Use the postfix evaluator to calculate the result from the reverse
-        # polish notation
-        result = postfix_evaluator(result_rpn)
-        return result

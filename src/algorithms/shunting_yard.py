@@ -79,6 +79,7 @@ def introduce_variables(expression, variables):
     Returns:
         str: The expression with variables substituted by values from the dictionary.
     """
+
     for key, value in variables.items():
         expression = expression.replace(key, value)
     return expression
