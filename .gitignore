@@ -4,6 +4,7 @@
 /test_temp
 __pycache__
 *.pyc
+*.bat
 .DS_Store
 Thumbs.db
 .coverage
