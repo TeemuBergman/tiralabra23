@@ -12,3 +12,16 @@
 - [3. Viikkoraportti](documentation/viikkoraportti_3.md)
 - [4. Viikkoraportti](documentation/viikkoraportti_4.md)
 
+## Pikaohje
+
+Ohjelmisto vaatii [Pythonista](https://www.python.org/) version 3.10 sekä riippuvuuksien hallintaan käytettävästä [Poetrysta](https://python-poetry.org/) version  1.3.
+
+### Asentaminen ja käyttäminen
+
+- [Ohjeet Pythonin asentamiseksi](https://www.python.org/downloads/).
+- [Ohjeet Poetryn asentamiseksi](https://python-poetry.org/docs/).
+- Lataa tämä repositorio koneellesi ja pura se haluamaasi paikkaan.
+- Navigoi komentoriviä käyttäen purkamasi kansion juureen.
+- Asenna projektin käyttämät riippuvuudet komennolla: `poetry install`.
+- Siirry virtuaaliympäristöön komennolla: `poetry shell`.
+- Käynnistä projekti komennolla: `python3 src/main.py ` (Linux) tai `python src/index.py `(Windows).
