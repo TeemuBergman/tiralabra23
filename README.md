@@ -24,4 +24,4 @@ Ohjelmisto on toteutettu ja testattu [Python](https://www.python.org/)-versiolla
 - Navigoi komentoriviä käyttäen purkamasi kansion juureen.
 - Asenna projektin käyttämät riippuvuudet komennolla: `poetry install`.
 - Siirry virtuaaliympäristöön komennolla: `poetry shell`.
-- Käynnistä projekti komennolla: `python3 src/main.py ` (Linux) tai `python src/index.py `(Windows).
+- Käynnistä projekti komennolla: `poetry run invoke start `.
