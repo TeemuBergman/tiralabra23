@@ -10,12 +10,12 @@ Paikallisesti kehityksen aikaisessa testauksessa suoritetaan Pytest -yksikkötes
 
 [![codecov](https://codecov.io/gh/TeemuBergman/tiralabra23/branch/master/graph/badge.svg?token=3LZ03KXZAA)](https://codecov.io/gh/TeemuBergman/tiralabra23)
 
-Pytest -yksikkötestejä on laajennettu koskemaan jokaista ohjelman kannalta oleellista funktiota. Coveragen luoman raportin mukaan haarautumakattavuus on tällä hetkellä `90%`.
+Pytest -yksikkötestejä on laajennettu koskemaan jokaista ohjelman kannalta oleellista funktiota. Coveragen luoman raportin mukaan haarautumakattavuus on tällä hetkellä `88%`.
 
-![image-20230206084113269](images/testausdokumentti/image-20230206084113269.png)
+![image-20230213092228227](images/testausdokumentti/image-20230213092228227.png)
 
 Ajankohtainen testikattavuusraportti löytyy osoitteesta: https://app.codecov.io/gh/TeemuBergman/tiralabra23
 
 ## Pylint
 
-Pylintillä suoritettujen testien arvosana on tällä hetkellä `9.56/10`. Koodia on muokattu Pylintin antamien ilmoitusten mukaisesti ja muun muassa jokaiselle funktiolle on pyritty lisäämään sen toimintaa selittävä docstring sekä kommentit.
+Pylintillä suoritettujen testien arvosana on tällä hetkellä `9.49/10`. Koodia on muokattu Pylintin antamien ilmoitusten mukaisesti ja muun muassa jokaiselle funktiolle on pyritty lisäämään sen toimintaa selittävä docstring sekä kommentit.
