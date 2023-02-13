@@ -14,7 +14,7 @@
 
 ## Pikaohje
 
-Ohjelmisto vaatii [Pythonista](https://www.python.org/) version 3.10 sekä riippuvuuksien hallintaan käytettävästä [Poetrysta](https://python-poetry.org/) version  1.3.
+Ohjelmisto on toteutettu ja testattu [Python](https://www.python.org/)-versiolla `3.10` sekä riippuvuuksien hallintaan käytettävällä [Poetry](https://python-poetry.org/)-versiolla `1.3`. Vanhemmilla versioilla ohjelmiston toiminnassa saattaa esiintyä ongelmia. 
 
 ### Asentaminen ja käyttäminen
 
