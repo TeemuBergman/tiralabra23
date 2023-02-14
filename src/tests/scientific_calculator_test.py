@@ -23,17 +23,21 @@ class TestScientificCalculator(unittest.TestCase):
     def test_empty_variables_to_dictionary(self):
         """Test if the method variables_to_dictionary returns correct None with empty variables."""
         variables = ''
-        response = self.scientific_calculator.variables_to_dictionary(variables)
+        response = self.scientific_calculator.variables_to_dictionary(
+            variables)
         self.assertEqual(response, None)
 
     def test_variables_to_dictionary_1(self):
         """Test if the method variables_to_dictionary returns correct dictionary."""
         variables = 'x=1,y=2,z=3'
-        response = self.scientific_calculator.variables_to_dictionary(variables)
+        response = self.scientific_calculator.variables_to_dictionary(
+            variables)
         self.assertEqual(response, {'x': '1', 'y': '2', 'z': '3'})
 
     def test_variables_to_dictionary_2(self):
         """Test if the method variables_to_dictionary returns correct dictionary."""
         variables = 'kg=1.5,meter=2,negative=-3'
-        response = self.scientific_calculator.variables_to_dictionary(variables)
-        self.assertEqual(response, {'kg': '1.5', 'meter': '2', 'negative': '-3'})
+        response = self.scientific_calculator.variables_to_dictionary(
+            variables)
+        self.assertEqual(
+            response, {'kg': '1.5', 'meter': '2', 'negative': '-3'})

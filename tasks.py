@@ -20,3 +20,20 @@ def start(ctx):
 @task
 def test(ctx):
     ctx.run("pytest src", pty=is_linux)
+
+
+@task
+def lint(ctx):
+    ctx.run("pylint src", pty=is_linux)
+
+
+@task
+def format(ctx):  # pylint: disable=redefined-builtin
+    ctx.run("autopep8 --in-place --recursive src", pty=is_linux)
+
+
+@task
+def coverage(ctx):
+    ctx.run("coverage run --branch -m pytest src", pty=is_linux)
+    ctx.run("coverage report -m", pty=is_linux)
+    ctx.run("coverage html", pty=is_linux)
