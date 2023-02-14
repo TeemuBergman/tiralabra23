@@ -24,4 +24,5 @@ Ohjelmisto on toteutettu ja testattu [Python](https://www.python.org/)-versiolla
 - Navigoi komentoriviä käyttäen purkamasi kansion juureen.
 - Asenna projektin käyttämät riippuvuudet komennolla: `poetry install`.
 - Siirry virtuaaliympäristöön komennolla: `poetry shell`.
-- Käynnistä projekti komennolla: `poetry run invoke start `.
+- Käynnistä projekti komennolla: `invoke start `.
+- Poistu virtuaaliympäristöstä komennolla `exit`.
