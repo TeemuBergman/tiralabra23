@@ -28,7 +28,7 @@ def lint(ctx):
 
 
 @task
-def format(ctx):  # pylint: disable=redefined-builtin
+def format(ctx):
     ctx.run("autopep8 --in-place --recursive src", pty=IS_LINUX)
 
 
