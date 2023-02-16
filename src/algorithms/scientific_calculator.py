@@ -21,10 +21,11 @@ class ScientificCalculator:
         # Convert a string of variables to dictionary of variables
         if variables:
             variables = self.variables_to_dictionary(variables)
+            expression = self.introduce_variables(expression, variables)
 
         # Use the shunting yard algorithm to convert the expression to
         # reverse polish notation
-        result_rpn = shunting_yard(expression, variables)
+        result_rpn = shunting_yard(expression)
 
         # Use the postfix evaluator to calculate the result from the
         # reverse polish notation
@@ -45,3 +46,19 @@ class ScientificCalculator:
         if not variables:
             return None
         return dict(variable.split("=") for variable in variables.split(","))
+
+    def introduce_variables(self, expression, variables):
+        """
+        Replace variables in an expression with values from a dictionary.
+
+        Args:
+            expression (str): The expression to replace variables in.
+            variables (dict): A dictionary of variable names (as keys) and values.
+
+        Returns:
+            str: The expression with variables substituted by values from the dictionary.
+        """
+
+        for key, value in variables.items():
+            expression = expression.replace(key, value)
+        return expression
