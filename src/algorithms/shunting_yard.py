@@ -1,6 +1,6 @@
 class ShuntingYard:
     """
-    Lorem
+    Shunting yard algortihm converts mathematical expression to a postfix expression.
     """
 
     def __init__(self):

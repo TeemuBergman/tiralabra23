@@ -1,14 +1,15 @@
 class Calculation:
     """
-    Lorem
+    A class for storing values for different operations.
     """
 
     def __init__(self, expression: str, variables: str):
         """
-        :param expression:
-        :type expression:
-        :param variables:
-        :type variables:
+        Initialize an instance of a class that represents a mathematical expression.
+
+        Args:
+            expression (str): A string representing the mathematical expression, with or without variables.
+            variables (str): A string containing the variables used in the expression.
         """
         self.variables = variables
         self.variables_dict = self._variables_to_dictionary(self.variables)

@@ -6,7 +6,7 @@ from algorithms.calculation import Calculation
 
 class ScientificCalculator:
     """
-    A scientific calculator that can evaluate expressions.
+    A scientific calculator that can evaluate different mathematical expressions.
 
     The calculator can handle variables in the expression,
     which can be provided as a comma-separated string of key-value pairs.

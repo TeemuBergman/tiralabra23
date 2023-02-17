@@ -4,7 +4,7 @@ from algorithms.basic_operations import basic_operations
 
 class PostfixEvaluator:
     """
-
+    Postfix evaluator takes an postfix expressions as input and evaluates it.
     """
 
     def __init__(self):
