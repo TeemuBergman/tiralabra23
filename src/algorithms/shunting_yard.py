@@ -24,6 +24,7 @@ class ShuntingYard:
         for i, symbol in enumerate(calculation.expression):
             # Update current step of iteration
             self._step = i
+
             # If the character is a digit or a decimal point
             # add it to the temporary queue for grouping symbols
             self._process_numerals(symbol)
@@ -39,11 +40,13 @@ class ShuntingYard:
     def _process_numerals(self, symbol):
         if symbol.isnumeric() or symbol == '.':
             self._temp_queue += symbol
+
             # Check if current symbol is the last on given expression
             if self._step == self._expression_lenght:
                 self._output_queue.append(self._temp_queue)
-            # If there are any symbols in temp queue
-            # copy it to output queue and clear temp queue
+
+        # If there are any symbols in temp queue
+        # copy it to output queue and clear temp queue
         elif self._temp_queue:
             self._output_queue.append(self._temp_queue)
             self._temp_queue = ''
@@ -59,12 +62,14 @@ class ShuntingYard:
                     symbol) <= operator_precedence.get(self._operator_stack[-1], 0):
                 self._output_queue.append(self._operator_stack.pop())
             self._operator_stack.append(symbol)
-        # If the character is an open parenthesis, push it to the operator
-        # stack
+
+        # If the character is an left parenthesis,
+        # push it to the operator stack
         elif symbol == '(':
             self._operator_stack.append(symbol)
-        # If the character is a close parenthesis, pop operators from the stack
-        # and add them to the output until an open parenthesis is found
+
+        # If the character is a right parenthesis, pop operators from the stack
+        # and add them to the output until an left parenthesis is found
         elif symbol == ')':
             while self._operator_stack and self._operator_stack[-1] != '(':
                 self._output_queue.append(self._operator_stack.pop())
