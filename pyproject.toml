@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tieteellinen laskin"
-version = "0.1.0"
+version = "0.5.0"
 description = "Helsingin yliopiston Aineopintojen harjoitustyö: Tietorakenteet ja algoritmit -kurssille tehty harjoitustyö."
 authors = ["Teemu Bergman <teemu.bergman@helsinki.fi>"]
 readme = "README.md"
@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 invoke = "^2.0.0"
+pygubu = "^0.29"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.1"

@@ -318,6 +318,29 @@ files = [
 ]
 
 [[package]]
+name = "pygubu"
+version = "0.29"
+description = "A simple GUI builder for the python tkinter module"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "pygubu-0.29-py3-none-any.whl", hash = "sha256:cf72c8688abb69ada6a51b9e282ba8cecf044190720aa2174bcaedaa00423a57"},
+    {file = "pygubu-0.29.tar.gz", hash = "sha256:f310b9f77b0dbf7b18983ebbd989efcadee9d6fa20fb3a8445251dc7d96a92eb"},
+]
+
+[package.extras]
+all = ["AwesomeTkinter", "customtkinter", "tkcalendar", "tkintermapview", "tkintertable", "tkinterweb", "tksheet", "ttkwidgets"]
+awesometkinter = ["AwesomeTkinter"]
+customtkinter = ["customtkinter (>=4,<5)"]
+tkcalendar = ["tkcalendar"]
+tkintermapview = ["tkintermapview"]
+tkintertable = ["tkintertable"]
+tkinterweb = ["tkinterweb"]
+tksheet = ["tksheet"]
+ttkwidgets = ["ttkwidgets"]
+
+[[package]]
 name = "pylint"
 version = "2.15.10"
 description = "python code static checker"
@@ -483,4 +506,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "f4718d20b125de515a1f9ec2607442f7a190f34e08231cf66e42382827dc626f"
+content-hash = "4e6c045c7e26aae5355b4d6c12f074bcf073681cade7f4549a902b443b558cbb"
