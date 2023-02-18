@@ -1,13 +1,17 @@
-![](documentation/images/readme/screencap_scientific_calculator.png)
-
 # Tieteellinen laskin
 
 [![Github Actions](https://github.com/TeemuBergman/tiralabra23/workflows/CI/badge.svg)](https://github.com/TeemuBergman/tiralabra23/actions/workflows/main.yml) [![codecov](https://codecov.io/gh/TeemuBergman/tiralabra23/branch/master/graph/badge.svg?token=3LZ03KXZAA)](https://codecov.io/gh/TeemuBergman/tiralabra23)
 
+<img src="documentation/images/readme/screencap_scientific_calculator.png" style="zoom: 67%;" />
+
+"Tieteellinen laskin" on Helsingin yliopiston "Aineopintojen harjoitustyö: Tietorakenteet ja algoritmit" -kurssille tehty harjoitustyö. Sen keskeisin toiminta perustuu Edsger Dijkstran "Shuntig Yard" -algoritmiin, joka muuttaa syötetyn yhtälön postfix-muotoon, joka tunnetaan myös nimellä Reverse Polish Notation (RPN). Syötetyissä yhtälöissä on mahdollista käyttää myös muuttujia.
+
+## Dokumentaatio
+
 - [Vaatimusmäärittely](documentation/vaatimusmäärittely.md)
 - [Testausdokumentti](documentation/testausdokumentti.md)
 
-## Viikkoraportit
+#### Viikkoraportit
 
 - [1. Viikkoraportti](documentation/viikkoraportti_1.md)
 - [2. Viikkoraportti](documentation/viikkoraportti_2.md)
