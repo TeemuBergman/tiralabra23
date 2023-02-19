@@ -17,6 +17,7 @@
 - [2. Viikkoraportti](documentation/viikkoraportti_2.md)
 - [3. Viikkoraportti](documentation/viikkoraportti_3.md)
 - [4. Viikkoraportti](documentation/viikkoraportti_4.md)
+- [5. Viikkoraportti](documentation/viikkoraportti_5.md)
 
 ## Pikaohje
 
@@ -30,7 +31,7 @@ Ohjelmisto on toteutettu ja testattu [Python](https://www.python.org/)-versiolla
 - Navigoi komentoriviä käyttäen purkamasi kansion juureen.
 - Asenna projektin käyttämät riippuvuudet komennolla: `poetry install`.
 - Siirry virtuaaliympäristöön komennolla: `poetry shell`.
-- Käynnistä projekti komennolla: `invoke start `.
+- Käynnistä projekti komennolla: `invoke start`.
 - Poistu virtuaaliympäristöstä komennolla `exit`.
 
 ### Ongelmatilanteet
