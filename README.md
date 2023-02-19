@@ -35,4 +35,4 @@ Ohjelmisto on toteutettu ja testattu [Python](https://www.python.org/)-versiolla
 
 ### Ongelmatilanteet
 
-Testauksessa on ilmennyt joidenkin Linux jakelujen sisältämä puuttellinen asennus Python 3:sta, joka ei jostain syystä sisällä kirjastoa `tkinter`. Jos projekti ei käynnisty `invoke start` komennolla, asenna tkinter virtuaaliympäristön ulkopuolella komennolla `sudo apt install python3-tk  `(tietenkin vain silloin jos omaat oikeudet tähän komentoon).
+Testauksessa on ilmennyt joidenkin Linux jakelujen sisältämä puuttellinen asennus Python 3:sta, joka ei jostain syystä sisällä kirjastoa `tkinter`. Jos projekti ei käynnisty `invoke start` komennolla, asenna kirjasto tkinter Poetry-virtuaaliympäristön ulkopuolella komennolla `sudo apt install python3-tk`.
