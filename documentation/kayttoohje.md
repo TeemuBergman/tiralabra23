@@ -40,7 +40,7 @@ Laskin tukee `Expression` -kenttään syötettyjä funktioita muodossa `sin()`, 
 
 ## Testaus
 
-Komentoriviltä on mahdollista suorittaa myös muutamia testausoperaatioita.
+Komentoriviltä on mahdollista suorittaa myös muutamia tunnettuja testausoperaatioita:
 
 - Pytest: `invoke test`
 - Coverage (sisältää html-raportin): `invoke coverage`
