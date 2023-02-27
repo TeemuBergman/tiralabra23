@@ -12,13 +12,13 @@ class Calculation:
             variables (str): A string containing the variables used in the expression.
         """
 
-        self._variables_dict = self._variables_to_dictionary(variables)
+        self.variables_dict = self._variables_to_dictionary(variables)
         self.expression = self._introduce_variables(
-            expression, self._variables_dict)
+            expression, self.variables_dict)
         self.rpn = ''
         self.result = None
 
-    def _introduce_variables(self, expression: str, variables: dict) -> str:
+    def _introduce_variables(self, expression: str, variables_dict: dict) -> str:
         """
         Replace variables in an expression with values from a dictionary.
 
@@ -30,8 +30,8 @@ class Calculation:
             str: The expression with variables substituted by values from the dictionary.
         """
 
-        for key, value in variables.items():
-            expression = expression.replace(key, value)
+        for key in variables_dict:
+            expression = expression.replace(key, variables_dict[key])
 
         return expression
 
@@ -49,4 +49,4 @@ class Calculation:
         if not variables:
             return {}
 
-        return dict(variable.split("=") for variable in variables.split(","))
+        return dict([variable.strip().split('=') for variable in variables.split(',')])
