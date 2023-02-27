@@ -21,13 +21,17 @@ Ohjelmisto on toteutettu ja testattu [Python](https://www.python.org/)-versiolla
 
 ### Perustoiminnot
 
-Laskimen toiminta perustuu joko ruudulla olevien näppäinten käyttöön, tai kirjoittamalla laskutoimituksen suoraan `Expression` -kenttään. Kyseinen kenttä tukee myös laskutoimitusten liittämistä (`ctrl+v`).
+Laskimen toiminta perustuu joko ruudulla olevien näppäinten käyttöön, tai kirjoittamalla laskutoimituksen suoraan `Expression` -kenttään. Kyseinen kenttä tukee myös laskutoimitusten liittämistä (`ctrl + v`).
 
 Laskimen peruslaskutoiminnot ovat itsestäänselvät jokaiselle nelilaskinta joskus käyttäneelle, mutta näiden toimintojen lisäksi laskimessa on mahdollista käyttää myös muuttujia sekä funktioita.
 
 ### Muuttujat
 
 Laskin tukee `Variables` -kenttään syötettyjä muuttujia, kuten esimerkiksi `x=1` tai `kissa=3.8`. Muuttujia voi käyttä todella vapaasti, eikä niiden lukumäärää ole rajoitettu. Muuttujien joukossa eri muuttujat eroitetaan toisistaan pilkulla, kuten esimerkiksi: `x=11,y=22,z=33` tai `kissa=8, koira=4, kani=6`. Edellä mainittuja muuttujia voisi käyttää `Expression` -kenttään kirjoitetussa laskukaavassa esimerkiksi: `(x*y)/(x^z)`
+
+### Funktiot
+
+Laskin tukee `Expression` -kenttään syötettyjä funktioita muodossa `sin()`, `cos()` ja `tan()`. Funktioihin voi sisällyttää yhtälöitä sekä muuttujia, esimerkiksi: `sin(x*4.2)`.
 
 ### Laskimen sulkeminen
 
