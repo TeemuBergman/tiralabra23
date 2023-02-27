@@ -18,6 +18,7 @@
 - [3. Viikkoraportti](documentation/viikkoraportti_3.md)
 - [4. Viikkoraportti](documentation/viikkoraportti_4.md)
 - [5. Viikkoraportti](documentation/viikkoraportti_5.md)
+- [6. Viikkoraportti](documentation/viikkoraportti_6.md)
 
 ## Pikaohje
 
