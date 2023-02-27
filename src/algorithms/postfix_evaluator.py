@@ -9,7 +9,7 @@ class PostfixEvaluator:
     """
 
     def __init__(self):
-        self.symbols = ''
+        self.symbols = []
         self.stack = []
 
     def evaluate(self, expression) -> Decimal:
@@ -35,16 +35,22 @@ class PostfixEvaluator:
         self.symbols = expression.split()
 
         # Iterate over each symbol in the expression
-        for symbol in self.symbols:
-            # If the symbol starts with a digit, it's a number
-            if symbol[0].isnumeric():
-                # Convert the symbol to a float and push it onto the stack
+        for step, symbol in enumerate(self.symbols):
+            # Is it safe to probe in to the future
+            probing_distance = (step + 1) <= len(symbol)
+
+            if symbol[0] == '-' and probing_distance:
+                self.stack.append(Decimal(symbol))
+
+            # If the symbol starts with a digit or a minus symbol it's a number
+            elif symbol[0].isnumeric():
+
+                # Convert the symbol to a Decimal and push it into the stack
                 self.stack.append(Decimal(symbol))
 
             # If the symbol is NaN, it must be an operator
             else:
-                # Try to perform arithmetic operation with symbol and values in
-                # stack
+                # Perform arithmetic operation with symbol and values
                 try:
                     # Pop the last two values from the stack
                     value_2 = self.stack.pop()
