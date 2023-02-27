@@ -1,4 +1,5 @@
 from decimal import Decimal
+
 from algorithms.basic_operations import basic_operations
 
 
@@ -57,7 +58,8 @@ class PostfixEvaluator:
 
                 except IndexError as exc:
                     # If there are not enough values in the stack, raise an error
-                    raise ValueError("Not enough values in the expression") from exc
+                    raise ValueError(
+                        "Not enough values in the expression") from exc
 
         # The final result is the only value remaining on the stack
         return self.stack.pop()

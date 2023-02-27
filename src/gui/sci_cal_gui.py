@@ -28,9 +28,12 @@ class SciCalGui:
         self.field_output_result = self.builder.get_object('output_result')
 
         # Set callbacks to variables
-        self.string_variable_expression = self.builder.get_variable('string_expression')
-        self.string_variable_variables = self.builder.get_variable('string_variables')
-        self.string_variable_result = self.builder.get_variable('string_result')
+        self.string_variable_expression = self.builder.get_variable(
+            'string_expression')
+        self.string_variable_variables = self.builder.get_variable(
+            'string_variables')
+        self.string_variable_result = self.builder.get_variable(
+            'string_result')
 
         # Numpad
         # self.numpad_value = builder.tkvariables
@@ -39,6 +42,7 @@ class SciCalGui:
         # Init variables
         self.expression = ''
         self.variables = ''
+        self.result = ''
 
         # Set focus to expression input
         # self.builder.get_object('input_expression').focus()

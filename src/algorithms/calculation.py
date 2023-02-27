@@ -12,11 +12,9 @@ class Calculation:
             variables (str): A string containing the variables used in the expression.
         """
 
-        self.variables = variables
-        self.variables_dict = self._variables_to_dictionary(self.variables)
-        self.expression_original = expression
+        self._variables_dict = self._variables_to_dictionary(variables)
         self.expression = self._introduce_variables(
-            self.expression_original, self.variables_dict)
+            expression, self._variables_dict)
         self.rpn = ''
         self.result = None
 
