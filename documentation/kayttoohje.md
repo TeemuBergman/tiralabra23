@@ -44,6 +44,7 @@ Komentoriviltä on mahdollista suorittaa myös muutamia testausoperaatioita.
 
 - Pytest: `invoke test`
 - Coverage (sisältää html-raportin): `invoke coverage`
+- Coveragen luoman raportin avaaminen: `invoke report`
 - Pylint: `invoke linter`
 
 ## Mahdolliset ongelmatilanteet
