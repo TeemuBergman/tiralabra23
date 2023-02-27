@@ -23,7 +23,7 @@ def test(ctx):
 
 
 @task
-def lint(ctx):
+def linter(ctx):
     ctx.run("pylint src", pty=IS_LINUX)
 
 
