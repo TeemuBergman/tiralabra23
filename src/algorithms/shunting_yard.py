@@ -36,8 +36,7 @@ class ShuntingYard:
 
             # Check if next symbol is an operator
             if step < expression_lenght:
-                self._next_is_number = calculation.expression[step +
-                                                              1] not in symbols
+                self._next_is_number = calculation.expression[step + 1] not in symbols
 
             # Process expressions different symbols
             if self._current_symbol == '-':
