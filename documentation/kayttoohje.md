@@ -12,7 +12,9 @@ Ohjelmisto on toteutettu ja testattu [Python](https://www.python.org/)-versiolla
 - Navigoi komentoriviä käyttäen purkamasi kansion juureen.
 - Asenna projektin käyttämät riippuvuudet komennolla: `poetry install`.
 
-## Käyttäminen
+## Tieteellisen laskimen käyttäminen
+
+### Käynnistäminen
 
 - Siirry virtuaaliympäristöön komennolla: `poetry shell`.
 - Käynnistä laskin komennolla: `invoke start`.
@@ -27,11 +29,11 @@ Laskimen peruslaskutoiminnot ovat itsestäänselvät jokaiselle nelilaskinta jos
 
 Laskin tukee `Variables` -kenttään syötettyjä muuttujia, kuten esimerkiksi `x=1` tai `kissa=3.8`. Muuttujia voi käyttä todella vapaasti, eikä niiden lukumäärää ole rajoitettu. Muuttujien joukossa eri muuttujat eroitetaan toisistaan pilkulla, kuten esimerkiksi: `x=11,y=22,z=33` tai `kissa=8, koira=4, kani=6`. Edellä mainittuja muuttujia voisi käyttää `Expression` -kenttään kirjoitetussa laskukaavassa esimerkiksi: `(x*y)/(x^z)`
 
-### Muut toiminnot
+### Laskimen sulkeminen
 
 - Laskin suljetaan otsikkopalkissa olevasta ruksista.
 - Komentorivillä auki olevasta Poetryn virtuaaliympäristöstä voi poistua komennolla `exit`.
 
-## Ongelmatilanteet
+## Mahdolliset ongelmatilanteet
 
 Testauksessa on ilmennyt joidenkin Linux jakelujen sisältämä puuttellinen asennus Python 3:sta, joka ei jostain syystä sisällä kirjastoa `tkinter`. Jos projekti ei käynnisty `invoke start` komennolla, asenna kirjasto tkinter Poetry-virtuaaliympäristön ulkopuolella komennolla `sudo apt install python3-tk`.
