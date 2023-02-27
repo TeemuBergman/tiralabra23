@@ -409,6 +409,7 @@
               <object class="tk.Button" id="input_button_backpetal" named="True">
                 <property name="background">#efe7e7</property>
                 <property name="font">ansifixed</property>
+                <property name="state">disabled</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">⌫</property>
                 <bind sequence="&lt;ButtonRelease&gt;" handler="call_clear" add="" />
@@ -512,8 +513,8 @@
                 <property name="background">#e0e0e0</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
-                <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes">x</property>
                 <layout manager="grid">
                   <property name="column">3</property>
                   <property name="row">0</property>
@@ -563,9 +564,10 @@
             <child>
               <object class="tk.Button" id="button42">
                 <property name="background">#e0e0e0</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
-                <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes">y</property>
                 <layout manager="grid">
                   <property name="column">3</property>
                   <property name="row">1</property>
@@ -615,9 +617,10 @@
             <child>
               <object class="tk.Button" id="button43">
                 <property name="background">#e0e0e0</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
-                <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes">z</property>
                 <layout manager="grid">
                   <property name="column">3</property>
                   <property name="row">2</property>

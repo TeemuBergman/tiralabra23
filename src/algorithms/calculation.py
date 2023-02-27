@@ -11,6 +11,7 @@ class Calculation:
             expression (str): A string representing the mathematical expression, with or without variables.
             variables (str): A string containing the variables used in the expression.
         """
+
         self.variables = variables
         self.variables_dict = self._variables_to_dictionary(self.variables)
         self.expression_original = expression
