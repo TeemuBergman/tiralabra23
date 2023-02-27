@@ -14,12 +14,12 @@
 
 #### Viikkoraportit
 
-- [1. Viikkoraportti](documentation/viikkoraportti_1.md)
-- [2. Viikkoraportti](documentation/viikkoraportti_2.md)
-- [3. Viikkoraportti](documentation/viikkoraportti_3.md)
-- [4. Viikkoraportti](documentation/viikkoraportti_4.md)
-- [5. Viikkoraportti](documentation/viikkoraportti_5.md)
-- [6. Viikkoraportti](documentation/viikkoraportti_6.md)
+- [1. Viikkoraportti](documentation/viikkoraportit/viikkoraportti_1.md)
+- [2. Viikkoraportti](documentation/viikkoraportit/viikkoraportti_2.md)
+- [3. Viikkoraportti](documentation/viikkoraportit/viikkoraportti_3.md)
+- [4. Viikkoraportti](documentation/viikkoraportit/viikkoraportti_4.md)
+- [5. Viikkoraportti](documentation/viikkoraportit/viikkoraportti_5.md)
+- [6. Viikkoraportti](documentation/viikkoraportit/viikkoraportti_6.md)
 
 ## Pikaohje
 
