@@ -38,6 +38,14 @@ Laskin tukee `Expression` -kenttään syötettyjä funktioita muodossa `sin()`, 
 - Laskin suljetaan otsikkopalkissa olevasta ruksista.
 - Komentorivillä auki olevasta Poetryn virtuaaliympäristöstä voi poistua komennolla `exit`.
 
+## Testaus
+
+Komentoriviltä on mahdollista suorittaa myös muutamia testausoperaatioita.
+
+- Pytest: `invoke test`
+- Coverage (sisältää html-raportin): `invoke coverage`
+- Pylint: `invoke linter`
+
 ## Mahdolliset ongelmatilanteet
 
 Testauksessa on ilmennyt joidenkin Linux jakelujen sisältämä puuttellinen asennus Python 3:sta, joka ei jostain syystä sisällä kirjastoa `tkinter`. Jos projekti ei käynnisty `invoke start` komennolla, asenna kirjasto tkinter Poetry-virtuaaliympäristön ulkopuolella komennolla `sudo apt install python3-tk`.
