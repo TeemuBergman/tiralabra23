@@ -1,4 +1,5 @@
 import unittest
+
 from algorithms.scientific_calculator import ScientificCalculator
 
 
