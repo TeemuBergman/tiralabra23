@@ -1,6 +1,7 @@
 import pathlib
 import pygubu
 
+from algorithms.error_handling import InputError
 from algorithms.scientific_calculator import ScientificCalculator
 
 
@@ -11,6 +12,9 @@ PROJECT_UI = PROJECT_PATH / "scical_gui.ui"
 
 class SciCalGui:
     def __init__(self, master=None):
+        # Error handler
+        input_errors = InputError(self)
+
         # Create a builder
         self.builder = pygubu.Builder()
 
@@ -50,6 +54,9 @@ class SciCalGui:
     def run(self):
         self.mainwindow.mainloop()
 
+    def display_error_message(self, error_message):
+        self.result = 'error'
+
     def call_numpad(self, widget_id):
         """
         This is not the optimal solution for handling button inputs,
@@ -58,45 +65,45 @@ class SciCalGui:
         """
         match widget_id:
             case 'input_button_1':
-                self.update_gui('1')
+                self._update_gui('1')
             case 'input_button_2':
-                self.update_gui('2')
+                self._update_gui('2')
             case 'input_button_3':
-                self.update_gui('3')
+                self._update_gui('3')
             case 'input_button_4':
-                self.update_gui('4')
+                self._update_gui('4')
             case 'input_button_5':
-                self.update_gui('5')
+                self._update_gui('5')
             case 'input_button_6':
-                self.update_gui('6')
+                self._update_gui('6')
             case 'input_button_7':
-                self.update_gui('7')
+                self._update_gui('7')
             case 'input_button_8':
-                self.update_gui('8')
+                self._update_gui('8')
             case 'input_button_9':
-                self.update_gui('9')
+                self._update_gui('9')
             case 'input_button_0':
-                self.update_gui('0')
+                self._update_gui('0')
             case 'input_button_dot':
-                self.update_gui('.')
+                self._update_gui('.')
             case 'input_button_add':
-                self.update_gui('+')
+                self._update_gui('+')
             case 'input_button_subtract':
-                self.update_gui('-')
+                self._update_gui('-')
             case 'input_button_divide':
-                self.update_gui('/')
+                self._update_gui('/')
             case 'input_button_multiply':
-                self.update_gui('*')
+                self._update_gui('*')
             case 'input_button_left_parentheses':
-                self.update_gui('(')
+                self._update_gui('(')
             case 'input_button_right_parentheses':
-                self.update_gui(')')
+                self._update_gui(')')
             case 'input_button_exponent':
-                self.update_gui('^')
+                self._update_gui('^')
             case 'input_button_square_root':
-                self.update_gui('sqr(')
+                self._update_gui('sqr(')
 
-    def update_gui(self, symbol):
+    def _update_gui(self, symbol):
         self.expression += symbol
         self.string_variable_expression.set(self.expression)
 
@@ -122,8 +129,23 @@ class SciCalGui:
         # Calculate
         result = calculator.calculate(self.expression, self.variables)
 
+        # Convert to string
+        result = self._convert_to_str(result)
+
         # Set result to GUI
         self.string_variable_result.set(result)
+
+    def _convert_to_str(self, value) -> str:
+        """Convert given value to a string and modify if it ends at .0"""
+
+        cleaned = str(value)
+
+        # If input value is a decimal with .0 at the end
+        if cleaned.endswith('.0'):
+            # remove '.0' from end of string
+            return cleaned[:-2]
+
+        return cleaned
 
 
 if __name__ == "__main__":

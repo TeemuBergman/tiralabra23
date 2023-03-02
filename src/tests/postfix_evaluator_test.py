@@ -68,3 +68,8 @@ class TestPostfixEvaluator(unittest.TestCase):
         """Test if the function calculates '23 27 + 3 3 * /' RPN expression to 5.555...6."""
         result = self.postfix_evaluator.evaluate('23 27 + 3 3 * /')
         self.assertEqual(result, 5.555555555555555555555555556)
+
+    def test_divide_by_zero(self):
+        """Test if the function calculates '1 0 /' RPN expression."""
+        result = self.postfix_evaluator.evaluate('1 0 /')
+        self.assertEqual(result, 0.0)
