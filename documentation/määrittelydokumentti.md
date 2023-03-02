@@ -1,4 +1,4 @@
-# Harjoitustyön vaatimusmäärittely
+# Määrittelydokumentti
 
 - Harjoitustyön tekijä: Teemu Bergman
 - Opinto-ohjelma: tietojenkäsittelytieteen kandidaatti (TKT)

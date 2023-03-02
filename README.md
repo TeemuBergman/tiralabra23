@@ -4,12 +4,13 @@
 
 <img src="documentation/images/readme/screencap_scientific_calculator.png" style="zoom: 67%;" />
 
-"Tieteellinen laskin" on Helsingin yliopiston "Aineopintojen harjoitustyö: Tietorakenteet ja algoritmit" -kurssille tehty harjoitustyö. Sen keskeisin toiminta perustuu Edsger Dijkstran "Shuntig Yard" -algoritmiin, joka muuttaa syötetyn yhtälön postfix-muotoon, joka tunnetaan myös nimellä Reverse Polish Notation (RPN). Syötetyissä yhtälöissä on mahdollista käyttää myös muuttujia.
+"Tieteellinen laskin" on Helsingin yliopiston "Aineopintojen harjoitustyö: Tietorakenteet ja algoritmit" -kurssille tehty harjoitustyö. Sen keskeisin toiminta perustuu Edsger Dijkstran "Shuntig Yard" -algoritmiin, joka muuttaa syötetyn yhtälön postfix-muotoon, joka tunnetaan myös nimellä Reverse Polish Notation (RPN). Syötetyissä yhtälöissä on mahdollista käyttää myös funktioita sekä muuttujia (lisätiedot [käyttöohjessa](documentation/käyttöohje.md)).
 
 ## Dokumentaatio
 
-- [Käyttöohje](documentation/kayttoohje.md)
-- [Vaatimusmäärittely](documentation/vaatimusmäärittely.md)
+- [Käyttöohje](documentation/käyttöohje.md)
+- [Vaatimusmäärittely](documentation/määrittelydokumentti.md)
+- [Toteutusdokumentti](documentation/toteutusdokumentti.md)
 - [Testausdokumentti](documentation/testausdokumentti.md)
 
 #### Viikkoraportit
