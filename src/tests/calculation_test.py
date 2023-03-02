@@ -6,6 +6,8 @@ from algorithms.calculation import Calculation
 class TestShuntingYard(unittest.TestCase):
     """Tests for Calculation class."""
 
+    # BASIC TESTS
+
     def test_empty_variables(self):
         """Test if the function returns empty dictionary with a empty string of variables."""
         result = Calculation('', '')

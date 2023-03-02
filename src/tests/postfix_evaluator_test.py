@@ -66,6 +66,38 @@ class TestPostfixEvaluator(unittest.TestCase):
         result = self.postfix_evaluator.evaluate('23 27 + 3 3 * /')
         self.assertAlmostEqual(float(result), 5.555555555555555555555555556)
 
+    # FUNCTIONS
+
+    def test_function_sine_1(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
+        result = self.postfix_evaluator.evaluate('12 0 SIN')
+        self.assertAlmostEqual(float(result), -0.5365729180004349)
+
+    def test_function_sine_2(self):
+        """Test if the function calculates '-49 sin' RPN expression to a correct value.."""
+        result = self.postfix_evaluator.evaluate('-49 0 sin')
+        self.assertAlmostEqual(float(result), 0.9537526527594719)
+
+    def test_function_cosine_1(self):
+        """Test if the function calculates '12 COS' RPN expression to a correct value."""
+        result = self.postfix_evaluator.evaluate('12 0 COS')
+        self.assertAlmostEqual(float(result), 0.8438539587324921)
+
+    def test_function_cosine_2(self):
+        """Test if the function calculates '-49 cos' RPN expression to a correct value.."""
+        result = self.postfix_evaluator.evaluate('-49 0 cos')
+        self.assertAlmostEqual(float(result), 0.3005925437436371)
+
+    def test_function_tangent_1(self):
+        """Test if the function calculates '12 TAN' RPN expression to a correct value."""
+        result = self.postfix_evaluator.evaluate('12 0 TAN')
+        self.assertAlmostEqual(float(result), -0.6358599286615808)
+
+    def test_function_tangent_2(self):
+        """Test if the function calculates '-49 tan' RPN expression to a correct value.."""
+        result = self.postfix_evaluator.evaluate('-49 0 tan')
+        self.assertAlmostEqual(float(result), 3.172908552159191)
+
     # CATCH EXCEPTIONS
 
     def test_empty_input(self):
@@ -80,6 +112,7 @@ class TestPostfixEvaluator(unittest.TestCase):
             self.postfix_evaluator.evaluate('1 0 /')
         self.assertEqual("Division by zero!", str(exc.exception))
 
+    # TODO
     def test_no_operator(self):
         """Test with no operator.
         with self.assertRaises(ValueError) as exc:

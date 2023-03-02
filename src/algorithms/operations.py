@@ -1,5 +1,5 @@
 import math
-from decimal import Decimal, DivisionByZero, Overflow, InvalidOperation
+from decimal import Decimal, DivisionByZero
 
 
 class Operations:
@@ -28,6 +28,9 @@ class Operations:
         # Check that there is an operator
         if not operator:
             raise ValueError("Operator missing!")
+
+        # Convert operator to lower case, for function names (sin, cos, tan)
+        operator = operator.lower()
 
         # Convert the values to Decimal objects to ensure decimal precision
         value_1 = Decimal(value_1)

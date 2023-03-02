@@ -10,6 +10,8 @@ class TestShuntingYard(unittest.TestCase):
     def setUp(self):
         self.shunting_yard = ShuntingYard()
 
+    # BASIC TESTS
+
     def test_empty_input(self):
         """Test if the class returns empty string with empty input."""
         calculation = Calculation('', '')

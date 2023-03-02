@@ -1,7 +1,5 @@
-import decimal
 from decimal import Decimal
 
-from algorithms.error_handling import InputError
 from algorithms.operations import Operations
 
 
@@ -37,40 +35,33 @@ class PostfixEvaluator:
         # Split the input expression into symbols using whitespace as a separator
         self.symbols = expression.split()
 
-        try:
-            # Iterate over each symbol in the expression
-            for step, symbol in enumerate(self.symbols):
-                # Is it safe to probe in to the future
-                probing_distance = (step + 1) <= len(symbol)
+        # Iterate over each symbol in the expression
+        for step, symbol in enumerate(self.symbols):
+            # Is it safe to probe in to the future
+            probing_distance = (step + 1) <= len(symbol)
 
-                # If symbol is a negative sign, then probe if next one is a numeral
-                if symbol[0] == '-' and probing_distance:
-                    self.stack.append(Decimal(symbol))
+            # If symbol is a negative sign, then probe if next one is a numeral
+            if symbol[0] == '-' and probing_distance:
+                self.stack.append(Decimal(symbol))
 
-                # If the symbol starts with a digit or a minus symbol it's a number
-                elif symbol.isnumeric():
+            # If the symbol starts with a digit or a minus symbol it's a number
+            elif symbol[0].isnumeric():
 
-                    # Convert the symbol to a Decimal and push it into the stack
-                    self.stack.append(Decimal(symbol))
+                # Convert the symbol to a Decimal and push it into the stack
+                self.stack.append(Decimal(symbol))
 
-                # If the symbol is NaN, it must be an operator
-                elif not symbol.isnumeric():
-                    # Perform arithmetic operation with symbol and values
-                    # Pop the last two values from the stack
-                    value_2 = self.stack.pop()
-                    value_1 = self.stack.pop()
+            # If the symbol is NaN, then it must be an operator
+            elif not symbol[0].isnumeric():
+                # Perform arithmetic operation with symbol and values
+                # Pop the last two values from the stack
+                value_2 = self.stack.pop()
+                value_1 = self.stack.pop()
 
-                    # Perform the operation with the symbol and the two values
-                    result = self.operations.perform_on(symbol, value_1, value_2)
+                # Perform the operation with the symbol and the two values
+                result = self.operations.perform_on(symbol, value_1, value_2)
 
-                    # Push the result onto the stack
-                    self.stack.append(result)
-
-        except IndexError:
-            raise ValueError("Error with parentheses!")
-
-        except decimal.InvalidOperation:
-            raise InputError()
+                # Push the result onto the stack
+                self.stack.append(result)
 
         # The final result is the only value remaining on the stack
         return self.stack.pop()
