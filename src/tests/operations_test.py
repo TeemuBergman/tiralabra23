@@ -1,7 +1,7 @@
 import unittest
 from decimal import DivisionByZero
 
-from algorithms.basic_operations import basic_operations
+from algorithms.operations import basic_operations
 
 
 class TestShuntingYard(unittest.TestCase):
