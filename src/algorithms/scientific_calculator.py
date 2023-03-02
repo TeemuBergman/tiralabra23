@@ -32,12 +32,12 @@ class ScientificCalculator:
         # Create new calculation object
         calculation = Calculation(expression, variables)
 
-        # Use the shunting yard algorithm to convert the expression to
-        # reverse polish notation
+        # Use the shunting yard algorithm to convert
+        # the expression to a reverse polish notation
         result_rpn = self.shunting_yard.convert(calculation)
 
-        # Use the postfix evaluator to calculate the result from the
-        # reverse polish notation
+        # Use the postfix evaluator to calculate
+        # the result from the reverse polish notation
         result = self.postfix_evaluator.evaluate(result_rpn)
 
         return result

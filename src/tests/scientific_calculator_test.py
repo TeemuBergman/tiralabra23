@@ -9,11 +9,11 @@ class TestScientificCalculator(unittest.TestCase):
     def setUp(self):
         self.scientific_calculator = ScientificCalculator()
 
-    def test_with_empty_input(self):
-        """Test if the class returns None with empty input."""
-        expression = ''
-        response = self.scientific_calculator.calculate(expression)
-        self.assertEqual(response, None)
+    def test_empty_input(self):
+        """Test with empty input."""
+        with self.assertRaises(ValueError) as exc:
+            self.scientific_calculator.calculate('')
+        self.assertEqual("Expression missing!", str(exc.exception))
 
     def test_with_simple_addition(self):
         """Test if the class returns correct answer with simple input."""

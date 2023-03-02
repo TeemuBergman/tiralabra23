@@ -2,7 +2,7 @@ import decimal
 from decimal import Decimal
 
 from algorithms.error_handling import InputError
-from algorithms.operations import basic_operations
+from algorithms.operations import Operations
 
 
 class PostfixEvaluator:
@@ -11,6 +11,7 @@ class PostfixEvaluator:
     """
 
     def __init__(self):
+        self.operations = Operations()
         self.symbols = []
         self.stack = []
 
@@ -25,13 +26,13 @@ class PostfixEvaluator:
             Decimal: The result of the expression.
 
         Raises:
-            ValueError: If there are not enough values in the expression to perform
+            ValueError: If there are not enough values in the expression to perform_on
                 the arithmetic operation.
         """
 
         # Check if the input expression is empty
         if not expression:
-            return None
+            raise ValueError("Expression missing!")
 
         # Split the input expression into symbols using whitespace as a separator
         self.symbols = expression.split()
@@ -60,13 +61,16 @@ class PostfixEvaluator:
                     value_1 = self.stack.pop()
 
                     # Perform the operation with the symbol and the two values
-                    result = basic_operations(symbol, value_1, value_2)
+                    result = self.operations.perform_on(symbol, value_1, value_2)
 
                     # Push the result onto the stack
                     self.stack.append(result)
 
+        except IndexError:
+            raise ValueError("Error with parentheses!")
+
         except decimal.InvalidOperation:
-            raise InputError('test')
+            raise InputError()
 
         # The final result is the only value remaining on the stack
         return self.stack.pop()

@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 class Calculation:
     """
     A class for storing values for different operations.
@@ -16,7 +18,7 @@ class Calculation:
         self.expression = self._introduce_variables(
             expression, self.variables_dict)
         self.rpn = ''
-        self.result = None
+        self.result = Decimal
 
     def _introduce_variables(self, expression: str, variables_dict: dict) -> str:
         """
