@@ -49,6 +49,11 @@ class TestPostfixEvaluator(unittest.TestCase):
         result = self.postfix_evaluator.evaluate('-2 2 +')
         self.assertEqual(result, 0.0)
 
+    def test_negative_values_2(self):
+        """Test if the function calculates '-3.5 2 +' RPN expression to -1.5."""
+        result = self.postfix_evaluator.evaluate('-3.5 2 +')
+        self.assertEqual(result, -1.5)
+
     def test_basic_arithmetic_1(self):
         """Test if the function calculates '10 5 2 ^ *' RPN expression to 250.0."""
         result = self.postfix_evaluator.evaluate('10 5 2 ^ *')

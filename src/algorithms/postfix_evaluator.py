@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from algorithms.basic_operations import basic_operations
+from algorithms.operations import basic_operations
 
 
 class PostfixEvaluator:
@@ -39,6 +39,7 @@ class PostfixEvaluator:
             # Is it safe to probe in to the future
             probing_distance = (step + 1) <= len(symbol)
 
+            # If symbol is a negative sign, then probe if next one is a numeral
             if symbol[0] == '-' and probing_distance:
                 self.stack.append(Decimal(symbol))
 
@@ -69,3 +70,8 @@ class PostfixEvaluator:
 
         # The final result is the only value remaining on the stack
         return self.stack.pop()
+
+    def cleaner(self, value):
+        # If input value is a decimal with .0
+        # Then clean it to integer
+        ...
