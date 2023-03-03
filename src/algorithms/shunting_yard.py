@@ -20,8 +20,8 @@ class ShuntingYard:
             output_queue (str): The postfix expression in string format.
         """
 
-        # List of arithmetic symbols needed for iteration
-        symbols = ['+', '-', '*', '/', '^', '(', ')', 'sin', 'cos', 'tan']
+        # List of arithmetic symbols and functions needed for iteration
+        symbols = ['+', '-', '*', '/', '^', '(', ')']
 
         # Check length of the expression
         expression_lenght = len(calculation.expression) - 1
@@ -47,8 +47,8 @@ class ShuntingYard:
                 self._process_operators()
             elif self._current_symbol in ('(', ')'):
                 self._process_parenthesis()
-            elif self._current_symbol[step, step + 2] in symbols:
-                self._output_stack.append(self._current_symbol[step, step + 2])
+            else:  # If it's not any above, then it must be a function
+                self._process_functions()
 
             # Check if current symbol is a number
             self._prev_is_number = self._current_symbol not in symbols
@@ -59,6 +59,12 @@ class ShuntingYard:
 
         # Return the postfix notation as a string
         return ' '.join(self._output_stack)
+
+    def _process_functions(self) -> None:
+        if self._operator_stack:
+            self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
+        else:
+            self._operator_stack.append(self._current_symbol)
 
     def _process_negative(self) -> None:
         # Check if previous symbol is not a number and next one is
@@ -130,12 +136,3 @@ class ShuntingYard:
             while self._operator_stack and self._operator_stack[-1] != '(':
                 self._output_stack.append(self._operator_stack.pop())
             self._operator_stack.pop()
-
-
-"""
-from algorithms.calculation import Calculation
-calc = Calculation('sin(12)', '')
-shuntter = ShuntingYard
-result = shuntter.convert(calc.expression, '')
-print(result)
-"""
