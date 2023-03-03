@@ -1,9 +1,5 @@
-from decimal import Decimal
-
 class Calculation:
-    """
-    A class for storing values for different operations.
-    """
+    """A class for storing values for different operations."""
 
     def __init__(self, expression: str, variables: str):
         """
@@ -14,28 +10,44 @@ class Calculation:
             variables (str): A string containing the variables used in the expression.
         """
 
-        self.variables_dict = self._variables_to_dictionary(variables)
-        self.expression = self._introduce_variables(
-            expression, self.variables_dict)
+        from decimal import Decimal
+
+        # Modify given expression
+        self.expression = self._remove_spaces(expression)
+        self.expression = self._convert_dot_to_comma(self.expression)
+        self.expression = self._convert_to_lowercase(self.expression)
+
+        # Modify given variables
+        if variables:
+            self.variables = self._remove_spaces(variables)
+            self.variables = self._convert_to_lowercase(self.variables)
+            # Add variables to a dictionary and process expression with them
+            self.variables = self._variables_to_dictionary(self.variables)
+            self._introduce_variables()
+        else:
+            self.variables = {}
+
+        # For storing RPN and result
         self.rpn = ''
-        self.result = Decimal
+        self.result = Decimal()
 
-    def _introduce_variables(self, expression: str, variables_dict: dict) -> str:
-        """
-        Replace variables in an expression with values from a dictionary.
+    def _remove_spaces(self, string: str) -> str:
+        """Remove spaces from given string."""
+        return string.replace(' ', '')
 
-        Args:
-            expression (str): The expression to replace variables in.
-            variables (dict): A dictionary of variable names (as keys) and values.
+    def _convert_dot_to_comma(self, string: str) -> str:
+        """Convert commas to dots in given string."""
+        return string.replace(',', '.')
 
-        Returns:
-            str: The expression with variables substituted by values from the dictionary.
-        """
+    def _convert_to_lowercase(self, string: str) -> str:
+        """Convert given string to lowercase."""
+        return string.lower()
 
-        for key in variables_dict:
-            expression = expression.replace(key, variables_dict[key])
+    def _introduce_variables(self) -> None:
+        """Replace variables in an expression with values from a dictionary."""
 
-        return expression
+        for key in self.variables:
+            self.expression = self.expression.replace(key, self.variables[key])
 
     def _variables_to_dictionary(self, variables: str) -> dict:
         """
@@ -47,8 +59,5 @@ class Calculation:
         Returns:
             dict: A dictionary representation of the variables string.
         """
-
-        if not variables:
-            return {}
 
         return dict([variable.strip().split('=') for variable in variables.split(',')])

@@ -35,13 +35,12 @@ class ShuntingYard:
             if step < expression_lenght:
                 self._next_is_number = calculation.expression[step + 1] not in symbols
 
-            # TODO - FUNKTIOT!
             # Process expressions different symbols
             if self._current_symbol == '-':
                 self._process_negative()
             elif self._current_symbol.isnumeric():
                 self._process_numerals()
-            elif self._current_symbol in ('.', ','):
+            elif self._current_symbol in '.':
                 self._append_to_output_stack()
             elif self._current_symbol in self._operator_precedence:
                 self._process_operators()

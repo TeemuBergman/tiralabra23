@@ -52,12 +52,16 @@ class Operations:
                 raise ValueError("Division by zero!") from exc
         elif operator == '^':
             self.result = value_1 ** value_2
-        elif operator == 'sin':
+        elif operator == 'sinr':
             self.result = self.perform_sine(value_1)
-        elif operator == 'cos':
+        elif operator == 'cosr':
             self.result = self.perform_cosine(value_1)
-        elif operator == 'tan':
+        elif operator == 'tanr':
             self.result = self.perform_tangent(value_1)
+        elif operator == 'sqr':
+            self.result = self.perform_square_root(value_1)
+        elif operator == 'log':
+            self.result = self.perform_logarithm(value_1)
         else:
             raise ValueError("Invalid operator!")
 
@@ -72,3 +76,9 @@ class Operations:
 
     def perform_tangent(self, value) -> Decimal:
         return Decimal(math.tan(value))
+
+    def perform_square_root(self, value) -> Decimal:
+        return Decimal(math.sqrt(value))
+
+    def perform_logarithm(self, value) -> Decimal:
+        return Decimal(math.log(value))

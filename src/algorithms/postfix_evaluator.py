@@ -12,6 +12,7 @@ class PostfixEvaluator:
         self.operations = Operations()
         self.symbols = []
         self.stack = []
+        self.result = Decimal()
 
     def evaluate(self, expression) -> Decimal:
         """
@@ -67,4 +68,6 @@ class PostfixEvaluator:
                 self.stack.append(result)
 
         # The final result is the only value remaining on the stack
-        return self.stack.pop()
+        self.result = self.stack.pop()
+
+        return self.result
