@@ -70,32 +70,32 @@ class TestPostfixEvaluator(unittest.TestCase):
 
     def test_function_sine_1(self):
         """Test if the function calculates '12 SIN' RPN expression to a correct value."""
-        result = self.postfix_evaluator.evaluate('12 0 SIN')
+        result = self.postfix_evaluator.evaluate('12 SIN')
         self.assertAlmostEqual(float(result), -0.5365729180004349)
 
     def test_function_sine_2(self):
         """Test if the function calculates '-49 sin' RPN expression to a correct value.."""
-        result = self.postfix_evaluator.evaluate('-49 0 sin')
+        result = self.postfix_evaluator.evaluate('-49 sin')
         self.assertAlmostEqual(float(result), 0.9537526527594719)
 
     def test_function_cosine_1(self):
         """Test if the function calculates '12 COS' RPN expression to a correct value."""
-        result = self.postfix_evaluator.evaluate('12 0 COS')
+        result = self.postfix_evaluator.evaluate('12 COS')
         self.assertAlmostEqual(float(result), 0.8438539587324921)
 
     def test_function_cosine_2(self):
         """Test if the function calculates '-49 cos' RPN expression to a correct value.."""
-        result = self.postfix_evaluator.evaluate('-49 0 cos')
+        result = self.postfix_evaluator.evaluate('-49 cos')
         self.assertAlmostEqual(float(result), 0.3005925437436371)
 
     def test_function_tangent_1(self):
         """Test if the function calculates '12 TAN' RPN expression to a correct value."""
-        result = self.postfix_evaluator.evaluate('12 0 TAN')
+        result = self.postfix_evaluator.evaluate('12 TAN')
         self.assertAlmostEqual(float(result), -0.6358599286615808)
 
     def test_function_tangent_2(self):
         """Test if the function calculates '-49 tan' RPN expression to a correct value.."""
-        result = self.postfix_evaluator.evaluate('-49 0 tan')
+        result = self.postfix_evaluator.evaluate('-49 tan')
         self.assertAlmostEqual(float(result), 3.172908552159191)
 
     # CATCH EXCEPTIONS
@@ -118,3 +118,8 @@ class TestPostfixEvaluator(unittest.TestCase):
         with self.assertRaises(ValueError) as exc:
             self.postfix_evaluator.evaluate('1 0')
         self.assertEqual("Operator missing!", str(exc.exception))"""
+
+    def test_without_second_value(self):
+        """Test if the function calculates '5 5' to 55."""
+        result = self.postfix_evaluator.evaluate('5 5')
+        self.assertEqual(result, 55)

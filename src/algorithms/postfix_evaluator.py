@@ -55,7 +55,10 @@ class PostfixEvaluator:
                 # Perform arithmetic operation with symbol and values
                 # Pop the last two values from the stack
                 value_2 = self.stack.pop()
-                value_1 = self.stack.pop()
+                if self.stack:
+                    value_1 = self.stack.pop()
+                else:
+                    value_1 = value_2
 
                 # Perform the operation with the symbol and the two values
                 result = self.operations.perform_on(symbol, value_1, value_2)
