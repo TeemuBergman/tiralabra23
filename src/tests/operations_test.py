@@ -60,17 +60,17 @@ class TestShuntingYard(unittest.TestCase):
 
     def test_function_sine(self):
         """Test if the function calculates function 'sin(12)."""
-        result = self.operations.perform_on('sin', 12)
+        result = self.operations.perform_on('sinr', 12)
         self.assertAlmostEqual(float(result), -0.5365729180004349)
 
     def test_function_cosine(self):
         """Test if the function calculates function 'cos(12)."""
-        result = self.operations.perform_on('cos', 12)
+        result = self.operations.perform_on('cosr', 12)
         self.assertAlmostEqual(float(result), 0.8438539587324921)
 
     def test_function_tangent(self):
         """Test if the function calculates function 'tan(12)."""
-        result = self.operations.perform_on('tan', 12)
+        result = self.operations.perform_on('tanr', 12)
         self.assertAlmostEqual(float(result), -0.6358599286615808)
 
     # CATCH EXCEPTIONS

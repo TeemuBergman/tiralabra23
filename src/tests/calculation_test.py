@@ -27,13 +27,14 @@ class TestShuntingYard(unittest.TestCase):
 
     def test_empty_variables(self):
         """Test if the function returns empty dictionary with a empty string of variables."""
+
         result = Calculation('', '')
-        self.assertEqual(result.variables_dict, {})
+        self.assertEqual(result.variables, {})
 
     def test_variables_dictionary_1(self):
         """Test if the function returns correct dictionary with a string of variables."""
         result = Calculation('', 'x=1, y=2, z=3')
-        self.assertEqual(result.variables_dict, {'x': '1', 'y': '2', 'z': '3'})
+        self.assertEqual(result.variables, {'x': '1', 'y': '2', 'z': '3'})
 
     def test_variables_in_expression_1(self):
         """Test if the function returns correct expression with set variables."""
@@ -56,6 +57,11 @@ class TestShuntingYard(unittest.TestCase):
         """Test if the function returns correct expression."""
         result = Calculation('sin(12)', '')
         self.assertEqual(result.expression, 'sin(12)')
+
+    def test_function_sine_2(self):
+        """Test if the function returns correct expression."""
+        result = Calculation('sin(12+x)', 'x=1')
+        self.assertEqual(result.expression, 'sin(12+1)')
 
     def test_function_cosine_1(self):
         """Test if the function returns correct expression."""

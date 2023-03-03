@@ -106,8 +106,14 @@ class TestShuntingYard(unittest.TestCase):
 
     def test_function_sine_1(self):
         """Test if the function calculates '12 SIN' RPN expression to a correct value."""
-        calculation = Calculation('sin(12)', '')
+        calculation = Calculation('sinr(12)', '')
         result = self.shunting_yard.convert(calculation)
-        self.assertEqual(result, '12 sin')
+        self.assertEqual(result, '12 sinr')
+
+    def test_function_sine_2(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
+        calculation = Calculation('SINR(12+3)', '')
+        result = self.shunting_yard.convert(calculation)
+        self.assertEqual(result, '12 3 + sinr')
 
     # TODO - Lisää testejä!
