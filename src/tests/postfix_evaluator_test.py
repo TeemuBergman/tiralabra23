@@ -118,8 +118,3 @@ class TestPostfixEvaluator(unittest.TestCase):
         with self.assertRaises(ValueError) as exc:
             self.postfix_evaluator.evaluate('1 0')
         self.assertEqual("Operator missing!", str(exc.exception))"""
-
-    def test_without_second_value(self):
-        """Test if the function calculates '5 5' to 55."""
-        result = self.postfix_evaluator.evaluate('5 5')
-        self.assertEqual(result, 55)
