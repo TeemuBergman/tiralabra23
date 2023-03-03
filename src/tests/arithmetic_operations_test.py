@@ -1,13 +1,13 @@
 import unittest
 
-from algorithms.operations import Operations
+from algorithms.arithmetic_operations import ArithmeticOperations
 
 
 class TestShuntingYard(unittest.TestCase):
     """Tests for shunting_yard function in algorithms.shunting_yard module."""
 
     def setUp(self):
-        self.operations = Operations()
+        self.operations = ArithmeticOperations()
 
     # BASIC TESTS
 

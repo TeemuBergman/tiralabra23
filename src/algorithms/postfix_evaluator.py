@@ -1,6 +1,8 @@
+"""Postfix Evaluator class."""
+
 from decimal import Decimal
 
-from algorithms.operations import Operations
+from algorithms.arithmetic_operations import ArithmeticOperations
 
 
 class PostfixEvaluator:
@@ -9,7 +11,7 @@ class PostfixEvaluator:
     """
 
     def __init__(self):
-        self.operations = Operations()
+        self.operations = ArithmeticOperations()
         self.symbols = []
         self.stack = []
         self.result = Decimal()

@@ -1,8 +1,10 @@
+"""ArithmeticOperations class."""
+
 import math
 from decimal import Decimal, DivisionByZero
 
 
-class Operations:
+class ArithmeticOperations:
     """This class handles all arithmetic operations."""
 
     def __init__(self):

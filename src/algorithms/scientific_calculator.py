@@ -1,3 +1,5 @@
+"""Scientific Calculator class."""
+
 from decimal import Decimal
 
 from algorithms.postfix_evaluator import PostfixEvaluator

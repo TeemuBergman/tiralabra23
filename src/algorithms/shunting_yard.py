@@ -1,3 +1,6 @@
+"""Shunting Yard class."""
+
+
 class ShuntingYard:
     """
     Shunting yard algortihm converts mathematical expression to a postfix expression.

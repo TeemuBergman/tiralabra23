@@ -1,3 +1,8 @@
+"""Calculation class."""
+
+from decimal import Decimal
+
+
 class Calculation:
     """A class for storing values for different operations."""
 
@@ -6,11 +11,9 @@ class Calculation:
         Initialize an instance of a class that represents a mathematical expression.
 
         Args:
-            expression (str): A string representing the mathematical expression, with or without variables.
+            expression (str): A string representing the mathematical expression.
             variables (str): A string containing the variables used in the expression.
         """
-
-        from decimal import Decimal
 
         # Modify given expression
         self.expression = self._remove_spaces(expression)
