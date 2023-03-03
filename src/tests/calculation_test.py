@@ -1,9 +1,12 @@
+"""Tests for Calculation class."""
+
 import unittest
 
+# Custom classes
 from algorithms.calculation import Calculation
 
 
-class TestShuntingYard(unittest.TestCase):
+class TestCalculation(unittest.TestCase):
     """Tests for Calculation class."""
 
     # BASIC TESTS

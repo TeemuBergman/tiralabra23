@@ -1,11 +1,14 @@
+"""Tests for Shunting Yard class."""
+
 import unittest
 
+# Custom classes
 from algorithms.calculation import Calculation
 from algorithms.shunting_yard import ShuntingYard
 
 
 class TestShuntingYard(unittest.TestCase):
-    """Tests for shunting_yard function in algorithms.shunting_yard module."""
+    """Tests for ShuntingYard class."""
 
     def setUp(self):
         self.shunting_yard = ShuntingYard()

@@ -1,10 +1,13 @@
+"""Tests for Arithmetic Operations class."""
+
 import unittest
 
+# Custom classes
 from algorithms.arithmetic_operations import ArithmeticOperations
 
 
-class TestShuntingYard(unittest.TestCase):
-    """Tests for shunting_yard function in algorithms.shunting_yard module."""
+class TestArithmeticOperations(unittest.TestCase):
+    """Tests for ArithmeticOperations class."""
 
     def setUp(self):
         self.operations = ArithmeticOperations()

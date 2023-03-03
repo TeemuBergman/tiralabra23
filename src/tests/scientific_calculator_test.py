@@ -1,10 +1,13 @@
+"""Tests for Scientific Calculator class."""
+
 import unittest
 
+# Custom classes
 from algorithms.scientific_calculator import ScientificCalculator
 
 
 class TestScientificCalculator(unittest.TestCase):
-    """Tests for ScientificCalculator class in algorithms.scientific_calculator."""
+    """Tests for ScientificCalculator class."""
 
     def setUp(self):
         self.scientific_calculator = ScientificCalculator()

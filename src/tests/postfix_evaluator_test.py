@@ -1,10 +1,13 @@
+"""Tests for Postfix Evaluator class."""
+
 import unittest
 
+# Custom classes
 from algorithms.postfix_evaluator import PostfixEvaluator
 
 
 class TestPostfixEvaluator(unittest.TestCase):
-    """Tests for evaluate function in algorithms.evaluate module."""
+    """Tests for PostfixEvaluator class."""
 
     def setUp(self):
         self.postfix_evaluator = PostfixEvaluator()
