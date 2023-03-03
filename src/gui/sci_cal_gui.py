@@ -1,9 +1,11 @@
+"""Scientific Calculator Graphical User Interface class."""
+
 import pathlib
 import pygubu
 
+# Custom classes
 from algorithms.error_handling import InputError
 from algorithms.scientific_calculator import ScientificCalculator
-
 
 # Set GUI constants
 PROJECT_PATH = pathlib.Path(__file__).parent
@@ -95,6 +97,9 @@ class SciCalGui:
 
         # Set result to GUI
         self.string_variable_result.set(result)
+
+        # Update values to GUI
+        self.string_variable_expression.set(calculator)
 
     def _convert_to_str(self, value) -> str:
         """Convert given value to a string and modify if it ends at .0"""
