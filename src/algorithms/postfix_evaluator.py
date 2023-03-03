@@ -51,7 +51,7 @@ class PostfixEvaluator:
                 self.stack.append(Decimal(symbol))
 
             # If the symbol is NaN, then it must be an operator
-            elif not symbol[0].isnumeric():
+            else:
                 # Perform arithmetic operation with symbol and values
                 # Pop the last two values from the stack
                 value_2 = self.stack.pop()
