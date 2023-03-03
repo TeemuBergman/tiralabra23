@@ -56,8 +56,8 @@ class TestArithmeticOperations(unittest.TestCase):
 
     def test_negative_float(self):
         """Test if the function calculates values '1^2' to a result of 1.0."""
-        result = self.operations.perform_on('-', float(1.6), float(2.2))
-        self.assertAlmostEqual(float(result), -0.6000000000000000888178419700)
+        result = self.operations.perform_on('-', -1.6, -2.2)
+        self.assertAlmostEqual(float(result), 0.6)
 
     # FUNCTIONS
 
@@ -75,6 +75,16 @@ class TestArithmeticOperations(unittest.TestCase):
         """Test if the function calculates function 'tan(12)."""
         result = self.operations.perform_on('tanr', 12)
         self.assertAlmostEqual(float(result), -0.6358599286615808)
+
+    def test_function_square_root(self):
+        """Test if the function calculates function 'tan(12)."""
+        result = self.operations.perform_on('sqr', 12)
+        self.assertAlmostEqual(float(result), 3.4641016151377544)
+
+    def test_function_logarithm(self):
+        """Test if the function calculates function 'tan(12)."""
+        result = self.operations.perform_on('log', 12)
+        self.assertAlmostEqual(float(result), 2.4849066497880004)
 
     # CATCH EXCEPTIONS
 
