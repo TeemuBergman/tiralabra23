@@ -38,6 +38,8 @@ class SciCalGui:
             'string_variables')
         self.string_variable_result = self.builder.get_variable(
             'string_result')
+        self.string_variable_result_rpn = self.builder.get_variable(
+            'string_result_rpn')
 
         # Numpad
         # self.numpad_value = builder.tkvariables
@@ -47,6 +49,7 @@ class SciCalGui:
         self.expression = ''
         self.variables = ''
         self.result = ''
+        self.result_rpn = ''
 
         # Set focus to expression input
         # self.builder.get_object('input_expression').focus()
@@ -56,6 +59,54 @@ class SciCalGui:
 
     def display_error_message(self, error_message):
         self.result = 'error'
+
+    def _update_gui(self, symbol):
+        self.expression += symbol
+        self.string_variable_expression.set(self.expression)
+
+    def call_clear(self, event=None):
+        # Clear variables
+        self.expression = ''
+        self.variables = ''
+        self.result = ''
+        self.result_rpn = ''
+
+        # Send empty values to GUI
+        self.string_variable_expression.set(self.expression)
+        self.string_variable_variables.set(self.variables)
+        self.string_variable_result.set(self.result)
+        self.string_variable_result_rpn.set(self.result_rpn)
+
+    def call_calculate(self, event=None):
+        # Create new calculator
+        calculator = ScientificCalculator()
+
+        # Get variables 'expression' and 'variables' from GUI
+        self.expression = self.string_variable_expression.get()
+        self.variables = self.string_variable_variables.get()
+
+        # Calculate
+        result = calculator.calculate(self.expression, self.variables)
+
+        # Convert to string
+        result = self._convert_to_str(result)
+
+        self.string_variable_result_rpn.set(calculator.result_rpn)
+
+        # Set result to GUI
+        self.string_variable_result.set(result)
+
+    def _convert_to_str(self, value) -> str:
+        """Convert given value to a string and modify if it ends at .0"""
+
+        cleaned = str(value)
+
+        # If input value is a decimal with .0 at the end
+        if cleaned.endswith('.0'):
+            # remove '.0' from end of string
+            return cleaned[:-2]
+
+        return cleaned
 
     def call_numpad(self, widget_id):
         """
@@ -101,51 +152,7 @@ class SciCalGui:
             case 'input_button_exponent':
                 self._update_gui('^')
             case 'input_button_square_root':
-                self._update_gui('sqr(')
-
-    def _update_gui(self, symbol):
-        self.expression += symbol
-        self.string_variable_expression.set(self.expression)
-
-    def call_clear(self, event=None):
-        # Clear variables
-        self.expression = ''
-        self.variables = ''
-        self.result = ''
-
-        # Send empty values to GUI
-        self.string_variable_expression.set(self.expression)
-        self.string_variable_variables.set(self.variables)
-        self.string_variable_result.set(self.result)
-
-    def call_calculate(self, event=None):
-        # Create new calculator
-        calculator = ScientificCalculator()
-
-        # Get variables 'expression' and 'variables' from GUI
-        self.expression = self.string_variable_expression.get()
-        self.variables = self.string_variable_variables.get()
-
-        # Calculate
-        result = calculator.calculate(self.expression, self.variables)
-
-        # Convert to string
-        result = self._convert_to_str(result)
-
-        # Set result to GUI
-        self.string_variable_result.set(result)
-
-    def _convert_to_str(self, value) -> str:
-        """Convert given value to a string and modify if it ends at .0"""
-
-        cleaned = str(value)
-
-        # If input value is a decimal with .0 at the end
-        if cleaned.endswith('.0'):
-            # remove '.0' from end of string
-            return cleaned[:-2]
-
-        return cleaned
+                self._update_gui('sqr(x)')
 
 
 if __name__ == "__main__":
