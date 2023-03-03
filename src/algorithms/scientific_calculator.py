@@ -2,6 +2,7 @@
 
 from decimal import Decimal
 
+# Custom classes
 from algorithms.postfix_evaluator import PostfixEvaluator
 from algorithms.shunting_yard import ShuntingYard
 from algorithms.calculation import Calculation

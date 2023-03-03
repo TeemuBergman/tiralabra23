@@ -2,6 +2,7 @@
 
 from decimal import Decimal
 
+# Custom classes
 from algorithms.arithmetic_operations import ArithmeticOperations
 
 

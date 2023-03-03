@@ -1,4 +1,4 @@
-"""ArithmeticOperations class."""
+"""Arithmetic Operations class."""
 
 import math
 from decimal import Decimal, DivisionByZero
