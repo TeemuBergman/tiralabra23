@@ -101,3 +101,12 @@ class TestShuntingYard(unittest.TestCase):
         calculation = Calculation('(1/2)*(1/2', '')
         result = self.shunting_yard.convert(calculation)
         self.assertEqual(result, '1 2 / 1 2 / ( *')
+
+    # FUNCTIONS
+
+    def test_function_sine_1(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value.
+        result = Calculation('sin(12)', '')
+        self.assertEqual(result, '12 sin')"""
+
+    # TODO - Lisää testejä!

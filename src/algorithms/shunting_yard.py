@@ -1,6 +1,3 @@
-from algorithms.error_handling import InputError
-
-
 class ShuntingYard:
     """
     Shunting yard algortihm converts mathematical expression to a postfix expression.
@@ -24,7 +21,7 @@ class ShuntingYard:
         """
 
         # List of arithmetic symbols needed for iteration
-        symbols = ['+', '-', '*', '/', '^', '(', ')']
+        symbols = ['+', '-', '*', '/', '^', '(', ')', 'sin', 'cos', 'tan']
 
         # Check length of the expression
         expression_lenght = len(calculation.expression) - 1
@@ -38,6 +35,7 @@ class ShuntingYard:
             if step < expression_lenght:
                 self._next_is_number = calculation.expression[step + 1] not in symbols
 
+            # TODO - FUNKTIOT!
             # Process expressions different symbols
             if self._current_symbol == '-':
                 self._process_negative()
@@ -49,6 +47,8 @@ class ShuntingYard:
                 self._process_operators()
             elif self._current_symbol in ('(', ')'):
                 self._process_parenthesis()
+            elif self._current_symbol[step, step + 2] in symbols:
+                self._output_stack.append(self._current_symbol[step, step + 2])
 
             # Check if current symbol is a number
             self._prev_is_number = self._current_symbol not in symbols
@@ -130,3 +130,12 @@ class ShuntingYard:
             while self._operator_stack and self._operator_stack[-1] != '(':
                 self._output_stack.append(self._operator_stack.pop())
             self._operator_stack.pop()
+
+
+"""
+from algorithms.calculation import Calculation
+calc = Calculation('sin(12)', '')
+shuntter = ShuntingYard
+result = shuntter.convert(calc.expression, '')
+print(result)
+"""

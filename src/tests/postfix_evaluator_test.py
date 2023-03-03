@@ -112,7 +112,7 @@ class TestPostfixEvaluator(unittest.TestCase):
             self.postfix_evaluator.evaluate('1 0 /')
         self.assertEqual("Division by zero!", str(exc.exception))
 
-    # TODO
+    # TODO - Korjaa tämä!
     def test_no_operator(self):
         """Test with no operator.
         with self.assertRaises(ValueError) as exc:

@@ -48,18 +48,27 @@ class Operations:
             # If a division by zero occurs, raise a ValueError with an error message
             try:
                 self.result = value_1 / value_2
-            except DivisionByZero:
-                raise ValueError("Division by zero!")
+            except DivisionByZero as exc:
+                raise ValueError("Division by zero!") from exc
         elif operator == '^':
             self.result = value_1 ** value_2
         elif operator == 'sin':
-            self.result = Decimal(math.sin(value_1))
+            self.result = self.perform_sine(value_1)
         elif operator == 'cos':
-            self.result = Decimal(math.cos(value_1))
+            self.result = self.perform_cosine(value_1)
         elif operator == 'tan':
-            self.result = Decimal(math.tan(value_1))
+            self.result = self.perform_tangent(value_1)
         else:
             raise ValueError("Invalid operator!")
 
         # Return the operation result
         return self.result
+
+    def perform_sine(self, value) -> Decimal:
+        return Decimal(math.sin(value))
+
+    def perform_cosine(self, value) -> Decimal:
+        return Decimal(math.cos(value))
+
+    def perform_tangent(self, value) -> Decimal:
+        return Decimal(math.tan(value))
