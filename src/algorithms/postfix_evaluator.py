@@ -17,6 +17,8 @@ class PostfixEvaluator:
         self.symbols = []
         self.stack = []
         self.result = Decimal()
+        self.value_1 = Decimal()
+        self.value_2 = Decimal()
 
     def evaluate(self, expression) -> Decimal:
         """
@@ -56,19 +58,18 @@ class PostfixEvaluator:
 
             # If the symbol is NaN, then it must be an operator
             else:
-                # Pop the last two values from the stack
-                try:
-                    value_2 = self.stack.pop()
-                except:
+                if len(self.stack) >= 2:
+                    # Pop the last two values from the stack
+                    self.value_2 = self.stack.pop()
+                    self.value_1 = self.stack.pop()
+                elif len(self.stack) == 1:
+                    # If operator is a function
+                    self.value_1 = self.stack.pop()
+                else:
                     raise ExpressionError('Not a complete expression!')
 
-                if self.stack:
-                    value_1 = self.stack.pop()
-                else:
-                    value_1 = value_2
-
                 # Perform the operation with the symbol and the two values
-                result = self.operations.perform_on(symbol, value_1, value_2)
+                result = self.operations.perform_on(symbol, self.value_1, self.value_2)
 
                 # Push the result onto the stack
                 self.stack.append(result)
