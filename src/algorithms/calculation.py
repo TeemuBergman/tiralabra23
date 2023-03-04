@@ -3,6 +3,12 @@
 from decimal import Decimal
 
 
+class ErroneousVariables(Exception):
+    """This class handles all the errors in variables."""
+    def __init__(self, code):
+        self.code = code
+
+
 class Calculation:
     """A class for storing values for different operations."""
 
@@ -30,7 +36,7 @@ class Calculation:
         else:
             self.variables = ''
 
-        # Variiables for storing RPN and result
+        # Variables for storing RPN and result
         self.rpn = ''
         self.result = Decimal()
 
@@ -64,12 +70,14 @@ class Calculation:
         """
 
         # TODO - Virheellisten muuttujien käsittely
-
         variables_list = variables.split(',')
         variables_dictionary = {}
 
         for variable in variables_list:
-            key, value = variable.split('=')
-            variables_dictionary[key] = value
+            try:
+                key, value = variable.split('=')
+                variables_dictionary[key] = value
+            except:
+                raise ErroneousVariables('Error(s) in given variables!')
 
         return variables_dictionary
