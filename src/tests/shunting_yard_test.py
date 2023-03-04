@@ -119,4 +119,50 @@ class TestShuntingYard(unittest.TestCase):
         result = self.shunting_yard.convert(calculation)
         self.assertEqual(result, '12 3 + sinr')
 
-    # TODO - Lisää testejä!
+    def test_function_cosine_1(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
+        calculation = Calculation('cosr(12)', '')
+        result = self.shunting_yard.convert(calculation)
+        self.assertEqual(result, '12 cosr')
+
+    def test_function_cosine_2(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
+        calculation = Calculation('COSR(12+3)', '')
+        result = self.shunting_yard.convert(calculation)
+        self.assertEqual(result, '12 3 + cosr')
+
+    def test_function_tangent_1(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
+        calculation = Calculation('tanr(12)', '')
+        result = self.shunting_yard.convert(calculation)
+        self.assertEqual(result, '12 tanr')
+
+    def test_function_tangent_2(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
+        calculation = Calculation('TANR(12+3)', '')
+        result = self.shunting_yard.convert(calculation)
+        self.assertEqual(result, '12 3 + tanr')
+
+    def test_function_square_root_1(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
+        calculation = Calculation('sqr(12)', '')
+        result = self.shunting_yard.convert(calculation)
+        self.assertEqual(result, '12 sqr')
+
+    def test_function_square_root_2(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
+        calculation = Calculation('SQR(12+3)', '')
+        result = self.shunting_yard.convert(calculation)
+        self.assertEqual(result, '12 3 + sqr')
+
+    def test_function_logarithm_1(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
+        calculation = Calculation('log(12)', '')
+        result = self.shunting_yard.convert(calculation)
+        self.assertEqual(result, '12 log')
+
+    def test_function_logarithm_2(self):
+        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
+        calculation = Calculation('LOG(12+3)', '')
+        result = self.shunting_yard.convert(calculation)
+        self.assertEqual(result, '12 3 + log')
