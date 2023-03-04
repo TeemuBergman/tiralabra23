@@ -1,4 +1,5 @@
-class InputError(Exception):
-    """
-    This class handles all input errors.
-    """
+"""Error handling classes."""
+
+
+class VariableError(Exception):
+    """This class handles all the errors in variables."""

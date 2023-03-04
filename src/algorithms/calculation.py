@@ -2,9 +2,8 @@
 
 from decimal import Decimal
 
-
-class VariableError(Exception):
-    """This class handles all the errors in variables."""
+# Custom classes
+from algorithms.error_handling import VariableError
 
 
 class Calculation:
