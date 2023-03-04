@@ -3,6 +3,9 @@
 import math
 from decimal import Decimal, DivisionByZero
 
+# Custom classes
+from algorithms.error_handling import OperationError
+
 
 class ArithmeticOperations:
     """This class handles all arithmetic operations."""
@@ -29,7 +32,7 @@ class ArithmeticOperations:
 
         # Check that there is an operator
         if not operator:
-            raise ValueError("Operator missing!")
+            raise OperationError("Operator missing!")
 
         # Convert operator to lower case, for function names (sin, cos, tan)
         operator = operator.lower()
@@ -51,7 +54,7 @@ class ArithmeticOperations:
             try:
                 self.result = value_1 / value_2
             except DivisionByZero as exc:
-                raise ValueError("Division by zero!") from exc
+                raise OperationError("Division by zero!") from exc
         elif operator == '^':
             self.result = value_1 ** value_2
         elif operator == 'sinr':
@@ -65,7 +68,7 @@ class ArithmeticOperations:
         elif operator == 'log':
             self.result = self.perform_logarithm(value_1)
         else:
-            raise ValueError("Invalid operator!")
+            raise OperationError("Invalid operator!")
 
         # Return the operation result
         return self.result

@@ -3,6 +3,7 @@
 from decimal import Decimal
 
 # Custom classes
+from algorithms.error_handling import ExpressionError
 from algorithms.arithmetic_operations import ArithmeticOperations
 
 
@@ -34,10 +35,10 @@ class PostfixEvaluator:
 
         # Check if the input expression is empty
         if not expression:
-            raise ValueError("Expression missing!")
+            raise ExpressionError("Expression not found!")
 
         # Split the input expression into symbols using whitespace as a separator
-        self.symbols = expression.split()
+        self.symbols = expression.split(' ')
 
         # Iterate over each symbol in the expression
         for step, symbol in enumerate(self.symbols):
@@ -56,9 +57,9 @@ class PostfixEvaluator:
 
             # If the symbol is NaN, then it must be an operator
             else:
-                # Perform arithmetic operation with symbol and values
                 # Pop the last two values from the stack
                 value_2 = self.stack.pop()
+
                 if self.stack:
                     value_1 = self.stack.pop()
                 else:
