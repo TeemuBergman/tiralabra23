@@ -29,15 +29,14 @@ class TestCalculation(unittest.TestCase):
     # VARIABLES
 
     def test_empty_variables(self):
-        """Test if the function returns empty dictionary with a empty string of variables."""
-
+        """Test if the function returns empty string with empty string of variables."""
         result = Calculation('', '')
-        self.assertEqual(result.variables, {})
+        self.assertEqual(result.variables, '')
 
     def test_variables_dictionary_1(self):
         """Test if the function returns correct dictionary with a string of variables."""
         result = Calculation('', 'x=1, y=2, z=3')
-        self.assertEqual(result.variables, {'x': '1', 'y': '2', 'z': '3'})
+        self.assertEqual(result.variables_dictionary, {'x': '1', 'y': '2', 'z': '3'})
 
     def test_variables_in_expression_1(self):
         """Test if the function returns correct expression with set variables."""
@@ -75,3 +74,10 @@ class TestCalculation(unittest.TestCase):
         """Test if the function returns correct expression."""
         result = Calculation('tan(12)', '')
         self.assertEqual(result.expression, 'tan(12)')
+
+    # EXCEPTIONS
+
+    def test_erroneus_variables_1(self):
+        """Test if the function returns correct variables.
+        result = Calculation('1+1', 'x=1,y=')
+        self.assertEqual(result.variables_dictionary, {'x': '1'})"""
