@@ -3,10 +3,8 @@
 from decimal import Decimal
 
 
-class ErroneousVariables(Exception):
+class VariableError(Exception):
     """This class handles all the errors in variables."""
-    def __init__(self, code):
-        self.code = code
 
 
 class Calculation:
@@ -20,7 +18,6 @@ class Calculation:
             expression (str): A string representing the mathematical expression.
             variables (str): A string containing the variables_dictionary used in the expression.
         """
-
         # Modify given expression
         self.expression = self._remove_spaces(expression)
         self.expression = self._convert_dot_to_comma(self.expression)
@@ -54,7 +51,6 @@ class Calculation:
 
     def _introduce_variables(self) -> None:
         """Replace variables_dictionary in an expression with values from a dictionary."""
-
         for key in self.variables_dictionary:
             self.expression = self.expression.replace(key, self.variables_dictionary[key])
 
@@ -68,16 +64,23 @@ class Calculation:
         Returns:
             dict: A dictionary representation of the variables string.
         """
-
-        # TODO - Virheellisten muuttujien käsittely
         variables_list = variables.split(',')
         variables_dictionary = {}
 
         for variable in variables_list:
+            # Split string to key and value
+            key, value = variable.split('=')
+
+            # Check that there is a value
+            if not value:
+                raise VariableError('Error(s) in given variables!')
+
+            # Check that value is a numeral and add it to dictionary
             try:
-                key, value = variable.split('=')
-                variables_dictionary[key] = value
+                float(value)
             except:
-                raise ErroneousVariables('Error(s) in given variables!')
+                raise VariableError(f'Variable: {value}, is not a number!')
+            else:
+                variables_dictionary[key] = value
 
         return variables_dictionary
