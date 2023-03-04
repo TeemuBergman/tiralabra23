@@ -1,5 +1,6 @@
 """Scientific Calculator Graphical User Interface class."""
 
+import sys
 import pathlib
 import pygubu
 
@@ -12,10 +13,18 @@ PROJECT_PATH = pathlib.Path(__file__).parent
 PROJECT_UI = PROJECT_PATH / "scical_gui.ui"
 
 
+class ExceptionHandler:
+    def __init__(self):
+        self.error_message = ''
+
+    def __call__(self, type, value, traceback):
+        self.error_message = value
+
+
 class SciCalGui:
     def __init__(self, master=None):
-        # Error handler
-        input_errors = InputError(self)
+        # Handle exceptions
+        self._error_message = ''
 
         # Create a builder
         self.builder = pygubu.Builder()
@@ -35,13 +44,13 @@ class SciCalGui:
         self.field_output_result = self.builder.get_object('output_result')
 
         # Set callbacks to variables
-        self.string_variable_expression = self.builder.get_variable(
+        self.input_expression = self.builder.get_variable(
             'string_expression')
-        self.string_variable_variables = self.builder.get_variable(
+        self.input_variables = self.builder.get_variable(
             'string_variables')
-        self.string_variable_result = self.builder.get_variable(
+        self.output_result = self.builder.get_variable(
             'string_result')
-        self.string_variable_result_rpn = self.builder.get_variable(
+        self.output_result_rpn = self.builder.get_variable(
             'string_result_rpn')
 
         # Init variables
@@ -57,12 +66,12 @@ class SciCalGui:
     def run(self):
         self.mainwindow.mainloop()
 
-    def display_error_message(self, error_message):
-        self.result = 'error'
+    def _handle_exceptions(self):
+        pass
 
     def _update_gui(self, symbol):
         self.expression += symbol
-        self.string_variable_expression.set(self.expression)
+        self.input_expression.set(self.expression)
 
     def call_clear(self, event=None):
         """Clear GUIs input and output fields."""
@@ -74,10 +83,10 @@ class SciCalGui:
         self.result_rpn = ''
 
         # Send empty values to GUI
-        self.string_variable_expression.set(self.expression)
-        self.string_variable_variables.set(self.variables)
-        self.string_variable_result.set(self.result)
-        self.string_variable_result_rpn.set(self.result_rpn)
+        self.input_expression.set(self.expression)
+        self.input_variables.set(self.variables)
+        self.output_result.set(self.result)
+        self.output_result_rpn.set(self.result_rpn)
 
     def call_calculate(self, event=None):
         """Excecute the given excpression and print its output to GUIs output fields."""
@@ -86,28 +95,28 @@ class SciCalGui:
         calculator = ScientificCalculator()
 
         # Get variables 'expression' and 'variables' from GUI
-        self.expression = self.string_variable_expression.get()
-        self.variables = self.string_variable_variables.get()
+        self.expression = self.input_expression.get()
+        self.variables = self.input_variables.get()
 
         try:
             # Calculate
             self.result = calculator.calculate(self.expression, self.variables)
             # Convert to string
-            self.result = self._cleanup_output_string(result)
+            self.result = self._clean_output_string(self.result)
+            # Set results to GUI
+            self.output_result.set(self.result)
+            self.output_result_rpn.set(calculator.result_rpn)
         except:
             # TODO - Virheilmoitukset oikein!
-            self.string_variable_result.set('ERROR')
-
-        # Set results to GUI
-        self.string_variable_result.set(self.result)
-        self.string_variable_result_rpn.set(calculator.result_rpn)
+            self.output_result.set('ERROR!')
+            print('ERRRORI TULI!')
 
         # Update values to GUI
         # TODO - Muuttujat hajoittavat tämän!
-        #self.string_variable_expression.set(calculator.calculation.expression)
-        self.string_variable_variables.set(calculator.calculation.variables)
+        #self.input_expression.set(calculator.calculation.expression)
+        self.input_variables.set(calculator.calculation.variables)
 
-    def _cleanup_output_string(self, value) -> str:
+    def _clean_output_string(self, value) -> str:
         """Convert given value to a string and modify if it ends at .0"""
 
         cleaned = str(value)
