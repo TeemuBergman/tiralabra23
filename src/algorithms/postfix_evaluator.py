@@ -60,7 +60,7 @@ class PostfixEvaluator:
                 try:
                     value_2 = self.stack.pop()
                 except:
-                    raise ExpressionError('Not enough values in expression!')
+                    raise ExpressionError('Not a complete expression!')
 
                 if self.stack:
                     value_1 = self.stack.pop()

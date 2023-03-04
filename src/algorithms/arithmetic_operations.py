@@ -26,8 +26,7 @@ class ArithmeticOperations:
             float: The result of the operation, as a float.
 
         Raises:
-            ValueError: If the operator is not found, if a division by zero occurs,
-                or if an overflow occurs.
+            OperationError: If operator or function is not found.
         """
         # Check that there is an operator
         if not operator:
@@ -67,7 +66,7 @@ class ArithmeticOperations:
         elif operator == 'log':
             self.result = self.perform_logarithm(value_1)
         else:
-            raise OperationError("Invalid operator/variable!")
+            raise OperationError("Invalid operator/function!")
 
         # Return the operation result
         return self.result

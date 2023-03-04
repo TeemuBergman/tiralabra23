@@ -105,10 +105,10 @@ class TestArithmeticOperations(unittest.TestCase):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('%', 1, 0)
-        self.assertEqual('Invalid operator/variable!', str(exc.exception))
+        self.assertEqual('Invalid operator/function!', str(exc.exception))
 
     def test_invaldi_operator_2(self):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('s', 4, 4)
-        self.assertEqual('Invalid operator/variable!', str(exc.exception))
+        self.assertEqual('Invalid operator/function!', str(exc.exception))

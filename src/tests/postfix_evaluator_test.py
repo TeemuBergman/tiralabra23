@@ -114,10 +114,10 @@ class TestPostfixEvaluator(unittest.TestCase):
         """Test if the function returns ValueError with erroneus input."""
         with self.assertRaises(OperationError) as exc:
             self.postfix_evaluator.evaluate('1 2 / 1 2 / ( *')
-        self.assertEqual('Invalid operator/variable!', str(exc.exception))
+        self.assertEqual('Invalid operator/function!', str(exc.exception))
 
     def test_invalid_input_2(self):
         """Test if the function returns correct variables."""
         with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('sin')
-        self.assertEqual('Not enough values in expression!', str(exc.exception))
+        self.assertEqual('Not a complete expression!', str(exc.exception))
