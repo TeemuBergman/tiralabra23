@@ -5,7 +5,6 @@ import pathlib
 import pygubu
 
 # Custom classes
-from algorithms.error_handling import InputError
 from algorithms.scientific_calculator import ScientificCalculator
 
 # Set GUI constants
@@ -109,12 +108,12 @@ class SciCalGui:
         except:
             # TODO - Virheilmoitukset oikein!
             self.output_result.set('ERROR!')
-            print('ERRRORI TULI!')
+            print('ERROR!')
 
         # Update values to GUI
         # TODO - Muuttujat hajoittavat tämän!
-        #self.input_expression.set(calculator.calculation.expression)
-        self.input_variables.set(calculator.calculation.variables)
+        # self.input_expression.set(calculator.calculation.expression)
+        # self.input_variables.set(calculator.calculation.variables)
 
     def _clean_output_string(self, value) -> str:
         """Convert given value to a string and modify if it ends at .0"""
