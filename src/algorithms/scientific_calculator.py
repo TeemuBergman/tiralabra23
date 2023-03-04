@@ -17,6 +17,7 @@ class ScientificCalculator:
     """
 
     def __init__(self):
+        self.calculation = Calculation('','')
         self.shunting_yard = ShuntingYard()
         self.postfix_evaluator = PostfixEvaluator()
         self.result_rpn = ''
@@ -35,11 +36,11 @@ class ScientificCalculator:
         """
 
         # Create new calculation object
-        calculation = Calculation(expression, variables)
+        self.calculation = Calculation(expression, variables)
 
         # Use the shunting yard algorithm to convert
         # the expression to a reverse polish notation
-        self.result_rpn = self.shunting_yard.convert(calculation)
+        self.result_rpn = self.shunting_yard.convert(self.calculation)
 
         # Use the postfix evaluator to calculate
         # the result from the reverse polish notation

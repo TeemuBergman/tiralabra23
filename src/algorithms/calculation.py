@@ -12,7 +12,7 @@ class Calculation:
 
         Args:
             expression (str): A string representing the mathematical expression.
-            variables (str): A string containing the variables used in the expression.
+            variables (str): A string containing the variables_dictionary used in the expression.
         """
 
         # Modify given expression
@@ -20,17 +20,17 @@ class Calculation:
         self.expression = self._convert_dot_to_comma(self.expression)
         self.expression = self._convert_to_lowercase(self.expression)
 
-        # Modify given variables
+        # Modify given variables_dictionary
         if variables:
             self.variables = self._remove_spaces(variables)
             self.variables = self._convert_to_lowercase(self.variables)
-            # Add variables to a dictionary and process expression with them
-            self.variables = self._variables_to_dictionary(self.variables)
+            # Add variables_dictionary to a dictionary and process expression with them
+            self.variables_dictionary = self._variables_to_dictionary(self.variables)
             self._introduce_variables()
         else:
-            self.variables = {}
+            self.variables = ''
 
-        # For storing RPN and result
+        # Variiables for storing RPN and result
         self.rpn = ''
         self.result = Decimal()
 
@@ -47,10 +47,10 @@ class Calculation:
         return string.lower()
 
     def _introduce_variables(self) -> None:
-        """Replace variables in an expression with values from a dictionary."""
+        """Replace variables_dictionary in an expression with values from a dictionary."""
 
-        for key in self.variables:
-            self.expression = self.expression.replace(key, self.variables[key])
+        for key in self.variables_dictionary:
+            self.expression = self.expression.replace(key, self.variables_dictionary[key])
 
     def _variables_to_dictionary(self, variables: str) -> dict:
         """
@@ -63,4 +63,13 @@ class Calculation:
             dict: A dictionary representation of the variables string.
         """
 
-        return dict([variable.strip().split('=') for variable in variables.split(',')])
+        # TODO - Virheellisten muuttujien käsittely
+
+        variables_list = variables.split(',')
+        variables_dictionary = {}
+
+        for variable in variables_list:
+            key, value = variable.split('=')
+            variables_dictionary[key] = value
+
+        return variables_dictionary
