@@ -68,11 +68,14 @@ class Calculation:
 
         for variable in variables_list:
             # Split string to key and value
-            key, value = variable.split('=')
+            try:
+                key, value = variable.split('=')
+            except:
+                raise VariableError('Variable(s) with value missing!')
 
             # Check that there is a value
             if not value:
-                raise VariableError('Error(s) in given variables!')
+                raise VariableError(f'Variable \'{key}\' has a missing value!')
 
             # Check that value is a numeral and add it to dictionary
             try:

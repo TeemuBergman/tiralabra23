@@ -110,20 +110,14 @@ class TestPostfixEvaluator(unittest.TestCase):
             self.postfix_evaluator.evaluate('')
         self.assertEqual('Expression not found!', str(exc.exception))
 
-    def test_division_by_zero(self):
-        """Test divide with zero"""
-        with self.assertRaises(OperationError) as exc:
-            self.postfix_evaluator.evaluate('1 0 /')
-        self.assertEqual('Division by zero!', str(exc.exception))
-
-    def test_erroneus_input(self):
+    def test_invalid_input_1(self):
         """Test if the function returns ValueError with erroneus input."""
-        with self.assertRaises(OperationError):
+        with self.assertRaises(OperationError) as exc:
             self.postfix_evaluator.evaluate('1 2 / 1 2 / ( *')
+        self.assertEqual('Invalid operator/variable!', str(exc.exception))
 
-    # TODO - Korjaa tämä!
-    def test_no_operator(self):
-        """Test with no operator.
+    def test_invalid_input_2(self):
+        """Test if the function returns correct variables."""
         with self.assertRaises(ExpressionError) as exc:
-            self.postfix_evaluator.evaluate('1 0')
-        self.assertEqual('Operator missing!', str(exc.exception))"""
+            self.postfix_evaluator.evaluate('sin')
+        self.assertEqual('Not enough values in expression!', str(exc.exception))

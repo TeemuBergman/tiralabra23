@@ -57,7 +57,10 @@ class PostfixEvaluator:
             # If the symbol is NaN, then it must be an operator
             else:
                 # Pop the last two values from the stack
-                value_2 = self.stack.pop()
+                try:
+                    value_2 = self.stack.pop()
+                except:
+                    raise ExpressionError('Not enough values in expression!')
 
                 if self.stack:
                     value_1 = self.stack.pop()

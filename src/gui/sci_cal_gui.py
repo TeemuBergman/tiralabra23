@@ -16,7 +16,6 @@ class SciCalGui:
     def __init__(self, master=None):
         # Create a GUI builder
         self.builder = pygubu.Builder()
-        # TODO - Ikkunan sijainti käynnistäessä?
 
         # Load an ui file
         self.builder.add_resource_path(PROJECT_PATH)
@@ -47,9 +46,8 @@ class SciCalGui:
         self.result = ''
         self.result_rpn = ''
 
-        # TODO - Saisiko nämä napit toimimaan kunnolla?
         # Set focus to expression input
-        # self.builder.get_object('input_expression').focus()
+        self.builder.get_object('input_expression').focus()
 
     def run(self):
         self.mainwindow.mainloop()
