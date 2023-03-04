@@ -67,7 +67,6 @@ class ArithmeticOperations:
         elif operator == 'log':
             self.result = self.perform_logarithm(value_1)
         else:
-            print(operator, value_1, value_2)
             raise OperationError("Invalid operator/variable!")
 
         # Return the operation result
