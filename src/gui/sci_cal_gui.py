@@ -12,20 +12,9 @@ PROJECT_PATH = pathlib.Path(__file__).parent
 PROJECT_UI = PROJECT_PATH / "scical_gui.ui"
 
 
-class ExceptionHandler:
-    def __init__(self):
-        self.error_message = ''
-
-    def __call__(self, type, value, traceback):
-        self.error_message = value
-
-
 class SciCalGui:
     def __init__(self, master=None):
-        # Handle exceptions
-        self._error_message = ''
-
-        # Create a builder
+        # Create a GUI builder
         self.builder = pygubu.Builder()
         # TODO - Ikkunan sijainti käynnistäessä?
 
@@ -74,13 +63,11 @@ class SciCalGui:
 
     def call_clear(self, event=None):
         """Clear GUIs input and output fields."""
-
         # Clear variables
         self.expression = ''
         self.variables = ''
         self.result = ''
         self.result_rpn = ''
-
         # Send empty values to GUI
         self.input_expression.set(self.expression)
         self.input_variables.set(self.variables)
@@ -89,10 +76,8 @@ class SciCalGui:
 
     def call_calculate(self, event=None):
         """Excecute the given excpression and print its output to GUIs output fields."""
-
         # Create new calculator
         calculator = ScientificCalculator()
-
         # Get variables 'expression' and 'variables' from GUI
         self.expression = self.input_expression.get()
         self.variables = self.input_variables.get()
@@ -106,20 +91,13 @@ class SciCalGui:
             self.output_result.set(self.result)
             self.output_result_rpn.set(calculator.result_rpn)
         except:
-            # TODO - Virheilmoitukset oikein!
-            self.output_result.set('ERROR!')
-            print('ERROR!')
-
-        # Update values to GUI
-        # TODO - Muuttujat hajoittavat tämän!
-        # self.input_expression.set(calculator.calculation.expression)
-        # self.input_variables.set(calculator.calculation.variables)
+            # Set error message and clear RPN result
+            self.output_result.set(sys.exc_info()[1])
+            self.output_result_rpn.set('')
 
     def _clean_output_string(self, value) -> str:
         """Convert given value to a string and modify if it ends at .0"""
-
         cleaned = str(value)
-
         # If input value is a decimal with .0 at the end
         if cleaned.endswith('.0'):
             # remove '.0' from end of string

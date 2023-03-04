@@ -29,7 +29,6 @@ class ArithmeticOperations:
             ValueError: If the operator is not found, if a division by zero occurs,
                 or if an overflow occurs.
         """
-
         # Check that there is an operator
         if not operator:
             raise OperationError("Operator missing!")

@@ -87,7 +87,7 @@ class TestArithmeticOperations(unittest.TestCase):
         result = self.operations.perform_on('log', 12)
         self.assertAlmostEqual(float(result), 2.4849066497880004)
 
-    # CATCH EXCEPTIONS
+    # EXCEPTIONS
 
     def test_division_by_zero(self):
         """Test if the function can divide with zero"""

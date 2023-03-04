@@ -102,19 +102,19 @@ class TestPostfixEvaluator(unittest.TestCase):
         result = self.postfix_evaluator.evaluate('-49 tanr')
         self.assertAlmostEqual(float(result), 3.172908552159191)
 
-    # CATCH EXCEPTIONS
+    # EXCEPTIONS
 
     def test_empty_input(self):
         """Test with empty input."""
         with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('')
-        self.assertEqual("Expression not found!", str(exc.exception))
+        self.assertEqual('Expression not found!', str(exc.exception))
 
     def test_division_by_zero(self):
         """Test divide with zero"""
         with self.assertRaises(OperationError) as exc:
             self.postfix_evaluator.evaluate('1 0 /')
-        self.assertEqual("Division by zero!", str(exc.exception))
+        self.assertEqual('Division by zero!', str(exc.exception))
 
     def test_erroneus_input(self):
         """Test if the function returns ValueError with erroneus input."""
@@ -126,4 +126,4 @@ class TestPostfixEvaluator(unittest.TestCase):
         """Test with no operator.
         with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('1 0')
-        self.assertEqual("Operator missing!", str(exc.exception))"""
+        self.assertEqual('Operator missing!', str(exc.exception))"""

@@ -20,9 +20,8 @@ class ShuntingYard:
         Convert an infix mathematical expression to postfix notation.
 
         Returns:
-            output_queue (str): The postfix expression in string format.
+            output_queue (str): Reverse Polish Notation (RPN).
         """
-
         # List of arithmetic symbols and functions needed for iteration
         symbols = ['+', '-', '*', '/', '^', '(', ')']
 
@@ -63,23 +62,25 @@ class ShuntingYard:
         return ' '.join(self._output_stack)
 
     def _process_functions(self) -> None:
+        """Handles all the function names to operator stack in correct composition."""
         if self._operator_stack:
             self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
         else:
             self._operator_stack.append(self._current_symbol)
 
     def _process_negative(self) -> None:
+        """..."""
         # Check if previous symbol is not a number and next one is
         if not self._prev_is_number and self._next_is_number:
             # If true, append negative operator to output_stack
             self._output_stack.append(self._current_symbol)
             # Set state of negative integer flag to True
             self._is_negative = True
-        else:
-            # If false, add it to operator_stack
+        else:  # If false, add it to operator_stack
             self._operator_stack.append(self._current_symbol)
 
     def _process_numerals(self) -> None:
+        """..."""
         # Check if previous symbol is a number or negative number flag is True
         if self._prev_is_number or self._is_negative:
             # If true, pop output_stack and add it back with current_symbol
@@ -91,7 +92,7 @@ class ShuntingYard:
             self._output_stack.append(self._current_symbol)
 
     def _append_to_output_stack(self) -> None:
-        # Pop a value from output_stack and append current_symbol to it
+        """Pop a value from output_stack and append current_symbol to it."""
         self._output_stack.append(
             self._output_stack.pop() + self._current_symbol)
 
@@ -102,11 +103,7 @@ class ShuntingYard:
         The function uses the `operator_precedence` dictionary to determine the precedence
         level of the input symbol and the operators on the stack.Once the correct position for
         the input symbol is found, it is added to the operator stack.
-
-        Returns:
-            None
         """
-
         # If the symbol is an operator, pop operators from the stack
         # and add them to the output until a lower precedence operator is found
         while self._operator_stack and self._operator_precedence.get(
@@ -123,18 +120,13 @@ class ShuntingYard:
         If the symbol is a close parenthesis, pop operators from the stack and
         add them to the output queue until an open parenthesis is found. The
         open parenthesis is also popped from the stack but not added to the output.
-
-        Returns:
-            None
         """
-
-        # If the character is an left parenthesis,
-        # push it to the operator stack
+        # If the character is an left parenthesis, push it to the operator stack
         if self._current_symbol == '(':
             self._operator_stack.append(self._current_symbol)
         # If the character is a right parenthesis, pop operators from the stack
-        # and add them to the output until an left parenthesis is found
-        elif self._current_symbol == ')':
+        # and add them to the output stack until an left parenthesis is found
+        else:
             while self._operator_stack and self._operator_stack[-1] != '(':
                 self._output_stack.append(self._operator_stack.pop())
             self._operator_stack.pop()

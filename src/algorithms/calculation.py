@@ -78,7 +78,7 @@ class Calculation:
             try:
                 float(value)
             except:
-                raise VariableError(f'Variable: {value}, is not a number!')
+                raise VariableError(f'Variable \'{value}\' is not a number!')
             else:
                 variables_dictionary[key] = value
 

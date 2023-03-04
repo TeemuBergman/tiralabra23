@@ -32,7 +32,6 @@ class PostfixEvaluator:
             ValueError: If there are not enough values in the expression to perform_on
                 the arithmetic operation.
         """
-
         # Check if the input expression is empty
         if not expression:
             raise ExpressionError("Expression not found!")

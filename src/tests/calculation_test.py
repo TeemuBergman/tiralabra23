@@ -3,7 +3,8 @@
 import unittest
 
 # Custom classes
-from algorithms.calculation import Calculation, VariableError
+from algorithms.error_handling import VariableError
+from algorithms.calculation import Calculation
 
 
 class TestCalculation(unittest.TestCase):
@@ -81,10 +82,10 @@ class TestCalculation(unittest.TestCase):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             Calculation('1+1', 'x=,')
-        self.assertEqual("Error(s) in given variables!", str(exc.exception))
+        self.assertEqual('Error(s) in given variables!', str(exc.exception))
 
     def test_erroneus_variables_2(self):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             Calculation('1+1', 'x=%')
-        self.assertEqual("Variable: %, is not a number!", str(exc.exception))
+        self.assertEqual('Variable \'%\' is not a number!', str(exc.exception))

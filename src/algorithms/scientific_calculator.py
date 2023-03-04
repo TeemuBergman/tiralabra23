@@ -34,7 +34,6 @@ class ScientificCalculator:
         Returns:
             Decimal: The result of evaluating the expression.
         """
-
         # Create new calculation object
         self.calculation = Calculation(expression, variables)
 
