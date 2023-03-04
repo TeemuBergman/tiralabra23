@@ -19,6 +19,7 @@ class SciCalGui:
 
         # Create a builder
         self.builder = pygubu.Builder()
+        # TODO - Ikkunan sijainti käynnistäessä?
 
         # Load an ui file
         self.builder.add_resource_path(PROJECT_PATH)
@@ -43,16 +44,13 @@ class SciCalGui:
         self.string_variable_result_rpn = self.builder.get_variable(
             'string_result_rpn')
 
-        # Numpad
-        # self.numpad_value = builder.tkvariables
-        self.input_button_1 = self.builder.get_object('input_button_1')
-
         # Init variables
         self.expression = ''
         self.variables = ''
         self.result = ''
         self.result_rpn = ''
 
+        # TODO - Saisiko nämä napit toimimaan kunnolla?
         # Set focus to expression input
         # self.builder.get_object('input_expression').focus()
 
@@ -67,6 +65,8 @@ class SciCalGui:
         self.string_variable_expression.set(self.expression)
 
     def call_clear(self, event=None):
+        """Clear GUIs input and output fields."""
+
         # Clear variables
         self.expression = ''
         self.variables = ''
@@ -80,6 +80,8 @@ class SciCalGui:
         self.string_variable_result_rpn.set(self.result_rpn)
 
     def call_calculate(self, event=None):
+        """Excecute the given excpression and print its output to GUIs output fields."""
+
         # Create new calculator
         calculator = ScientificCalculator()
 
@@ -87,23 +89,25 @@ class SciCalGui:
         self.expression = self.string_variable_expression.get()
         self.variables = self.string_variable_variables.get()
 
-        # Calculate
-        result = calculator.calculate(self.expression, self.variables)
+        try:
+            # Calculate
+            self.result = calculator.calculate(self.expression, self.variables)
+            # Convert to string
+            self.result = self._cleanup_output_string(result)
+        except:
+            # TODO - Virheilmoitukset oikein!
+            self.string_variable_result.set('ERROR')
 
-        # Convert to string
-        result = self._convert_to_str(result)
-
+        # Set results to GUI
+        self.string_variable_result.set(self.result)
         self.string_variable_result_rpn.set(calculator.result_rpn)
-
-        # Set result to GUI
-        self.string_variable_result.set(result)
 
         # Update values to GUI
         # TODO - Muuttujat hajoittavat tämän!
         #self.string_variable_expression.set(calculator.calculation.expression)
         self.string_variable_variables.set(calculator.calculation.variables)
 
-    def _convert_to_str(self, value) -> str:
+    def _cleanup_output_string(self, value) -> str:
         """Convert given value to a string and modify if it ends at .0"""
 
         cleaned = str(value)
