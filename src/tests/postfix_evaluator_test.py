@@ -3,6 +3,7 @@
 import unittest
 
 # Custom classes
+from algorithms.error_handling import ExpressionError, OperationError
 from algorithms.postfix_evaluator import PostfixEvaluator
 
 
@@ -13,11 +14,6 @@ class TestPostfixEvaluator(unittest.TestCase):
         self.postfix_evaluator = PostfixEvaluator()
 
     # BASIC TESTS
-
-    def test_erroneus_input(self):
-        """Test if the function returns ValueError with erroneus input."""
-        with self.assertRaises(ValueError):
-            self.postfix_evaluator.evaluate('1 2 / 1 2 / ( *')
 
     def test_basic_addition(self):
         """Test if the function calculates '1 2 +' RPN expression to 3.0."""
@@ -69,6 +65,11 @@ class TestPostfixEvaluator(unittest.TestCase):
         result = self.postfix_evaluator.evaluate('23 27 + 3 3 * /')
         self.assertAlmostEqual(float(result), 5.555555555555555555555555556)
 
+    def test_basic_arithmetic_4(self):
+        """Test if the function calculates '6 2 3 ^ *' RPN expression to 48."""
+        result = self.postfix_evaluator.evaluate('6 2 3 ^ *')
+        self.assertEqual(result, 48.0)
+
     # FUNCTIONS
 
     def test_function_sine_1(self):
@@ -105,19 +106,24 @@ class TestPostfixEvaluator(unittest.TestCase):
 
     def test_empty_input(self):
         """Test with empty input."""
-        with self.assertRaises(ValueError) as exc:
+        with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('')
-        self.assertEqual("Expression missing!", str(exc.exception))
+        self.assertEqual("Expression not found!", str(exc.exception))
 
     def test_division_by_zero(self):
         """Test divide with zero"""
-        with self.assertRaises(ValueError) as exc:
+        with self.assertRaises(OperationError) as exc:
             self.postfix_evaluator.evaluate('1 0 /')
         self.assertEqual("Division by zero!", str(exc.exception))
+
+    def test_erroneus_input(self):
+        """Test if the function returns ValueError with erroneus input."""
+        with self.assertRaises(OperationError):
+            self.postfix_evaluator.evaluate('1 2 / 1 2 / ( *')
 
     # TODO - Korjaa tämä!
     def test_no_operator(self):
         """Test with no operator.
-        with self.assertRaises(ValueError) as exc:
+        with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('1 0')
         self.assertEqual("Operator missing!", str(exc.exception))"""

@@ -3,6 +3,7 @@
 import unittest
 
 # Custom classes
+from algorithms.error_handling import ExpressionError
 from algorithms.scientific_calculator import ScientificCalculator
 
 
@@ -24,6 +25,6 @@ class TestScientificCalculator(unittest.TestCase):
 
     def test_empty_input(self):
         """Test with empty input."""
-        with self.assertRaises(ValueError) as exc:
+        with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('')
-        self.assertEqual("Expression missing!", str(exc.exception))
+        self.assertEqual("Expression not found!", str(exc.exception))

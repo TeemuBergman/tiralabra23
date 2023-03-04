@@ -3,6 +3,7 @@
 import unittest
 
 # Custom classes
+from algorithms.error_handling import OperationError
 from algorithms.arithmetic_operations import ArithmeticOperations
 
 
@@ -90,18 +91,18 @@ class TestArithmeticOperations(unittest.TestCase):
 
     def test_division_by_zero(self):
         """Test if the function can divide with zero"""
-        with self.assertRaises(ValueError) as exc:
+        with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('/', 1, 0)
         self.assertEqual("Division by zero!", str(exc.exception))
 
     def test_no_operator(self):
         """Test if the function works with no operator."""
-        with self.assertRaises(ValueError) as exc:
+        with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('', 0)
         self.assertEqual("Operator missing!", str(exc.exception))
 
     def test_wrong_symbols(self):
         """Test if the function resolves erroneous symbol to error."""
-        with self.assertRaises(ValueError) as exc:
+        with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('%', 1, 0)
         self.assertEqual("Invalid operator!", str(exc.exception))
