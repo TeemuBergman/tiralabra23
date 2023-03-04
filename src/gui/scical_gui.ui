@@ -4,7 +4,7 @@
     <property name="geometry">500x400</property>
     <property name="height">200</property>
     <property name="padx">5</property>
-    <property name="pady">5</property>
+    <property name="pady">7</property>
     <property name="relief">raised</property>
     <property name="resizable">none</property>
     <property name="title" translatable="yes">Scientific calculator</property>
@@ -61,7 +61,7 @@
               <object class="tk.LabelFrame" id="label_rpn" named="True">
                 <property name="font">ansifixed</property>
                 <property name="height">200</property>
-                <property name="text" translatable="yes">RPN</property>
+                <property name="text" translatable="yes">Reverse Polish Notation (RPN)</property>
                 <property name="width">200</property>
                 <layout manager="pack">
                   <property name="fill">x</property>
@@ -436,7 +436,6 @@
               <object class="tk.Button" id="input_button_backpetal" named="True">
                 <property name="background">#efe7e7</property>
                 <property name="font">ansifixed</property>
-                <property name="state">disabled</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">⌫</property>
                 <bind sequence="&lt;ButtonRelease&gt;" handler="call_clear" add="" />
@@ -448,7 +447,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_equals" named="True">
+              <object class="tk.Button" id="input_button_clearall" named="True">
                 <property name="background">#efe7e7</property>
                 <property name="font">ansifixed</property>
                 <property name="takefocus">false</property>
@@ -462,7 +461,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button49" named="True">
+              <object class="tk.Button" id="input_button_equals" named="True">
                 <property name="background">#e9efe7</property>
                 <property name="font">ansifixed</property>
                 <property name="takefocus">false</property>
@@ -524,8 +523,8 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button_56">
-                <property name="background">#e0e0e0</property>
+              <object class="tk.Button" id="input_button_sinr" named="True">
+                <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
                 <property name="takefocus">false</property>
@@ -578,8 +577,8 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button31">
-                <property name="background">#e0e0e0</property>
+              <object class="tk.Button" id="input_button_cosr" named="True">
+                <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
                 <property name="takefocus">false</property>
@@ -632,8 +631,8 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button34">
-                <property name="background">#e0e0e0</property>
+              <object class="tk.Button" id="input_button_tanr" named="True">
+                <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
                 <property name="takefocus">false</property>
@@ -686,8 +685,8 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button46">
-                <property name="background">#e0e0e0</property>
+              <object class="tk.Button" id="input_button_log" named="True">
+                <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
                 <property name="state">normal</property>

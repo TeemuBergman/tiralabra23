@@ -99,7 +99,9 @@ class SciCalGui:
         self.string_variable_result.set(result)
 
         # Update values to GUI
-        self.string_variable_expression.set(calculator)
+        # TODO - Muuttujat hajoittavat tämän!
+        #self.string_variable_expression.set(calculator.calculation.expression)
+        self.string_variable_variables.set(calculator.calculation.variables)
 
     def _convert_to_str(self, value) -> str:
         """Convert given value to a string and modify if it ends at .0"""
