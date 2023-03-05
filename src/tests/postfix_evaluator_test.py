@@ -126,3 +126,15 @@ class TestPostfixEvaluator(unittest.TestCase):
         with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('sin')
         self.assertEqual('Not a complete expression!', str(exc.exception))
+
+    def test_invalid_decimals_1(self):
+        """Test if the function raises ExpressionError with invalid input."""
+        with self.assertRaises(ExpressionError) as exc:
+            self.postfix_evaluator.evaluate('1.1.1.1')
+        self.assertEqual('Not in decimal format, too many dots!', str(exc.exception))
+
+    def test_invalid_decimals_2(self):
+        """Test if the function raises ExpressionError with invalid input."""
+        with self.assertRaises(ExpressionError) as exc:
+            self.postfix_evaluator.evaluate('-2..2')
+        self.assertEqual('Not in decimal format, too many dots!', str(exc.exception))
