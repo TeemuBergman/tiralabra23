@@ -1,9 +1,12 @@
 """Shunting Yard class."""
 
+# Custom classes
+from algorithms.error_handling import ExpressionError
+
 
 class ShuntingYard:
     """
-    Shunting yard algortihm converts mathematical expression to a postfix expression.
+    Shunting yard algorithm converts mathematical expression to a postfix expression.
     """
 
     def __init__(self):
@@ -14,10 +17,11 @@ class ShuntingYard:
         self._next_is_number = False
         self._prev_is_number = False
         self._is_negative = False
+        self.operator_stack_has_function = False
 
     def convert(self, calculation) -> str:
         """
-        Convert an infix mathematical expression to postfix notation.
+        Convert an infix mathematical expression to a Reverse Polish Notation (RPN).
 
         Returns:
             output_queue (str): Reverse Polish Notation (RPN).
@@ -33,7 +37,7 @@ class ShuntingYard:
             # Update current step and symbol
             self._current_symbol = symbol
 
-            # Check if next symbol is an operator
+            # Check if next symbol is a number
             if step < expression_lenght:
                 self._next_is_number = calculation.expression[step + 1] not in symbols
 
@@ -42,7 +46,7 @@ class ShuntingYard:
                 self._process_negative()
             elif self._current_symbol.isnumeric():
                 self._process_numerals()
-            elif self._current_symbol in '.':
+            elif self._current_symbol == '.':
                 self._append_to_output_stack()
             elif self._current_symbol in self._operator_precedence:
                 self._process_operators()
@@ -55,32 +59,43 @@ class ShuntingYard:
             self._prev_is_number = self._current_symbol not in symbols
 
         # Pop any remaining operators from the stack and add them to the output
-        while self._operator_stack:
-            self._output_stack.append(self._operator_stack.pop())
+        self._remaining_operators()
 
         # Return the postfix notation as a string
         return ' '.join(self._output_stack)
 
+    def _remaining_operators(self) -> None:
+        """
+        Pop any remaining operators from the stack and add them to the output
+        and raise an ExpressionError if left parentheses has been found.
+        """
+        while self._operator_stack:
+            if self._operator_stack[-1] != '(':
+                self._output_stack.append(self._operator_stack.pop())
+            else:
+                raise ExpressionError('Not a complete expression!')
+
     def _process_functions(self) -> None:
         """Handles all the function names to operator stack in correct composition."""
-        if self._operator_stack:
+        if self._operator_stack and self.operator_stack_has_function and self._operator_stack[-1] not in '(':
             self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
         else:
             self._operator_stack.append(self._current_symbol)
+            self.operator_stack_has_function = True
 
     def _process_negative(self) -> None:
-        """..."""
+        """Handles all the negative values."""
         # Check if previous symbol is not a number and next one is
         if not self._prev_is_number and self._next_is_number:
             # If true, append negative operator to output_stack
             self._output_stack.append(self._current_symbol)
             # Set state of negative integer flag to True
             self._is_negative = True
-        else:  # If false, add it to operator_stack
-            self._operator_stack.append(self._current_symbol)
+        else:  # If false, process it as a regular operator
+            self._process_operators()
 
     def _process_numerals(self) -> None:
-        """..."""
+        """Handles all numerals."""
         # Check if previous symbol is a number or negative number flag is True
         if self._prev_is_number or self._is_negative:
             # If true, pop output_stack and add it back with current_symbol
@@ -92,9 +107,8 @@ class ShuntingYard:
             self._output_stack.append(self._current_symbol)
 
     def _append_to_output_stack(self) -> None:
-        """Pop a value from output_stack and append current_symbol to it."""
-        self._output_stack.append(
-            self._output_stack.pop() + self._current_symbol)
+        """Pops a value from output_stack and appends current_symbol to it."""
+        self._output_stack.append(self._output_stack.pop() + self._current_symbol)
 
     def _process_operators(self) -> None:
         """
@@ -121,12 +135,21 @@ class ShuntingYard:
         add them to the output queue until an open parenthesis is found. The
         open parenthesis is also popped from the stack but not added to the output.
         """
-        # If the character is an left parenthesis, push it to the operator stack
-        if self._current_symbol == '(':
+        # If the symbol is a left parenthesis, push it to the operator stack
+        if self._current_symbol in '(':
             self._operator_stack.append(self._current_symbol)
-        # If the character is a right parenthesis, pop operators from the stack
-        # and add them to the output stack until an left parenthesis is found
+        # If the symbol is a right parenthesis, pop operators from the stack
+        # and add them to the output stack until a left parenthesis is found
         else:
-            while self._operator_stack and self._operator_stack[-1] != '(':
-                self._output_stack.append(self._operator_stack.pop())
-            self._operator_stack.pop()
+            while self._operator_stack:
+                if self._operator_stack[-1] != '(':
+                    self._output_stack.append(self._operator_stack.pop())
+                elif self.operator_stack_has_function:
+                    # There is a function after left parentheses
+                    self._operator_stack.pop()
+                    self._output_stack.append(self._operator_stack.pop())
+                    self.operator_stack_has_function = False
+                else:
+                    # Pop the left parentheses
+                    self._operator_stack.pop()
+                    break

@@ -32,9 +32,6 @@ class ArithmeticOperations:
         if not operator:
             raise OperationError("Operator missing!")
 
-        # Convert operator to lower case, for function names (sin, cos, tan)
-        operator = operator.lower()
-
         # Convert the values to Decimal objects to ensure decimal precision
         value_1 = Decimal(value_1)
         if value_2:
