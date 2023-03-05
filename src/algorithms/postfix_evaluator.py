@@ -1,6 +1,6 @@
 """Postfix Evaluator class."""
 
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 
 # Custom classes
 from algorithms.error_handling import ExpressionError
@@ -41,20 +41,22 @@ class PostfixEvaluator:
 
         # Iterate over each symbol in the expression
         for step, symbol in enumerate(self.symbols):
-
             # Is it safe to probe in to the future
             probing_distance = (step + 1) <= len(symbol)
-
             # If symbol is a negative sign, then probe if next one is a numeral
             if symbol[0] == '-' and probing_distance:
-                self.stack.append(Decimal(symbol))
-
-            # If the symbol starts with a digit or a minus symbol it's a number
+                try:
+                    # Convert the symbol to a Decimal and push it into the stack
+                    self.stack.append(Decimal(symbol))
+                except InvalidOperation as exc:
+                    raise ExpressionError('Not in decimal format, too many dots!') from exc
+            # If the symbol starts with a digit or a minus symbol it's a numeral
             elif symbol[0].isnumeric():
-
-                # Convert the symbol to a Decimal and push it into the stack
-                self.stack.append(Decimal(symbol))
-
+                try:
+                    # Convert the symbol to a Decimal and push it into the stack
+                    self.stack.append(Decimal(symbol))
+                except InvalidOperation as exc:
+                    raise ExpressionError('Not in decimal format, too many dots!') from exc
             # If the symbol is NaN, then it must be an operator
             else:
                 if symbol in self.operations.functions:
@@ -70,7 +72,6 @@ class PostfixEvaluator:
 
                 # Perform the operation with the symbol and the two values
                 result = self.operations.perform_on(symbol, value_1, value_2)
-
                 # Push the result onto the stack
                 self.stack.append(result)
 
