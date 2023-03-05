@@ -146,8 +146,16 @@ class SciCalGui:
                 self._update_gui(')')
             case 'input_button_exponent':
                 self._update_gui('^')
+            case 'input_button_sinr':
+                self._update_gui('sinr(x)')
+            case 'input_button_cosr':
+                self._update_gui('cosr(x)')
+            case 'input_button_tanr':
+                self._update_gui('tanr(x)')
             case 'input_button_square_root':
-                self._update_gui('sqr(x)')
+                self._update_gui('sqrt(x)')
+            case 'input_button_log':
+                self._update_gui('log(x)')
 
 
 if __name__ == "__main__":
