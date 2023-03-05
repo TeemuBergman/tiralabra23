@@ -3,7 +3,7 @@
 import unittest
 
 # Custom classes
-from algorithms.error_handling import ExpressionError
+from algorithms.error_handling import ExpressionError, VariableError, OperationError
 from algorithms.scientific_calculator import ScientificCalculator
 
 
@@ -15,16 +15,96 @@ class TestScientificCalculator(unittest.TestCase):
 
     # BASIC TESTS
 
-    def test_with_simple_addition(self):
+    def test_basic_addition(self):
         """Test if the class returns correct answer with simple input."""
         expression = '1+2'
         response = self.scientific_calculator.calculate(expression)
-        self.assertEqual(response, 3.0)
+        self.assertEqual(response, 3)
+
+    def test_basic_subtraction(self):
+        """Test if the class returns correct answer with simple input."""
+        expression = '1-2'
+        response = self.scientific_calculator.calculate(expression)
+        self.assertEqual(response, -1)
+
+    def test_basic_multiplication(self):
+        """Test if the class returns correct answer with simple input."""
+        expression = '2*2'
+        response = self.scientific_calculator.calculate(expression)
+        self.assertEqual(response, 4)
+
+    def test_basic_division(self):
+        """Test if the class returns correct answer with simple input."""
+        expression = '2/2'
+        response = self.scientific_calculator.calculate(expression)
+        self.assertEqual(response, 1)
+
+    def test_basic_exponentitation(self):
+        """Test if the class returns correct answer with simple input."""
+        expression = '2^8'
+        response = self.scientific_calculator.calculate(expression)
+        self.assertEqual(response, 256)
+
+    # FUNCTIONS
+
+    def test_functions_1(self):
+        """Test if the class returns correct answer with simple input."""
+        expression = 'sinr(sqrt(12))*23'
+        result = self.scientific_calculator.calculate(expression)
+        self.assertAlmostEqual(float(result), -7.289784753629491631521375439)
+
+    def test_functions_2(self):
+        """Test if the class returns correct answer with simple input."""
+        expression = 'sqrt(6^64)'
+        result = self.scientific_calculator.calculate(expression)
+        self.assertAlmostEqual(float(result), 7.958661109946401e+24)
 
     # CATCH EXCEPTIONS
 
     def test_empty_input(self):
-        """Test with empty input."""
+        """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('')
         self.assertEqual("Expression not found!", str(exc.exception))
+
+    def test_division_by_zero(self):
+        """Test if the function can divide with zero"""
+        with self.assertRaises(OperationError) as exc:
+            self.scientific_calculator.calculate('1/0')
+        self.assertEqual('Division by zero!', str(exc.exception))
+
+    def test_invalid_operator_1(self):
+        """Test if the function resolves invalid operator to error."""
+        with self.assertRaises(ExpressionError) as exc:
+            self.scientific_calculator.calculate('1%1')
+        self.assertEqual('Not a complete expression!', str(exc.exception))
+
+    def test_erroneus_expression_1(self):
+        """Test if the function raises ExpressionError with invalid input."""
+        with self.assertRaises(ExpressionError) as exc:
+            self.scientific_calculator.calculate('(1/2)*(1/2')
+        self.assertEqual('Not a complete expression!', str(exc.exception))
+
+    def test_erroneus_expression_2(self):
+        """Test if the function raises ExpressionError with invalid input."""
+        with self.assertRaises(ExpressionError) as exc:
+            self.scientific_calculator.calculate('sinr12')
+        self.assertEqual('Not a complete expression or invalid syntax!', str(exc.exception))
+
+    def test_invalid_variables_1(self):
+        """Test if the function raises VariableError with invalid input."""
+        with self.assertRaises(VariableError) as exc:
+            self.scientific_calculator.calculate('x*2', 'x=,')
+        self.assertEqual('Variable \'x\' has a missing value!', str(exc.exception))
+
+    def test_invalid_variables_2(self):
+        """Test if the function raises VariableError with invalid input."""
+        with self.assertRaises(VariableError) as exc:
+            self.scientific_calculator.calculate('x*2', 'x=%')
+        self.assertEqual('Variable \'%\' is not a number!', str(exc.exception))
+
+    def test_invalid_variables_3(self):
+        """Test if the function raises VariableError with invalid input."""
+        with self.assertRaises(VariableError) as exc:
+            self.scientific_calculator.calculate('x*2', 'x=1,y')
+        self.assertEqual('Variable(s) with value missing!', str(exc.exception))

@@ -63,27 +63,27 @@ class TestArithmeticOperations(unittest.TestCase):
     # FUNCTIONS
 
     def test_function_sine(self):
-        """Test if the function calculates function 'sin(12)."""
+        """Test if the class evaluates given expression correctly."""
         result = self.operations.perform_on('sinr', 12)
         self.assertAlmostEqual(float(result), -0.5365729180004349)
 
     def test_function_cosine(self):
-        """Test if the function calculates function 'cos(12)."""
+        """Test if the class evaluates given expression correctly."""
         result = self.operations.perform_on('cosr', 12)
         self.assertAlmostEqual(float(result), 0.8438539587324921)
 
     def test_function_tangent(self):
-        """Test if the function calculates function 'tan(12)."""
+        """Test if the class evaluates given expression correctly."""
         result = self.operations.perform_on('tanr', 12)
         self.assertAlmostEqual(float(result), -0.6358599286615808)
 
     def test_function_square_root(self):
-        """Test if the function calculates function 'tan(12)."""
-        result = self.operations.perform_on('sqr', 12)
+        """Test if the class evaluates given expression correctly."""
+        result = self.operations.perform_on('sqrt', 12)
         self.assertAlmostEqual(float(result), 3.4641016151377544)
 
     def test_function_logarithm(self):
-        """Test if the function calculates function 'tan(12)."""
+        """Test if the class evaluates given expression correctly."""
         result = self.operations.perform_on('log', 12)
         self.assertAlmostEqual(float(result), 2.4849066497880004)
 
