@@ -11,6 +11,7 @@ class ArithmeticOperations:
     """This class handles all arithmetic operations."""
 
     def __init__(self):
+        self.functions = ['sinr', 'cosr', 'tanr', 'sqr', 'log']
         self.result = None
 
     def perform_on(self, operator: str, value_1: float, value_2 = None) -> Decimal:

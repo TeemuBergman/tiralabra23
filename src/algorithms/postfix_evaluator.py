@@ -57,13 +57,13 @@ class PostfixEvaluator:
 
             # If the symbol is NaN, then it must be an operator
             else:
-                if len(self.stack) >= 2:
-                    # Pop the last two values from the stack
-                    value_2 = self.stack.pop()
-                    value_1 = self.stack.pop()
-                elif len(self.stack) == 1:
+                if symbol in self.operations.functions:
                     # If operator is a function
                     value_2 = Decimal()
+                    value_1 = self.stack.pop()
+                elif len(self.stack) >= 2:
+                    # Pop the last two values from the stack
+                    value_2 = self.stack.pop()
                     value_1 = self.stack.pop()
                 else:
                     raise ExpressionError('Not a complete expression!')
