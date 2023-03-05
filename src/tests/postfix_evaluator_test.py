@@ -82,6 +82,11 @@ class TestPostfixEvaluator(unittest.TestCase):
         result = self.postfix_evaluator.evaluate('-49 sinr')
         self.assertAlmostEqual(float(result), 0.9537526527594719)
 
+    def test_function_sine_3(self):
+        """Test if the function calculates RPN expression to a correct value."""
+        result = self.postfix_evaluator.evaluate('5 sinr 5 sinr +')
+        self.assertAlmostEqual(float(result), -1.917848549326276)
+
     def test_function_cosine_1(self):
         """Test if the function calculates RPN expression to a correct value."""
         result = self.postfix_evaluator.evaluate('12 cosr')
