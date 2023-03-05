@@ -73,32 +73,32 @@ class TestPostfixEvaluator(unittest.TestCase):
     # FUNCTIONS
 
     def test_function_sine_1(self):
-        """Test if the function calculates '12 SIN' RPN expression to a correct value."""
-        result = self.postfix_evaluator.evaluate('12 SINR')
+        """Test if the function calculates RPN expression to a correct value."""
+        result = self.postfix_evaluator.evaluate('12 sinr')
         self.assertAlmostEqual(float(result), -0.5365729180004349)
 
     def test_function_sine_2(self):
-        """Test if the function calculates '-49 sin' RPN expression to a correct value.."""
+        """Test if the function calculates RPN expression to a correct value."""
         result = self.postfix_evaluator.evaluate('-49 sinr')
         self.assertAlmostEqual(float(result), 0.9537526527594719)
 
     def test_function_cosine_1(self):
-        """Test if the function calculates '12 COS' RPN expression to a correct value."""
-        result = self.postfix_evaluator.evaluate('12 COSR')
+        """Test if the function calculates RPN expression to a correct value."""
+        result = self.postfix_evaluator.evaluate('12 cosr')
         self.assertAlmostEqual(float(result), 0.8438539587324921)
 
     def test_function_cosine_2(self):
-        """Test if the function calculates '-49 cos' RPN expression to a correct value.."""
+        """Test if the function calculates RPN expression to a correct value."""
         result = self.postfix_evaluator.evaluate('-49 cosr')
         self.assertAlmostEqual(float(result), 0.3005925437436371)
 
     def test_function_tangent_1(self):
-        """Test if the function calculates '12 TAN' RPN expression to a correct value."""
-        result = self.postfix_evaluator.evaluate('12 TANR')
+        """Test if the function calculates RPN expression to a correct value."""
+        result = self.postfix_evaluator.evaluate('12 tanr')
         self.assertAlmostEqual(float(result), -0.6358599286615808)
 
     def test_function_tangent_2(self):
-        """Test if the function calculates '-49 tan' RPN expression to a correct value.."""
+        """Test if the function calculates RPN expression to a correct value."""
         result = self.postfix_evaluator.evaluate('-49 tanr')
         self.assertAlmostEqual(float(result), 3.172908552159191)
 
@@ -111,13 +111,13 @@ class TestPostfixEvaluator(unittest.TestCase):
         self.assertEqual('Expression not found!', str(exc.exception))
 
     def test_invalid_input_1(self):
-        """Test if the function returns ValueError with erroneus input."""
+        """Test if the function raises OperationError with invalid input."""
         with self.assertRaises(OperationError) as exc:
             self.postfix_evaluator.evaluate('1 2 / 1 2 / ( *')
         self.assertEqual('Invalid operator/function!', str(exc.exception))
 
     def test_invalid_input_2(self):
-        """Test if the function returns correct variables."""
+        """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('sin')
         self.assertEqual('Not a complete expression!', str(exc.exception))
