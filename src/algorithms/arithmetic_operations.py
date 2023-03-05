@@ -11,7 +11,7 @@ class ArithmeticOperations:
     """This class handles all arithmetic operations."""
 
     def __init__(self):
-        self.functions = ['sinr', 'cosr', 'tanr', 'sqr', 'log']
+        self.functions = ['sinr', 'cosr', 'tanr', 'sqrt', 'log']
         self.result = None
 
     def perform_on(self, operator: str, value_1: float, value_2 = None) -> Decimal:
@@ -59,7 +59,7 @@ class ArithmeticOperations:
             self.result = self.perform_cosine(value_1)
         elif operator == 'tanr':
             self.result = self.perform_tangent(value_1)
-        elif operator == 'sqr':
+        elif operator == 'sqrt':
             self.result = self.perform_square_root(value_1)
         elif operator == 'log':
             self.result = self.perform_logarithm(value_1)
