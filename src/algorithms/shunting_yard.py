@@ -99,8 +99,10 @@ class ShuntingYard:
         # Check if previous symbol is a number or negative number flag is True
         if self._prev_is_number or self._is_negative:
             # If true, pop output_stack and add it back with current_symbol
-            self._output_stack.append(
-                self._output_stack.pop() + self._current_symbol)
+            try:
+                self._output_stack.append(self._output_stack.pop() + self._current_symbol)
+            except IndexError as exc:
+                raise ExpressionError('Not a complete expression or invalid syntax!') from exc
             # Set negative number flag to False (normal state)
             self._is_negative = False
         else:
