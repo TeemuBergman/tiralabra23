@@ -2,8 +2,8 @@
 <interface version="1.3">
   <object class="tk.Toplevel" id="main_window" named="True">
     <property name="geometry">500x400</property>
-    <property name="padx">5</property>
-    <property name="pady">7</property>
+    <property name="padx">1</property>
+    <property name="pady">5</property>
     <property name="relief">raised</property>
     <property name="resizable">none</property>
     <property name="title" translatable="yes">Scientific calculator</property>
@@ -28,7 +28,7 @@
             </layout>
             <child>
               <object class="tk.LabelFrame" id="label_result" named="True">
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="height">200</property>
                 <property name="padx">3</property>
                 <property name="pady">3</property>
@@ -41,7 +41,7 @@
                 </layout>
                 <child>
                   <object class="tk.Entry" id="output_result" named="True">
-                    <property name="font">systemfixed</property>
+                    <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
                     <property name="state">readonly</property>
                     <property name="takefocus">false</property>
@@ -58,7 +58,7 @@
             </child>
             <child>
               <object class="tk.LabelFrame" id="label_rpn" named="True">
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="height">200</property>
                 <property name="padx">3</property>
                 <property name="pady">3</property>
@@ -71,7 +71,7 @@
                 </layout>
                 <child>
                   <object class="tk.Entry" id="output_rpn" named="True">
-                    <property name="font">ansifixed</property>
+                    <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
                     <property name="state">readonly</property>
                     <property name="takefocus">false</property>
@@ -88,7 +88,7 @@
             </child>
             <child>
               <object class="tk.LabelFrame" id="label_variables" named="True">
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="height">200</property>
                 <property name="padx">3</property>
                 <property name="pady">3</property>
@@ -101,7 +101,7 @@
                 </layout>
                 <child>
                   <object class="tk.Entry" id="input_variables" named="True">
-                    <property name="font">ansifixed</property>
+                    <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
                     <property name="takefocus">true</property>
                     <property name="textvariable">string:string_variables</property>
@@ -118,7 +118,7 @@
             </child>
             <child>
               <object class="tk.LabelFrame" id="label_expression" named="True">
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="height">200</property>
                 <property name="padx">3</property>
                 <property name="pady">3</property>
@@ -131,7 +131,7 @@
                 </layout>
                 <child>
                   <object class="tk.Entry" id="input_expression" named="True">
-                    <property name="font">ansifixed</property>
+                    <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
                     <property name="takefocus">true</property>
                     <property name="textvariable">string:string_expression</property>
@@ -170,19 +170,13 @@
               <property name="side">right</property>
             </layout>
             <containerlayout manager="grid">
-              <property name="anchor">ne</property>
-              <property type="col" id="all" name="pad">5</property>
-              <property type="col" id="all" name="uniform">1</property>
               <property type="col" id="all" name="weight">1</property>
-              <property type="row" id="all" name="pad">5</property>
-              <property type="row" id="all" name="uniform">1</property>
               <property type="row" id="all" name="weight">1</property>
             </containerlayout>
             <child>
               <object class="tk.Button" id="input_button_1" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
-                <property name="height">30</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">1</property>
                 <layout manager="grid">
@@ -195,7 +189,7 @@
             <child>
               <object class="tk.Button" id="input_button_2" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">2</property>
                 <layout manager="grid">
@@ -208,7 +202,7 @@
             <child>
               <object class="tk.Button" id="input_button_3" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">3</property>
                 <layout manager="grid">
@@ -222,7 +216,7 @@
               <object class="tk.Button" id="input_button_divide" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">/</property>
                 <layout manager="grid">
@@ -235,7 +229,7 @@
             <child>
               <object class="tk.Button" id="input_button_4" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">4</property>
                 <layout manager="grid">
@@ -248,7 +242,7 @@
             <child>
               <object class="tk.Button" id="input_button_5" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">5</property>
                 <layout manager="grid">
@@ -261,7 +255,7 @@
             <child>
               <object class="tk.Button" id="input_button_6" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">6</property>
                 <layout manager="grid">
@@ -275,7 +269,7 @@
               <object class="tk.Button" id="input_button_multiply" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">*</property>
                 <layout manager="grid">
@@ -288,7 +282,7 @@
             <child>
               <object class="tk.Button" id="input_button_7" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">7</property>
                 <layout manager="grid">
@@ -301,7 +295,7 @@
             <child>
               <object class="tk.Button" id="input_button_8" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">8</property>
                 <layout manager="grid">
@@ -314,7 +308,7 @@
             <child>
               <object class="tk.Button" id="input_button_9" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">9</property>
                 <layout manager="grid">
@@ -328,7 +322,7 @@
               <object class="tk.Button" id="input_button_subtract" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">-</property>
                 <layout manager="grid">
@@ -341,7 +335,7 @@
             <child>
               <object class="tk.Button" id="input_button_0" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">0</property>
                 <layout manager="grid">
@@ -355,7 +349,7 @@
             <child>
               <object class="tk.Button" id="input_button_dot" named="True">
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">.</property>
                 <layout manager="grid">
@@ -369,7 +363,7 @@
               <object class="tk.Button" id="input_button_add" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">+</property>
                 <layout manager="grid">
@@ -383,7 +377,7 @@
               <object class="tk.Button" id="input_button_left_parentheses" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">(</property>
                 <layout manager="grid">
@@ -397,7 +391,7 @@
               <object class="tk.Button" id="input_button_right_parentheses" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">)</property>
                 <layout manager="grid">
@@ -411,7 +405,7 @@
               <object class="tk.Button" id="input_button_exponent" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">^</property>
                 <layout manager="grid">
@@ -425,7 +419,7 @@
               <object class="tk.Button" id="input_button_square_root" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">√</property>
                 <layout manager="grid">
@@ -436,29 +430,16 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_backpetal" named="True">
-                <property name="background">#efe7e7</property>
-                <property name="font">ansifixed</property>
-                <property name="takefocus">false</property>
-                <property name="text" translatable="yes">⌫</property>
-                <bind sequence="&lt;ButtonRelease&gt;" handler="call_clear" add="" />
-                <layout manager="grid">
-                  <property name="column">6</property>
-                  <property name="row">0</property>
-                  <property name="sticky">nsew</property>
-                </layout>
-              </object>
-            </child>
-            <child>
               <object class="tk.Button" id="input_button_clearall" named="True">
                 <property name="background">#efe7e7</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">C</property>
                 <bind sequence="&lt;ButtonRelease&gt;" handler="call_clear" add="" />
                 <layout manager="grid">
                   <property name="column">6</property>
-                  <property name="row">1</property>
+                  <property name="row">0</property>
+                  <property name="rowspan">2</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
@@ -466,7 +447,7 @@
             <child>
               <object class="tk.Button" id="input_button_equals" named="True">
                 <property name="background">#e9efe7</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">=</property>
                 <bind sequence="&lt;ButtonRelease&gt;" handler="call_calculate" add="" />
@@ -492,18 +473,18 @@
             </layout>
             <containerlayout manager="grid">
               <property name="anchor">nw</property>
+              <property name="propagate">False</property>
               <property type="col" id="all" name="weight">1</property>
-              <property type="row" id="0" name="uniform">1</property>
               <property type="row" id="0" name="weight">1</property>
               <property type="row" id="all" name="weight">1</property>
             </containerlayout>
             <child>
               <object class="tk.Button" id="button_50">
                 <property name="background">#e0e0e0</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="state">disabled</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">   </property>
+                <property name="text" translatable="yes">    </property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="row">0</property>
@@ -515,7 +496,7 @@
               <object class="tk.Button" id="input_button_sind" named="True">
                 <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">sind</property>
                 <layout manager="grid">
@@ -529,7 +510,7 @@
               <object class="tk.Button" id="input_button_sinr" named="True">
                 <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">sinr</property>
                 <layout manager="grid">
@@ -543,7 +524,7 @@
               <object class="tk.Button" id="button_55">
                 <property name="background">#e0e0e0</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">x</property>
                 <layout manager="grid">
@@ -556,9 +537,10 @@
             <child>
               <object class="tk.Button" id="button29">
                 <property name="background">#e0e0e0</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes"> </property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="row">1</property>
@@ -570,7 +552,7 @@
               <object class="tk.Button" id="input_button_cosd" named="True">
                 <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">cosd</property>
                 <layout manager="grid">
@@ -584,7 +566,7 @@
               <object class="tk.Button" id="input_button_cosr" named="True">
                 <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">cosr</property>
                 <layout manager="grid">
@@ -598,7 +580,7 @@
               <object class="tk.Button" id="button42">
                 <property name="background">#e0e0e0</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">y</property>
                 <layout manager="grid">
@@ -611,9 +593,10 @@
             <child>
               <object class="tk.Button" id="button32">
                 <property name="background">#e0e0e0</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes"> </property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="row">2</property>
@@ -625,7 +608,7 @@
               <object class="tk.Button" id="input_button_tand" named="True">
                 <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">tand</property>
                 <layout manager="grid">
@@ -639,7 +622,7 @@
               <object class="tk.Button" id="input_button_tanr" named="True">
                 <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">tanr</property>
                 <layout manager="grid">
@@ -653,7 +636,7 @@
               <object class="tk.Button" id="button43">
                 <property name="background">#e0e0e0</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">z</property>
                 <layout manager="grid">
@@ -666,9 +649,10 @@
             <child>
               <object class="tk.Button" id="button44">
                 <property name="background">#e0e0e0</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes"> </property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="row">3</property>
@@ -679,9 +663,10 @@
             <child>
               <object class="tk.Button" id="button45">
                 <property name="background">#e0e0e0</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes"> </property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">3</property>
@@ -693,7 +678,7 @@
               <object class="tk.Button" id="input_button_log" named="True">
                 <property name="background">#dbe6e8</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="state">normal</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">log</property>
@@ -707,9 +692,10 @@
             <child>
               <object class="tk.Button" id="button47">
                 <property name="background">#e0e0e0</property>
-                <property name="font">ansifixed</property>
+                <property name="font">TkFixedFont</property>
                 <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes"> </property>
                 <layout manager="grid">
                   <property name="column">3</property>
                   <property name="row">3</property>
