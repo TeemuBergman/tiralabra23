@@ -1,7 +1,5 @@
 """Calculation class."""
 
-from decimal import Decimal
-
 # Custom classes
 from .error_handling import VariableError
 
@@ -9,7 +7,7 @@ from .error_handling import VariableError
 class Calculation:
     """A class for storing values for different operations."""
 
-    def __init__(self, expression: str, variables: str):
+    def __init__(self):
         """
         Initialize an instance of a class that represents a mathematical expression.
 
@@ -17,6 +15,15 @@ class Calculation:
             expression (str): A string representing the mathematical expression.
             variables (str): A string containing the variables_dictionary used in the expression.
         """
+        # Original values
+        self.expression = ''
+        self.variables = ''
+        self.variables_dictionary = {}
+        # Variables for storing RPN and result
+        self.result_rpn = ''
+        self.result = None
+
+    def new(self, expression: str, variables: str):
         # Modify given expression
         self.expression = self._remove_spaces(expression)
         self.expression = self._convert_dot_to_comma(self.expression)
@@ -32,9 +39,7 @@ class Calculation:
         else:
             self.variables = ''
 
-        # Variables for storing RPN and result
-        self.result_rpn = ''
-        self.result = None
+        return self
 
     def _introduce_variables(self) -> None:
         """Replace variables_dictionary in an expression with values from a dictionary."""

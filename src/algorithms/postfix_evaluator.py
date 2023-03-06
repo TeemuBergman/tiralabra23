@@ -4,6 +4,7 @@ from decimal import Decimal, InvalidOperation
 
 # Custom classes
 from .error_handling import ExpressionError
+from .calculation import Calculation
 from .arithmetic_operations import ArithmeticOperations
 
 
@@ -18,7 +19,7 @@ class PostfixEvaluator:
         self.stack = []
         self.result = Decimal()
 
-    def evaluate(self, expression) -> Decimal:
+    def evaluate(self, calculation: Calculation):
         """
         Evaluate a postfix expression.
 
@@ -33,11 +34,11 @@ class PostfixEvaluator:
                 the arithmetic operation.complete
         """
         # Check if the input expression is empty
-        if not expression:
+        if not calculation.result_rpn:
             raise ExpressionError("Error: Expression not found!")
 
         # Split the input expression into symbols using whitespace as a separator
-        self.symbols = expression.split(' ')
+        self.symbols = calculation.result_rpn.split(' ')
 
         # Iterate over each symbol in the expression
         for step, symbol in enumerate(self.symbols):
@@ -76,6 +77,4 @@ class PostfixEvaluator:
                 self.stack.append(result)
 
         # The final result is the only value remaining on the stack
-        self.result = self.stack.pop()
-
-        return self.result
+        calculation.result = self.stack.pop()

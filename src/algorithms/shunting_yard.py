@@ -1,6 +1,7 @@
 """Shunting Yard class."""
 
 # Custom classes
+from .calculation import Calculation
 from .error_handling import ExpressionError
 
 
@@ -19,7 +20,7 @@ class ShuntingYard:
         self._is_negative = False
         self.operator_stack_has_function = False
 
-    def convert(self, calculation) -> str:
+    def convert(self, calculation: Calculation) -> None:
         """
         Convert an infix mathematical expression to a Reverse Polish Notation (RPN).
 
@@ -61,8 +62,8 @@ class ShuntingYard:
         # Pop any remaining operators from the stack and add them to the output
         self._remaining_operators()
 
-        # Return the postfix notation as a string
-        return ' '.join(self._output_stack)
+        # Save the result to Calculation
+        calculation.result_rpn = ' '.join(self._output_stack)
 
     def _remaining_operators(self) -> None:
         """

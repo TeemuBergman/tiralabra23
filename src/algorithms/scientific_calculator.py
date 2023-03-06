@@ -34,14 +34,14 @@ class ScientificCalculator:
             Decimal: The result of evaluating the expression.
         """
         # Create a new calculation object
-        self.calculation = Calculation(expression, variables)
+        self.calculation = Calculation().new(expression, variables)
 
         # Use the Shunting Yard algorithm to convert
         # the expression to a Reverse Polish Notation
-        self.calculation.result_rpn = self.shunting_yard.convert(self.calculation)
+        self.shunting_yard.convert(self.calculation)
 
         # Use the postfix evaluator to calculate
         # the final result from the Reverse Polish Notation
-        self.calculation.result = self.postfix_evaluator.evaluate(self.calculation.result_rpn)
+        self.postfix_evaluator.evaluate(self.calculation)
 
         return self.calculation.result
