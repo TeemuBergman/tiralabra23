@@ -119,7 +119,7 @@ class TestPostfixEvaluator(unittest.TestCase):
         """Test if the function raises OperationError with invalid input."""
         with self.assertRaises(OperationError) as exc:
             self.postfix_evaluator.evaluate('1 2 / 1 2 / ( *')
-        self.assertEqual('Error: Invalid operator/function!', str(exc.exception))
+        self.assertEqual('Error: Operator missing or not correct!', str(exc.exception))
 
     def test_invalid_input_2(self):
         """Test if the function raises ExpressionError with invalid input."""
