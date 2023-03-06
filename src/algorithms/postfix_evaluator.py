@@ -34,7 +34,7 @@ class PostfixEvaluator:
         """
         # Check if the input expression is empty
         if not expression:
-            raise ExpressionError("Expression not found!")
+            raise ExpressionError("Error: Expression not found!")
 
         # Split the input expression into symbols using whitespace as a separator
         self.symbols = expression.split(' ')
@@ -49,14 +49,14 @@ class PostfixEvaluator:
                     # Convert the symbol to a Decimal and push it into the stack
                     self.stack.append(Decimal(symbol))
                 except InvalidOperation as exc:
-                    raise ExpressionError('Not in decimal format, too many dots!') from exc
+                    raise ExpressionError('Error: Not in decimal format, too many dots!') from exc
             # If the symbol starts with a digit or a minus symbol it's a numeral
             elif symbol[0].isnumeric():
                 try:
                     # Convert the symbol to a Decimal and push it into the stack
                     self.stack.append(Decimal(symbol))
                 except InvalidOperation as exc:
-                    raise ExpressionError('Not in decimal format, too many dots!') from exc
+                    raise ExpressionError('Error: Not in decimal format, too many dots!') from exc
             # If the symbol is NaN, then it must be an operator
             else:
                 if symbol in self.operations.functions:
@@ -68,7 +68,7 @@ class PostfixEvaluator:
                     value_2 = self.stack.pop()
                     value_1 = self.stack.pop()
                 else:
-                    raise ExpressionError('Not a complete expression!')
+                    raise ExpressionError('Error: Not a complete expression!')
 
                 # Perform the operation with the symbol and the two values
                 result = self.operations.perform_on(symbol, value_1, value_2)

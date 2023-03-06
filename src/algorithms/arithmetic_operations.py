@@ -31,7 +31,7 @@ class ArithmeticOperations:
         """
         # Check that there is an operator
         if not operator:
-            raise OperationError("Operator missing!")
+            raise OperationError("Error: Operator missing!")
 
         # Convert the values to Decimal objects to ensure decimal precision
         value_1 = Decimal(value_1)
@@ -50,7 +50,7 @@ class ArithmeticOperations:
             try:
                 self.result = value_1 / value_2
             except DivisionByZero as exc:
-                raise OperationError("Division by zero!") from exc
+                raise OperationError("Error: Division by zero!") from exc
         elif operator == '^':
             self.result = value_1 ** value_2
         elif operator == 'sinr':
@@ -64,7 +64,7 @@ class ArithmeticOperations:
         elif operator == 'log':
             self.result = self.perform_logarithm(value_1)
         else:
-            raise OperationError("Invalid operator/function!")
+            raise OperationError("Error: Invalid operator/function!")
 
         # Return the operation result
         return self.result
@@ -79,7 +79,11 @@ class ArithmeticOperations:
         return Decimal(math.tan(value))
 
     def perform_square_root(self, value) -> Decimal:
+        if value < 0:
+            raise OperationError('Error: Square root operation has value smaller than zero!')
         return Decimal(math.sqrt(value))
 
     def perform_logarithm(self, value) -> Decimal:
+        if value < 0:
+            raise OperationError('Error: Logarithm operation has value smaller than zero!')
         return Decimal(math.log(value))

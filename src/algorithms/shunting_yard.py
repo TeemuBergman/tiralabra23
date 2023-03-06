@@ -30,7 +30,7 @@ class ShuntingYard:
         symbols = ['+', '-', '*', '/', '^', '(', ')']
 
         # Check length of the expression
-        expression_lenght = len(calculation.expression) - 1
+        expression_length = len(calculation.expression) - 1
 
         # Iterate through each character in given expression
         for step, symbol in enumerate(calculation.expression):
@@ -38,7 +38,7 @@ class ShuntingYard:
             self._current_symbol = symbol
 
             # Check if next symbol is a number
-            if step < expression_lenght:
+            if step < expression_length:
                 self._next_is_number = calculation.expression[step + 1] not in symbols
 
             # Process expressions different symbols
@@ -73,7 +73,7 @@ class ShuntingYard:
             if self._operator_stack[-1] != '(':
                 self._output_stack.append(self._operator_stack.pop())
             else:
-                raise ExpressionError('Not a complete expression!')
+                raise ExpressionError('Error: Not a complete expression!')
 
     def _process_functions(self) -> None:
         """Handles all the function names to operator stack in correct composition."""
@@ -102,7 +102,7 @@ class ShuntingYard:
             try:
                 self._output_stack.append(self._output_stack.pop() + self._current_symbol)
             except IndexError as exc:
-                raise ExpressionError('Not a complete expression or invalid syntax!') from exc
+                raise ExpressionError('Error: Not a complete expression or invalid syntax!') from exc
             # Set negative number flag to False (normal state)
             self._is_negative = False
         else:

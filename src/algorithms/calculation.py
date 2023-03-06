@@ -71,17 +71,17 @@ class Calculation:
             try:
                 key, value = variable.split('=')
             except:
-                raise VariableError('Variable(s) with value missing!')
+                raise VariableError('Error: Variable(s) with value missing!')
 
             # Check that there is a value
             if not value:
-                raise VariableError(f'Variable \'{key}\' has a missing value!')
+                raise VariableError(f'Error: Variable \'{key}\' has a missing value!')
 
             # Check that value is a numeral and add it to dictionary
             try:
                 float(value)
             except:
-                raise VariableError(f'Variable \'{value}\' is not a number!')
+                raise VariableError(f'Error: Variable \'{value}\' is not a number!')
             else:
                 variables_dictionary[key] = value
 
