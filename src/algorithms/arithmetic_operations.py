@@ -32,7 +32,7 @@ class ArithmeticOperations:
 
         self.result = None
 
-    def perform_on(self, operator: str, value_1: Decimal, value_2: Decimal = None) -> Decimal:
+    def perform_on(self, operator: str, value_1, value_2 = None) -> Decimal:
         """
         Perform various mathematical operations.
 
