@@ -23,7 +23,7 @@ class SciCalGui:
         self.builder.add_from_file(PROJECT_UI)
 
         # Create the widget using a master as parent
-        self.mainwindow = self.builder.get_object("main_window", master)
+        self.main_window = self.builder.get_object("main_window", master)
 
         # For controlling button presses
         self.gui_functions = GUIFunctions()
@@ -54,7 +54,7 @@ class SciCalGui:
         self.builder.get_object('input_expression').focus()
 
     def run(self):
-        self.mainwindow.mainloop()
+        self.main_window.mainloop()
 
     def _handle_exceptions(self):
         pass
@@ -91,7 +91,7 @@ class SciCalGui:
             self.result = self._clean_output_string(self.result)
             # Set results to GUI
             self.output_result.set(self.result)
-            self.output_result_rpn.set(calculator.result_rpn)
+            self.output_result_rpn.set(calculator.calculation.result_rpn)
         except:
             # Set error message and clear RPN result
             self.output_result.set(sys.exc_info()[1])
