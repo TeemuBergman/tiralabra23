@@ -1,10 +1,10 @@
 """Arithmetic Operations class."""
 
 import math
-from decimal import Decimal, DivisionByZero
+from decimal import Decimal
 
 # Custom classes
-from algorithms.error_handling import OperationError
+from .error_handling import OperationError
 
 
 class ArithmeticOperations:
@@ -32,27 +32,24 @@ class ArithmeticOperations:
 
         self.result = None
 
-    def perform_on(self, operator: str, value_1: float, value_2 = None) -> Decimal:
+    def perform_on(self, operator: str, value_1: Decimal, value_2: Decimal = None) -> Decimal:
         """
-        Perform basic arithmetic arithmetic on two values.
+        Perform various mathematical operations.
 
         Args:
             operator (str): The symbol representing the desired operation (+, -, *, /, or ^).
-            value_1 (float): The first value to be operated on.
-            value_2 (float): The second value to be operated on.
+            value_1 (Decimal): The first value to be operated on.
+            value_2 (Decimal): The second value to be operated on.
 
         Returns:
-            float: The result of the operation, as a float.
+            result (Decimal): The result of the operation, as a float.
 
         Raises:
-            OperationError: If operator or function is not found.
+            OperationError: on invalid or missing operator or function.
+            OperationError: If divide by zero.
+            OperationError: If square root operation has value smaller than zero.
+            OperationError: If logarithm operation has value smaller than zero.
         """
-        # Convert the values to Decimal objects to ensure decimal precision
-        value_1 = Decimal(value_1)
-        if value_2:
-            value_2 = Decimal(value_2)
-
-        print('VALUES:', value_1, value_2)
         # Perform arithmetics with given values and operator
         if operator in self.functions:
             self.functions[operator](value_1)
@@ -67,22 +64,22 @@ class ArithmeticOperations:
     # ARITHMETIC
 
     def _perform_add(self, value_1, value_2) -> None:
-        self.result = value_1 + value_2
+        self.result = Decimal(value_1 + value_2)
 
     def _perform_subtraction(self, value_1, value_2) -> None:
-        self.result = value_1 - value_2
+        self.result = Decimal(value_1 - value_2)
 
     def _perform_multiplication(self, value_1, value_2) -> None:
-        self.result = value_1 * value_2
+        self.result = Decimal(value_1 * value_2)
 
     def _perform_division(self, value_1, value_2) -> None:
         try:
-            self.result = value_1 / value_2
-        except DivisionByZero as exc:
+            self.result = Decimal(value_1 / value_2)
+        except ZeroDivisionError as exc:
             raise OperationError("Error: Division by zero!") from exc
 
     def _perform_exponentitation(self, value_1, value_2) -> None:
-        self.result = value_1 ** value_2
+        self.result = Decimal(value_1 ** value_2)
 
     # FUNCTIONS
 

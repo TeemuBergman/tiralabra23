@@ -1,7 +1,7 @@
 """Shunting Yard class."""
 
 # Custom classes
-from algorithms.error_handling import ExpressionError
+from .error_handling import ExpressionError
 
 
 class ShuntingYard:

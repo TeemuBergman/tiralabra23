@@ -3,7 +3,7 @@
 from decimal import Decimal
 
 # Custom classes
-from algorithms.error_handling import VariableError
+from .error_handling import VariableError
 
 
 class Calculation:

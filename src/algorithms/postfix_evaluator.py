@@ -3,8 +3,8 @@
 from decimal import Decimal, InvalidOperation
 
 # Custom classes
-from algorithms.error_handling import ExpressionError
-from algorithms.arithmetic_operations import ArithmeticOperations
+from .error_handling import ExpressionError
+from .arithmetic_operations import ArithmeticOperations
 
 
 class PostfixEvaluator:
@@ -63,8 +63,7 @@ class PostfixEvaluator:
                     # If operator is a function
                     value_2 = None
                     value_1 = self.stack.pop()
-                # Todo - elif symbol in self.operations.arithmetic:
-                elif len(self.stack) >= 2:
+                elif symbol in self.operations.arithmetic:
                     # Pop the last two values from the stack
                     value_2 = self.stack.pop()
                     value_1 = self.stack.pop()
