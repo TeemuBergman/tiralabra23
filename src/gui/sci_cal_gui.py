@@ -6,6 +6,7 @@ import pygubu
 
 # Custom classes
 from algorithms.scientific_calculator import ScientificCalculator
+from .gui_functions import GUIFunctions
 
 # Set GUI constants
 PROJECT_PATH = pathlib.Path(__file__).parent
@@ -23,6 +24,9 @@ class SciCalGui:
 
         # Create the widget using a master as parent
         self.mainwindow = self.builder.get_object("main_window", master)
+
+        # For controlling button presses
+        self.gui_functions = GUIFunctions()
 
         # Connect callbacks
         self.builder.connect_callbacks(self)
@@ -93,6 +97,7 @@ class SciCalGui:
             self.output_result.set(sys.exc_info()[1])
             self.output_result_rpn.set('')
 
+    # Todo - Move this to another class!
     def _clean_output_string(self, value) -> str:
         """Convert given value to a string and modify if it ends at .0"""
         cleaned = str(value)
@@ -100,62 +105,11 @@ class SciCalGui:
         if cleaned.endswith('.0'):
             # remove '.0' from end of string
             return cleaned[:-2]
-
         return cleaned
 
     def call_numpad(self, widget_id):
-        """
-        This is not the optimal solution for handling button inputs,
-        but it's the only one Pygubu offers at the moment.
-        I will rewrite this if I find a better sollution.
-        """
-        match widget_id:
-            case 'input_button_1':
-                self._update_gui('1')
-            case 'input_button_2':
-                self._update_gui('2')
-            case 'input_button_3':
-                self._update_gui('3')
-            case 'input_button_4':
-                self._update_gui('4')
-            case 'input_button_5':
-                self._update_gui('5')
-            case 'input_button_6':
-                self._update_gui('6')
-            case 'input_button_7':
-                self._update_gui('7')
-            case 'input_button_8':
-                self._update_gui('8')
-            case 'input_button_9':
-                self._update_gui('9')
-            case 'input_button_0':
-                self._update_gui('0')
-            case 'input_button_dot':
-                self._update_gui('.')
-            case 'input_button_add':
-                self._update_gui('+')
-            case 'input_button_subtract':
-                self._update_gui('-')
-            case 'input_button_divide':
-                self._update_gui('/')
-            case 'input_button_multiply':
-                self._update_gui('*')
-            case 'input_button_left_parentheses':
-                self._update_gui('(')
-            case 'input_button_right_parentheses':
-                self._update_gui(')')
-            case 'input_button_exponent':
-                self._update_gui('^')
-            case 'input_button_sinr':
-                self._update_gui('sinr(x)')
-            case 'input_button_cosr':
-                self._update_gui('cosr(x)')
-            case 'input_button_tanr':
-                self._update_gui('tanr(x)')
-            case 'input_button_square_root':
-                self._update_gui('sqrt(x)')
-            case 'input_button_log':
-                self._update_gui('log(x)')
+        """Handles all the corresponding button presses from GUI."""
+        self._update_gui(self.gui_functions.buttons[widget_id])
 
 
 if __name__ == "__main__":
