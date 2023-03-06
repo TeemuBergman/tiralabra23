@@ -77,19 +77,19 @@ class TestScientificCalculator(unittest.TestCase):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('1%1')
-        self.assertEqual('Error: Not a complete expression!', str(exc.exception))
+        self.assertEqual('Error: Not a valid expression!', str(exc.exception))
 
     def test_invalid_expression_1(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('(1/2)*(1/2')
-        self.assertEqual('Error: Not a complete expression!', str(exc.exception))
+        self.assertEqual('Error: Not a valid expression!', str(exc.exception))
 
     def test_invalid_expression_2(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('sinr12')
-        self.assertEqual('Error: Not a complete expression or invalid syntax!', str(exc.exception))
+        self.assertEqual('Error: Not a valid expression or syntax!', str(exc.exception))
 
     def test_invalid_variable_1(self):
         """Test if the function raises VariableError with invalid input."""
@@ -101,7 +101,7 @@ class TestScientificCalculator(unittest.TestCase):
         """Test if the function raises VariableError with invalid input."""
         with self.assertRaises(VariableError) as exc:
             self.scientific_calculator.calculate('x*2', 'x=%')
-        self.assertEqual('Error: Variable \'%\' is not a number!', str(exc.exception))
+        self.assertEqual('Error: Value \'%\' is not a number!', str(exc.exception))
 
     def test_invalid_variable_3(self):
         """Test if the function raises VariableError with invalid input."""
@@ -113,7 +113,7 @@ class TestScientificCalculator(unittest.TestCase):
         """Test if the function resolves negative values to error."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('x+1', '')
-        self.assertEqual('Error: Not a complete expression!',
+        self.assertEqual('Error: Not a valid expression!',
                          str(exc.exception))
 
     def test_negative_square_root(self):

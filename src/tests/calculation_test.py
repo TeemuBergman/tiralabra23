@@ -88,7 +88,7 @@ class TestCalculation(unittest.TestCase):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             Calculation('1+1', 'x=%')
-        self.assertEqual('Error: Variable \'%\' is not a number!', str(exc.exception))
+        self.assertEqual('Error: Value \'%\' is not a number!', str(exc.exception))
 
     def test_invalid_variables_3(self):
         """Test if the function returns correct variables."""
