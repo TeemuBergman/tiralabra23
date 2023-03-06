@@ -107,7 +107,7 @@ class TestArithmeticOperations(unittest.TestCase):
             self.operations.perform_on('%', 1, 0)
         self.assertEqual('Error: Invalid operator/function!', str(exc.exception))
 
-    def test_invaldi_operator_2(self):
+    def test_invalid_operator_2(self):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('s', 4, 4)
