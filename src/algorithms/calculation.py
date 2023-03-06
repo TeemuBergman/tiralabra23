@@ -33,8 +33,8 @@ class Calculation:
             self.variables = ''
 
         # Variables for storing RPN and result
-        self.rpn = ''
-        self.result = Decimal()
+        self.result_rpn = ''
+        self.result = None
 
     def _introduce_variables(self) -> None:
         """Replace variables_dictionary in an expression with values from a dictionary."""

@@ -57,7 +57,7 @@ class PostfixEvaluator:
                     self.stack.append(Decimal(symbol))
                 except InvalidOperation as exc:
                     raise ExpressionError('Error: Not in decimal format, too many dots!') from exc
-            # If the symbol is NaN, then it must be an operator
+            # If the symbol is NaN, then it must bea an operator
             else:
                 if symbol in self.operations.functions:
                     # If operator is a function

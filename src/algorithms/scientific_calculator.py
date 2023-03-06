@@ -20,8 +20,6 @@ class ScientificCalculator:
         self.calculation = None
         self.shunting_yard = ShuntingYard()
         self.postfix_evaluator = PostfixEvaluator()
-        self.result_rpn = ''
-        self.result = Decimal()
 
     def calculate(self, expression: str, variables = None) -> Decimal:
         """
@@ -40,10 +38,10 @@ class ScientificCalculator:
 
         # Use the Shunting Yard algorithm to convert
         # the expression to a Reverse Polish Notation
-        self.result_rpn = self.shunting_yard.convert(self.calculation)
+        self.calculation.result_rpn = self.shunting_yard.convert(self.calculation)
 
         # Use the postfix evaluator to calculate
         # the final result from the Reverse Polish Notation
-        self.result = self.postfix_evaluator.evaluate(self.result_rpn)
+        self.calculation.result = self.postfix_evaluator.evaluate(self.calculation.result_rpn)
 
-        return self.result
+        return self.calculation.result
