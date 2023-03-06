@@ -117,10 +117,12 @@ class TestArithmeticOperations(unittest.TestCase):
         """Test if the function resolves negative values to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('sqrt', -4, 0)
-        self.assertEqual('Error: Square root operation has value smaller than zero!', str(exc.exception))
+        self.assertEqual('Error: Square root operation has value smaller than zero!',
+                         str(exc.exception))
 
     def test_negative_logarithm(self):
         """Test if the function resolves negative values to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('log', -4, 0)
-        self.assertEqual('Error: Logarithm operation has value smaller than zero!', str(exc.exception))
+        self.assertEqual('Error: Logarithm operation has value smaller than zero!',
+                         str(exc.exception))
