@@ -28,7 +28,8 @@ class ScientificCalculator:
         Evaluate the expression provided in the constructor.
 
         Args:
-            expression (str): A string representing the mathematical expression, with or without variables.
+            expression (str): A string representing the mathematical expression,
+            with or without variables.
             variables (str): A string containing the variables used in the expression.
 
         Returns:

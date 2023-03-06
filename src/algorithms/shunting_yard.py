@@ -102,7 +102,9 @@ class ShuntingYard:
             try:
                 self._output_stack.append(self._output_stack.pop() + self._current_symbol)
             except IndexError as exc:
-                raise ExpressionError('Error: Not a complete expression or invalid syntax!') from exc
+                raise ExpressionError(
+                    'Error: Not a complete expression or invalid syntax!'
+                ) from exc
             # Set negative number flag to False (normal state)
             self._is_negative = False
         else:
