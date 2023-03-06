@@ -65,46 +65,58 @@ class TestScientificCalculator(unittest.TestCase):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('')
-        self.assertEqual("Expression not found!", str(exc.exception))
+        self.assertEqual("Error: Expression not found!", str(exc.exception))
 
     def test_division_by_zero(self):
         """Test if the function can divide with zero"""
         with self.assertRaises(OperationError) as exc:
             self.scientific_calculator.calculate('1/0')
-        self.assertEqual('Division by zero!', str(exc.exception))
+        self.assertEqual('Error: Division by zero!', str(exc.exception))
 
     def test_invalid_operator_1(self):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('1%1')
-        self.assertEqual('Not a complete expression!', str(exc.exception))
+        self.assertEqual('Error: Not a complete expression!', str(exc.exception))
 
     def test_erroneus_expression_1(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('(1/2)*(1/2')
-        self.assertEqual('Not a complete expression!', str(exc.exception))
+        self.assertEqual('Error: Not a complete expression!', str(exc.exception))
 
     def test_erroneus_expression_2(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('sinr12')
-        self.assertEqual('Not a complete expression or invalid syntax!', str(exc.exception))
+        self.assertEqual('Error: Not a complete expression or invalid syntax!', str(exc.exception))
 
     def test_invalid_variables_1(self):
         """Test if the function raises VariableError with invalid input."""
         with self.assertRaises(VariableError) as exc:
             self.scientific_calculator.calculate('x*2', 'x=,')
-        self.assertEqual('Variable \'x\' has a missing value!', str(exc.exception))
+        self.assertEqual('Error: Variable \'x\' has a missing value!', str(exc.exception))
 
     def test_invalid_variables_2(self):
         """Test if the function raises VariableError with invalid input."""
         with self.assertRaises(VariableError) as exc:
             self.scientific_calculator.calculate('x*2', 'x=%')
-        self.assertEqual('Variable \'%\' is not a number!', str(exc.exception))
+        self.assertEqual('Error: Variable \'%\' is not a number!', str(exc.exception))
 
     def test_invalid_variables_3(self):
         """Test if the function raises VariableError with invalid input."""
         with self.assertRaises(VariableError) as exc:
             self.scientific_calculator.calculate('x*2', 'x=1,y')
-        self.assertEqual('Variable(s) with value missing!', str(exc.exception))
+        self.assertEqual('Error: Variable(s) with value missing!', str(exc.exception))
+
+    def test_negative_square_root(self):
+        """Test if the function resolves negative values to error."""
+        with self.assertRaises(OperationError) as exc:
+            self.scientific_calculator.calculate('sqrt(x)', 'x=-4')
+        self.assertEqual('Error: Square root operation has value smaller than zero!', str(exc.exception))
+
+    def test_negative_logarithm(self):
+        """Test if the function resolves negative values to error."""
+        with self.assertRaises(OperationError) as exc:
+            self.scientific_calculator.calculate('log(x)', 'x=-4')
+        self.assertEqual('Error: Logarithm operation has value smaller than zero!', str(exc.exception))

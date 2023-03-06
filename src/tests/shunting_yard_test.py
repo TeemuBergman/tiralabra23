@@ -199,11 +199,11 @@ class TestShuntingYard(unittest.TestCase):
         with self.assertRaises(ExpressionError) as exc:
             calculation = Calculation('(1/2)*(1/2', '')
             self.shunting_yard.convert(calculation)
-        self.assertEqual('Not a complete expression!', str(exc.exception))
+        self.assertEqual('Error: Not a complete expression!', str(exc.exception))
 
     def test_erroneus_expression_2(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             calculation = Calculation('sinr12', '')
             self.shunting_yard.convert(calculation)
-        self.assertEqual('Not a complete expression or invalid syntax!', str(exc.exception))
+        self.assertEqual('Error: Not a complete expression or invalid syntax!', str(exc.exception))

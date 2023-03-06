@@ -82,16 +82,16 @@ class TestCalculation(unittest.TestCase):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             Calculation('1+1', 'x=,')
-        self.assertEqual('Variable \'x\' has a missing value!', str(exc.exception))
+        self.assertEqual('Error: Variable \'x\' has a missing value!', str(exc.exception))
 
     def test_invalid_variables_2(self):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             Calculation('1+1', 'x=%')
-        self.assertEqual('Variable \'%\' is not a number!', str(exc.exception))
+        self.assertEqual('Error: Variable \'%\' is not a number!', str(exc.exception))
 
     def test_invalid_variables_3(self):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             Calculation('1+1', 'x=1,y')
-        self.assertEqual('Variable(s) with value missing!', str(exc.exception))
+        self.assertEqual('Error: Variable(s) with value missing!', str(exc.exception))

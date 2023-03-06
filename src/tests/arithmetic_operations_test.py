@@ -93,22 +93,34 @@ class TestArithmeticOperations(unittest.TestCase):
         """Test if the function can divide with zero"""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('/', 1, 0)
-        self.assertEqual('Division by zero!', str(exc.exception))
+        self.assertEqual('Error: Division by zero!', str(exc.exception))
 
     def test_no_operator(self):
         """Test if the function works with no operator at all."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('', 0)
-        self.assertEqual('Operator missing!', str(exc.exception))
+        self.assertEqual('Error: Operator missing!', str(exc.exception))
 
     def test_invalid_operator_1(self):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('%', 1, 0)
-        self.assertEqual('Invalid operator/function!', str(exc.exception))
+        self.assertEqual('Error: Invalid operator/function!', str(exc.exception))
 
     def test_invaldi_operator_2(self):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('s', 4, 4)
-        self.assertEqual('Invalid operator/function!', str(exc.exception))
+        self.assertEqual('Error: Invalid operator/function!', str(exc.exception))
+
+    def test_negative_square_root(self):
+        """Test if the function resolves negative values to error."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('sqrt', -4, 0)
+        self.assertEqual('Error: Square root operation has value smaller than zero!', str(exc.exception))
+
+    def test_negative_logarithm(self):
+        """Test if the function resolves negative values to error."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('log', -4, 0)
+        self.assertEqual('Error: Logarithm operation has value smaller than zero!', str(exc.exception))

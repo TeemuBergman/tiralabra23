@@ -113,28 +113,28 @@ class TestPostfixEvaluator(unittest.TestCase):
         """Test with empty input."""
         with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('')
-        self.assertEqual('Expression not found!', str(exc.exception))
+        self.assertEqual('Error: Expression not found!', str(exc.exception))
 
     def test_invalid_input_1(self):
         """Test if the function raises OperationError with invalid input."""
         with self.assertRaises(OperationError) as exc:
             self.postfix_evaluator.evaluate('1 2 / 1 2 / ( *')
-        self.assertEqual('Invalid operator/function!', str(exc.exception))
+        self.assertEqual('Error: Invalid operator/function!', str(exc.exception))
 
     def test_invalid_input_2(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('sin')
-        self.assertEqual('Not a complete expression!', str(exc.exception))
+        self.assertEqual('Error: Not a complete expression!', str(exc.exception))
 
     def test_invalid_decimals_1(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('1.1.1.1')
-        self.assertEqual('Not in decimal format, too many dots!', str(exc.exception))
+        self.assertEqual('Error: Not in decimal format, too many dots!', str(exc.exception))
 
     def test_invalid_decimals_2(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.postfix_evaluator.evaluate('-2..2')
-        self.assertEqual('Not in decimal format, too many dots!', str(exc.exception))
+        self.assertEqual('Error: Not in decimal format, too many dots!', str(exc.exception))
