@@ -63,7 +63,7 @@ class PostfixEvaluator:
                     # If operator is a function
                     value_2 = None
                     value_1 = self.stack.pop()
-                elif symbol in self.operations.arithmetic:
+                elif symbol in self.operations.arithmetic and len(self.stack) >= 2:
                     # Pop the last two values from the stack
                     value_2 = self.stack.pop()
                     value_1 = self.stack.pop()
