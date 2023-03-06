@@ -91,23 +91,30 @@ class TestScientificCalculator(unittest.TestCase):
             self.scientific_calculator.calculate('sinr12')
         self.assertEqual('Error: Not a complete expression or invalid syntax!', str(exc.exception))
 
-    def test_invalid_variables_1(self):
+    def test_invalid_variable_1(self):
         """Test if the function raises VariableError with invalid input."""
         with self.assertRaises(VariableError) as exc:
             self.scientific_calculator.calculate('x*2', 'x=,')
         self.assertEqual('Error: Variable \'x\' has a missing value!', str(exc.exception))
 
-    def test_invalid_variables_2(self):
+    def test_invalid_variable_2(self):
         """Test if the function raises VariableError with invalid input."""
         with self.assertRaises(VariableError) as exc:
             self.scientific_calculator.calculate('x*2', 'x=%')
         self.assertEqual('Error: Variable \'%\' is not a number!', str(exc.exception))
 
-    def test_invalid_variables_3(self):
+    def test_invalid_variable_3(self):
         """Test if the function raises VariableError with invalid input."""
         with self.assertRaises(VariableError) as exc:
             self.scientific_calculator.calculate('x*2', 'x=1,y')
         self.assertEqual('Error: Variable(s) with value missing!', str(exc.exception))
+
+    def test_invalid_variable_4(self):
+        """Test if the function resolves negative values to error."""
+        with self.assertRaises(ExpressionError) as exc:
+            self.scientific_calculator.calculate('x+1', '')
+        self.assertEqual('Error: Not a complete expression!',
+                         str(exc.exception))
 
     def test_negative_square_root(self):
         """Test if the function resolves negative values to error."""
