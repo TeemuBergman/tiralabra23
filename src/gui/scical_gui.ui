@@ -512,8 +512,9 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button27">
+              <object class="tk.Button" id="input_button_sind" named="True">
                 <property name="background">#e8dbe6</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">sind</property>
@@ -566,8 +567,9 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button30">
+              <object class="tk.Button" id="input_button_cosd" named="True">
                 <property name="background">#e8dbe6</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">cosd</property>
@@ -620,8 +622,9 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button33">
+              <object class="tk.Button" id="input_button_tand" named="True">
                 <property name="background">#e8dbe6</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">tand</property>
