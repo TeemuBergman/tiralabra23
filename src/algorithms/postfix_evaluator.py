@@ -61,8 +61,9 @@ class PostfixEvaluator:
             else:
                 if symbol in self.operations.functions:
                     # If operator is a function
-                    value_2 = Decimal()
+                    value_2 = None
                     value_1 = self.stack.pop()
+                # Todo - elif symbol in self.operations.arithmetic:
                 elif len(self.stack) >= 2:
                     # Pop the last two values from the stack
                     value_2 = self.stack.pop()
