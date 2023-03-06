@@ -57,7 +57,7 @@ class TestScientificCalculator(unittest.TestCase):
         """Test if the class returns correct answer with simple input."""
         expression = 'sqrt(6^64)'
         result = self.scientific_calculator.calculate(expression)
-        self.assertAlmostEqual(float(result), 7.958661109946401e+24)
+        self.assertAlmostEqual(result, 7.958661109946401e+24)
 
     # CATCH EXCEPTIONS
 
