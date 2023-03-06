@@ -8,7 +8,7 @@ from .error_handling import OperationError
 
 
 class ArithmeticOperations:
-    """This class handles all arithmetic arithmetic."""
+    """This class handles all arithmetic operations."""
 
     def __init__(self):
         self.arithmetic = {

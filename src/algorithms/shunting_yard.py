@@ -73,7 +73,7 @@ class ShuntingYard:
             if self._operator_stack[-1] != '(':
                 self._output_stack.append(self._operator_stack.pop())
             else:
-                raise ExpressionError('Error: Not a complete expression!')
+                raise ExpressionError('Error: Not a valid expression!')
 
     def _process_functions(self) -> None:
         """Handles all the function names to operator stack in correct composition."""
@@ -103,7 +103,7 @@ class ShuntingYard:
                 self._output_stack.append(self._output_stack.pop() + self._current_symbol)
             except IndexError as exc:
                 raise ExpressionError(
-                    'Error: Not a complete expression or invalid syntax!'
+                    'Error: Not a valid expression or syntax!'
                 ) from exc
             # Set negative number flag to False (normal state)
             self._is_negative = False

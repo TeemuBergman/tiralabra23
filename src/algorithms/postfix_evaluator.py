@@ -30,7 +30,7 @@ class PostfixEvaluator:
 
         Raises:
             ValueError: If there are not enough values in the expression to perform_on
-                the arithmetic operation.
+                the arithmetic operation.complete
         """
         # Check if the input expression is empty
         if not expression:
@@ -68,7 +68,7 @@ class PostfixEvaluator:
                     value_2 = self.stack.pop()
                     value_1 = self.stack.pop()
                 else:
-                    raise ExpressionError('Error: Not a complete expression!')
+                    raise ExpressionError('Error: Not a valid expression!')
 
                 # Perform the operation with the symbol and the two values
                 result = self.operations.perform_on(symbol, value_1, value_2)

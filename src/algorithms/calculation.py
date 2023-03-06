@@ -36,6 +36,11 @@ class Calculation:
         self.rpn = ''
         self.result = Decimal()
 
+    def _introduce_variables(self) -> None:
+        """Replace variables_dictionary in an expression with values from a dictionary."""
+        for key, value in self.variables_dictionary.items():
+            self.expression = self.expression.replace(key, value)
+
     def _remove_spaces(self, string: str) -> str:
         """Remove spaces from given string."""
         return string.replace(' ', '')
@@ -47,11 +52,6 @@ class Calculation:
     def _convert_to_lowercase(self, string: str) -> str:
         """Convert given string to lowercase."""
         return string.lower()
-
-    def _introduce_variables(self) -> None:
-        """Replace variables_dictionary in an expression with values from a dictionary."""
-        for key, value in self.variables_dictionary.items():
-            self.expression = self.expression.replace(key, value)
 
     def _variables_to_dictionary(self, variables: str) -> dict:
         """
@@ -81,7 +81,7 @@ class Calculation:
             try:
                 float(value)
             except ValueError as exc:
-                raise VariableError(f'Error: Variable \'{value}\' is not a number!') from exc
+                raise VariableError(f'Error: Value \'{value}\' is not a number!') from exc
             else:
                 variables_dictionary[key] = value
 

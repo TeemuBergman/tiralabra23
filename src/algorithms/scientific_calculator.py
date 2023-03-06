@@ -17,13 +17,13 @@ class ScientificCalculator:
     """
 
     def __init__(self):
-        self.calculation = Calculation('','')
+        self.calculation = None
         self.shunting_yard = ShuntingYard()
         self.postfix_evaluator = PostfixEvaluator()
         self.result_rpn = ''
         self.result = Decimal()
 
-    def calculate(self, expression: str, variables=None) -> Decimal:
+    def calculate(self, expression: str, variables = None) -> Decimal:
         """
         Evaluate the expression provided in the constructor.
 
@@ -35,15 +35,15 @@ class ScientificCalculator:
         Returns:
             Decimal: The result of evaluating the expression.
         """
-        # Create new calculation object
+        # Create a new calculation object
         self.calculation = Calculation(expression, variables)
 
-        # Use the shunting yard algorithm to convert
-        # the expression to a reverse polish notation
+        # Use the Shunting Yard algorithm to convert
+        # the expression to a Reverse Polish Notation
         self.result_rpn = self.shunting_yard.convert(self.calculation)
 
         # Use the postfix evaluator to calculate
-        # the result from the reverse polish notation
+        # the final result from the Reverse Polish Notation
         self.result = self.postfix_evaluator.evaluate(self.result_rpn)
 
         return self.result
