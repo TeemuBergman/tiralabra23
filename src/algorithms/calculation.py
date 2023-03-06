@@ -50,8 +50,8 @@ class Calculation:
 
     def _introduce_variables(self) -> None:
         """Replace variables_dictionary in an expression with values from a dictionary."""
-        for key in self.variables_dictionary:
-            self.expression = self.expression.replace(key, self.variables_dictionary[key])
+        for key, value in self.variables_dictionary.items():
+            self.expression = self.expression.replace(key, value)
 
     def _variables_to_dictionary(self, variables: str) -> dict:
         """
@@ -70,8 +70,8 @@ class Calculation:
             # Split string to key and value
             try:
                 key, value = variable.split('=')
-            except:
-                raise VariableError('Error: Variable(s) with value missing!')
+            except ValueError as exc:
+                raise VariableError('Error: Variable(s) with value missing!') from exc
 
             # Check that there is a value
             if not value:
@@ -80,8 +80,8 @@ class Calculation:
             # Check that value is a numeral and add it to dictionary
             try:
                 float(value)
-            except:
-                raise VariableError(f'Error: Variable \'{value}\' is not a number!')
+            except ValueError as exc:
+                raise VariableError(f'Error: Variable \'{value}\' is not a number!') from exc
             else:
                 variables_dictionary[key] = value
 
