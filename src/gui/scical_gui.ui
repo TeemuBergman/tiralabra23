@@ -513,11 +513,10 @@
             </child>
             <child>
               <object class="tk.Button" id="button27">
-                <property name="background">#e0e0e0</property>
+                <property name="background">#e8dbe6</property>
                 <property name="font">ansifixed</property>
-                <property name="state">disabled</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">   </property>
+                <property name="text" translatable="yes">sind</property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">0</property>
@@ -568,10 +567,10 @@
             </child>
             <child>
               <object class="tk.Button" id="button30">
-                <property name="background">#e0e0e0</property>
+                <property name="background">#e8dbe6</property>
                 <property name="font">ansifixed</property>
-                <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes">cosd</property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">1</property>
@@ -622,10 +621,10 @@
             </child>
             <child>
               <object class="tk.Button" id="button33">
-                <property name="background">#e0e0e0</property>
+                <property name="background">#e8dbe6</property>
                 <property name="font">ansifixed</property>
-                <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes">tand</property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">2</property>
@@ -689,7 +688,7 @@
             </child>
             <child>
               <object class="tk.Button" id="input_button_log" named="True">
-                <property name="background">#e8dbe6</property>
+                <property name="background">#dbe6e8</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">ansifixed</property>
                 <property name="state">normal</property>
