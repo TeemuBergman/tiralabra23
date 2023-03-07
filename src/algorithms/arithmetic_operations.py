@@ -12,14 +12,15 @@ class ArithmeticOperations:
 
     def __init__(self):
         self.arithmetic = {
-            '+':    self._perform_add,
-            '-':    self._perform_subtraction,
-            '*':    self._perform_multiplication,
-            '/':    self._perform_division,
-            '^':    self._perform_exponentitation
+            '+': self._perform_add,
+            '-': self._perform_subtraction,
+            '*': self._perform_multiplication,
+            '/': self._perform_division,
+            '^': self._perform_exponentitation
         }
 
         self.functions = {
+            'neg':  self._perform_neg,
             'sinr': self._perform_sinr,
             'cosr': self._perform_cosr,
             'tanr': self._perform_tanr,
@@ -82,6 +83,9 @@ class ArithmeticOperations:
         self.result = Decimal(value_1 ** value_2)
 
     # FUNCTIONS
+
+    def _perform_neg(self, value_1) -> None:
+        self.result = Decimal(-value_1)
 
     def _perform_sinr(self, value_1) -> None:
         self.result = Decimal(math.sin(value_1))
