@@ -723,12 +723,12 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_326" named="True">
+              <object class="tk.Button" id="input_button_memory_add" named="True">
                 <property name="background">#e0e0e0</property>
+                <property name="command" type="command" cbtype="with_wid">call_memory</property>
                 <property name="font">TkFixedFont</property>
                 <property name="state">disabled</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes"> </property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">3</property>

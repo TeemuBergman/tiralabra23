@@ -98,7 +98,8 @@ class SciCalGui:
             # Calculate
             self.result = calculator.calculate(self.expression, self.variables)
             # Convert to string
-            self.result = self._clean_output_string(self.result)
+            # TODO - Remove this?
+            # self.result = self._clean_output_string(self.result)
             # Set results to GUI
             self.output_result.set(self.result)
             self.output_result_rpn.set(calculator.calculation.result_rpn)
@@ -108,6 +109,10 @@ class SciCalGui:
             # Set error message and clear RPN result
             self.output_result.set(sys.exc_info()[1])
             self.output_result_rpn.set('')
+
+    def call_memory(self):
+        # TODO - Complete this.
+        ...
 
     # Todo - Move this to another class!
     def _clean_output_string(self, value) -> str:
