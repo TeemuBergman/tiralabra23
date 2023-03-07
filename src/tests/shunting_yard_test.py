@@ -17,11 +17,6 @@ class TestShuntingYard(unittest.TestCase):
 
     # BASIC TESTS
 
-    def test_empty_input(self):
-        """Test if the class returns empty string with empty input."""
-        self.shunting_yard.convert(self.calculation.new('', ''))
-        self.assertEqual(self.calculation.result_rpn, '')
-
     def test_basic_addition(self):
         """Test if the class converts '1+2' expression to '1 2 +'"""
         self.shunting_yard.convert(self.calculation.new('1+2', ''))
@@ -165,6 +160,12 @@ class TestShuntingYard(unittest.TestCase):
         self.assertEqual(self.calculation.result_rpn, '12 3 + log')
 
     # EXCEPTIONS
+
+    def test_missing_expression(self):
+        """Test if the function raises ExpressionError with invalid input."""
+        with self.assertRaises(ExpressionError) as exc:
+            self.shunting_yard.convert(self.calculation.new('', ''))
+        self.assertEqual('Error: Expression not found!', str(exc.exception))
 
     def test_invalid_expression_1(self):
         """Test if the function raises ExpressionError with invalid input."""

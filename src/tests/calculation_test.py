@@ -9,9 +9,9 @@ from algorithms.calculation import Calculation
 
 class TestCalculation(unittest.TestCase):
     """Tests for Calculation class."""
-    
+
     # TESTS INIT
-    
+
     def setUp(self):
         self.calculation = Calculation()
 
@@ -36,12 +36,12 @@ class TestCalculation(unittest.TestCase):
 
     def test_empty_variables(self):
         """Test if the function returns empty string with empty string of variables."""
-        self.calculation.new('', '')
+        self.calculation.new('0', '')
         self.assertEqual(self.calculation.variables, '')
 
     def test_variables_dictionary_1(self):
         """Test if the function returns correct dictionary with a string of variables."""
-        self.calculation.new('', 'x=1, y=2, z=3')
+        self.calculation.new('0', 'x=1, y=2, z=3')
         self.assertEqual(self.calculation.variables_dictionary, {'x': '1', 'y': '2', 'z': '3'})
 
     def test_variables_in_expression_1(self):

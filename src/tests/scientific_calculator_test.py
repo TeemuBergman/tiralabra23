@@ -4,6 +4,7 @@ import unittest
 
 # Custom classes
 from algorithms.error_handling import ExpressionError, VariableError, OperationError
+from algorithms.calculation import Calculation
 from algorithms.scientific_calculator import ScientificCalculator
 
 
@@ -11,6 +12,7 @@ class TestScientificCalculator(unittest.TestCase):
     """Tests for ScientificCalculator class."""
 
     def setUp(self):
+        self.calculation = Calculation()
         self.scientific_calculator = ScientificCalculator()
 
     # BASIC TESTS
@@ -57,7 +59,7 @@ class TestScientificCalculator(unittest.TestCase):
         """Test if the class returns correct answer with simple input."""
         expression = 'sqrt(6^64)'
         result = self.scientific_calculator.calculate(expression)
-        self.assertAlmostEqual(result, 7.958661109946401e+24)
+        self.assertAlmostEqual(float(result), 7.958661109946401e+24)
 
     # CATCH EXCEPTIONS
 
