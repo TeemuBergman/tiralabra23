@@ -1,7 +1,7 @@
 """Calculation class."""
 
 # Custom classes
-from .error_handling import VariableError
+from .error_handling import VariableError, ExpressionError
 
 
 class Calculation:
@@ -23,11 +23,14 @@ class Calculation:
         self.result_rpn = ''
         self.result = None
 
-    def new(self, expression: str, variables: str):
-        # Modify given expression
-        self.expression = self._remove_spaces(expression)
-        self.expression = self._convert_dot_to_comma(self.expression)
-        self.expression = self._convert_to_lowercase(self.expression)
+    def new(self, expression: str, variables: str = None):
+        if expression:
+            # Modify given expression
+            self.expression = self._remove_spaces(expression)
+            self.expression = self._convert_dot_to_comma(self.expression)
+            self.expression = self._convert_to_lowercase(self.expression)
+        else:
+            raise ExpressionError('Error: Expression not found!')
 
         # Modify given variables_dictionary
         if variables:

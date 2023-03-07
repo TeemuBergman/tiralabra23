@@ -17,7 +17,6 @@ class ScientificCalculator:
     """
 
     def __init__(self):
-        self.calculation = None
         self.shunting_yard = ShuntingYard()
         self.postfix_evaluator = PostfixEvaluator()
 
@@ -33,7 +32,7 @@ class ScientificCalculator:
         Returns:
             Decimal: The result of evaluating the expression.
         """
-        # Create a new calculation object
+        # Create a new calculation
         self.calculation = Calculation().new(expression, variables)
 
         # Use the Shunting Yard algorithm to convert
