@@ -24,6 +24,9 @@ class ShuntingYard:
         """
         Convert an infix mathematical expression to a Reverse Polish Notation (RPN).
 
+        Args:
+            calculation (Calculation): The expression to be converted to a RPN.
+
         Returns:
             output_queue (str): Reverse Polish Notation (RPN).
         """

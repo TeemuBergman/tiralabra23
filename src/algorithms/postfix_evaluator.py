@@ -24,7 +24,7 @@ class PostfixEvaluator:
         Evaluate a postfix expression.
 
         Args:
-            expression (str): The postfix expression to evaluate.
+            calculation (Calculation): Object contains the RPN expression to be evaluated.
 
         Returns:
             Decimal: The result of the expression.
