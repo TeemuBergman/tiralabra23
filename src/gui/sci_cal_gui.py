@@ -56,9 +56,6 @@ class SciCalGui:
     def run(self):
         self.main_window.mainloop()
 
-    def _handle_exceptions(self):
-        pass
-
     def _update_gui(self, symbol):
         self.expression += symbol
         self.input_expression.set(self.expression)

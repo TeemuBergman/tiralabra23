@@ -18,6 +18,9 @@ class GUIFunctions:
             'input_button_7':                 '7',
             'input_button_8':                 '8',
             'input_button_9':                 '9',
+            'input_button_x':                 'x',
+            'input_button_y':                 'y',
+            'input_button_z':                 'z',
             'input_button_dot':               '.',
             'input_button_add':               '+',
             'input_button_subtract':          '-',
@@ -33,5 +36,9 @@ class GUIFunctions:
             'input_button_cosd':              'cosd(x)',
             'input_button_tand':              'tand(x)',
             'input_button_square_root':       'sqrt(x)',
-            'input_button_log':               'log(x)'
+            'input_button_log':               'log(x)',
+            'input_button_demo_1':            '((kissa) * (koira))',
+            'input_button_demo_2':            '(sind(x) * x)',
+            'input_button_demo_3':            '(x * y + (2 * x ^ (x - (z / 0.5))))',
+            'input_button_demo_4':            '(((((((((((((1)))))))))) + ((((((((((1)))))))))))))'
         }

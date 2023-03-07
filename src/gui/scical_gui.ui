@@ -164,13 +164,18 @@
           <object class="tk.Frame" id="frame_numbers" named="True">
             <property name="height">200</property>
             <property name="takefocus">false</property>
+            <property name="width">250</property>
             <layout manager="pack">
               <property name="expand">true</property>
               <property name="fill">both</property>
               <property name="side">right</property>
             </layout>
             <containerlayout manager="grid">
-              <property type="col" id="all" name="weight">1</property>
+              <property name="propagate">False</property>
+              <property type="col" id="0" name="uniform">1</property>
+              <property type="col" id="all" name="uniform">1</property>
+              <property type="col" id="all" name="weight">10</property>
+              <property type="row" id="0" name="uniform">1</property>
               <property type="row" id="all" name="weight">1</property>
             </containerlayout>
             <child>
@@ -473,15 +478,14 @@
             </layout>
             <containerlayout manager="grid">
               <property name="anchor">nw</property>
-              <property name="propagate">False</property>
               <property type="col" id="all" name="weight">1</property>
               <property type="row" id="0" name="weight">1</property>
               <property type="row" id="all" name="weight">1</property>
             </containerlayout>
             <child>
-              <object class="tk.Button" id="demo_1" named="True">
+              <object class="tk.Button" id="input_button_demo_1" named="True">
                 <property name="background">#e8d4c0</property>
-                <property name="command" type="command" cbtype="simple">call_numpad</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">D1</property>
@@ -521,7 +525,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button_55">
+              <object class="tk.Button" id="input_button_x" named="True">
                 <property name="background">#e0e0e0</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
@@ -535,9 +539,9 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="demo_2" named="True">
+              <object class="tk.Button" id="input_button_demo_2" named="True">
                 <property name="background">#e8d4c0</property>
-                <property name="command" type="command" cbtype="simple">call_numpad</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">D2</property>
@@ -577,7 +581,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button42">
+              <object class="tk.Button" id="input_button_y" named="True">
                 <property name="background">#e0e0e0</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
@@ -591,9 +595,9 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="demo_3" named="True">
+              <object class="tk.Button" id="input_button_demo_3" named="True">
                 <property name="background">#e8d4c0</property>
-                <property name="command" type="command" cbtype="simple">call_numpad</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="state">normal</property>
                 <property name="takefocus">false</property>
@@ -634,7 +638,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button43">
+              <object class="tk.Button" id="input_button_z" named="True">
                 <property name="background">#e0e0e0</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
@@ -648,9 +652,9 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="demo_4" named="True">
+              <object class="tk.Button" id="input_button_demo_4" named="True">
                 <property name="background">#e8d4c0</property>
-                <property name="command" type="command" cbtype="simple">call_numpad</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="state">normal</property>
                 <property name="takefocus">false</property>
@@ -663,7 +667,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button45">
+              <object class="tk.Button" id="input_button_326" named="True">
                 <property name="background">#e0e0e0</property>
                 <property name="font">TkFixedFont</property>
                 <property name="state">disabled</property>
@@ -692,7 +696,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="button47">
+              <object class="tk.Button" id="input_button_361" named="True">
                 <property name="background">#e0e0e0</property>
                 <property name="font">TkFixedFont</property>
                 <property name="state">disabled</property>
