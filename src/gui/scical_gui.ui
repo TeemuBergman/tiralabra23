@@ -1,18 +1,64 @@
 <?xml version='1.0' encoding='utf-8'?>
 <interface version="1.3">
   <object class="tk.Toplevel" id="main_window" named="True">
-    <property name="geometry">500x400</property>
+    <property name="geometry">850x400</property>
     <property name="padx">1</property>
     <property name="pady">5</property>
     <property name="relief">raised</property>
     <property name="resizable">none</property>
     <property name="title" translatable="yes">Scientific calculator</property>
     <child>
+      <object class="tk.Frame" id="frame_history" named="True">
+        <property name="height">200</property>
+        <property name="width">350</property>
+        <layout manager="pack">
+          <property name="anchor">sw</property>
+          <property name="fill">y</property>
+          <property name="side">left</property>
+        </layout>
+        <containerlayout manager="pack">
+          <property name="propagate">False</property>
+        </containerlayout>
+        <child>
+          <object class="tk.LabelFrame" id="labelframe_1">
+            <property name="font">TkFixedFont</property>
+            <property name="height">200</property>
+            <property name="text" translatable="yes">History</property>
+            <property name="width">200</property>
+            <layout manager="pack">
+              <property name="expand">true</property>
+              <property name="fill">both</property>
+              <property name="padx">3</property>
+              <property name="side">bottom</property>
+            </layout>
+            <child>
+              <object class="tk.Listbox" id="output_history" named="True">
+                <property name="activestyle">none</property>
+                <property name="font">TkFixedFont</property>
+                <property name="justify">right</property>
+                <property name="listvariable">string:list_history</property>
+                <property name="relief">flat</property>
+                <property name="takefocus">false</property>
+                <layout manager="pack">
+                  <property name="expand">true</property>
+                  <property name="fill">both</property>
+                  <property name="padx">4</property>
+                  <property name="pady">3</property>
+                  <property name="side">top</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
       <object class="tk.Frame" id="frame_io" named="True">
         <property name="height">200</property>
         <property name="padx">5</property>
         <property name="pady">5</property>
         <layout manager="pack">
+          <property name="anchor">ne</property>
           <property name="fill">x</property>
           <property name="side">top</property>
         </layout>
@@ -23,7 +69,8 @@
             <property name="pady">0</property>
             <property name="width">200</property>
             <layout manager="pack">
-              <property name="fill">x</property>
+              <property name="expand">true</property>
+              <property name="fill">both</property>
               <property name="side">top</property>
             </layout>
             <child>
@@ -43,13 +90,15 @@
                   <object class="tk.Entry" id="output_result" named="True">
                     <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
-                    <property name="state">readonly</property>
+                    <property name="relief">flat</property>
+                    <property name="state">normal</property>
                     <property name="takefocus">false</property>
                     <property name="textvariable">string:string_result</property>
                     <layout manager="pack">
                       <property name="expand">true</property>
                       <property name="fill">x</property>
                       <property name="ipady">3</property>
+                      <property name="padx">3</property>
                       <property name="side">right</property>
                     </layout>
                   </object>
@@ -73,13 +122,15 @@
                   <object class="tk.Entry" id="output_rpn" named="True">
                     <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
-                    <property name="state">readonly</property>
+                    <property name="relief">flat</property>
+                    <property name="state">normal</property>
                     <property name="takefocus">false</property>
                     <property name="textvariable">string:string_result_rpn</property>
                     <layout manager="pack">
                       <property name="expand">true</property>
                       <property name="fill">x</property>
                       <property name="ipady">3</property>
+                      <property name="padx">3</property>
                       <property name="side">top</property>
                     </layout>
                   </object>
@@ -103,6 +154,7 @@
                   <object class="tk.Entry" id="input_variables" named="True">
                     <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
+                    <property name="relief">flat</property>
                     <property name="takefocus">true</property>
                     <property name="textvariable">string:string_variables</property>
                     <bind sequence="&lt;KeyPress-Return&gt;" handler="call_calculate" add="" />
@@ -110,6 +162,7 @@
                       <property name="expand">true</property>
                       <property name="fill">x</property>
                       <property name="ipady">3</property>
+                      <property name="padx">3</property>
                       <property name="side">right</property>
                     </layout>
                   </object>
@@ -133,6 +186,7 @@
                   <object class="tk.Entry" id="input_expression" named="True">
                     <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
+                    <property name="relief">flat</property>
                     <property name="takefocus">true</property>
                     <property name="textvariable">string:string_expression</property>
                     <bind sequence="&lt;KeyPress-Return&gt;" handler="call_calculate" add="" />
@@ -140,6 +194,7 @@
                       <property name="expand">true</property>
                       <property name="fill">x</property>
                       <property name="ipady">3</property>
+                      <property name="padx">3</property>
                       <property name="side">right</property>
                     </layout>
                   </object>
@@ -155,6 +210,7 @@
         <property name="height">200</property>
         <property name="width">200</property>
         <layout manager="pack">
+          <property name="anchor">se</property>
           <property name="expand">true</property>
           <property name="fill">both</property>
           <property name="padx">5</property>

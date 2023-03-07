@@ -3,6 +3,7 @@
 import sys
 import pathlib
 import pygubu
+from _collections import deque
 
 # Custom classes
 from algorithms.scientific_calculator import ScientificCalculator
@@ -43,12 +44,14 @@ class SciCalGui:
             'string_result')
         self.output_result_rpn = self.builder.get_variable(
             'string_result_rpn')
+        self.output_history = self.builder.get_variable('list_history')
 
         # Init variables
         self.expression = ''
         self.variables = ''
         self.result = ''
         self.result_rpn = ''
+        self.history = []
 
         # Set focus to expression input
         self.builder.get_object('input_expression').focus()
@@ -73,6 +76,16 @@ class SciCalGui:
         self.output_result.set(self.result)
         self.output_result_rpn.set(self.result_rpn)
 
+    def update_history(self, calculation) -> None:
+        if len(self.history) >= 20:
+            self.history = self.history[2:]
+            self.history.append(f'{calculation.expression}=')
+            self.history.append(calculation.result)
+        else:
+            self.history.append(f'{calculation.expression}=')
+            self.history.append(calculation.result)
+        self.output_history.set(self.history)
+
     def call_calculate(self, event=None):
         """Excecute the given excpression and print its output to GUIs output fields."""
         # Create new calculator
@@ -89,6 +102,8 @@ class SciCalGui:
             # Set results to GUI
             self.output_result.set(self.result)
             self.output_result_rpn.set(calculator.calculation.result_rpn)
+            # Update history panel
+            self.update_history(calculator.calculation)
         except:
             # Set error message and clear RPN result
             self.output_result.set(sys.exc_info()[1])
