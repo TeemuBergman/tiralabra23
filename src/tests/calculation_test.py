@@ -57,7 +57,9 @@ class TestCalculation(unittest.TestCase):
     def est_variables_2(self):
         """Test if the function returns correct dictionary with a string of variables."""
         self.calculation.new('', 'kg=1.5,meter=2,negative=-3')
-        self.assertEqual(self.calculation.variables_dictionary, {'kg': '1.5', 'meter': '2', 'negative': '-3'})
+        self.assertEqual(self.calculation.variables_dictionary, {
+            'kg': '1.5', 'meter': '2', 'negative': '-3'
+        })
 
     # FUNCTIONS
 
