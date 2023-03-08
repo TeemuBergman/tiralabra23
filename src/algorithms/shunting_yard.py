@@ -15,8 +15,8 @@ class ShuntingYard:
         self._operator_stack = []
         self._output_stack = []
         self._current_symbol = ''
-        self._next_is_number = False
-        self._prev_is_number = False
+        self._next_not_operator = False
+        self._previous_not_operator = False
         self._is_negative = False
         self.operator_stack_has_function = False
 
@@ -41,9 +41,9 @@ class ShuntingYard:
             # Update current step and symbol
             self._current_symbol = symbol
 
-            # Check if next symbol is a number
+            # Check if next symbol is not a operator
             if step < expression_length:
-                self._next_is_number = calculation.expression[step + 1] not in symbols
+                self._next_not_operator = calculation.expression[step + 1] not in symbols
 
             # Process expressions different symbols
             if self._current_symbol == '-':
@@ -60,24 +60,13 @@ class ShuntingYard:
                 self._process_functions()
 
             # Check if current symbol is a number
-            self._prev_is_number = self._current_symbol not in symbols
+            self._previous_not_operator = self._current_symbol not in symbols
 
         # Pop any remaining operators from the stack and add them to the output
         self._remaining_operators()
 
         # Save the result to Calculation
         calculation.result_rpn = ' '.join(self._output_stack)
-
-    def _remaining_operators(self) -> None:
-        """
-        Pop any remaining operators from the stack and add them to the output
-        and raise an ExpressionError if left parentheses has been found.
-        """
-        while self._operator_stack:
-            if self._operator_stack[-1] != '(':
-                self._output_stack.append(self._operator_stack.pop())
-            else:
-                raise ExpressionError('Error: Not a valid expression!')
 
     def _process_functions(self) -> None:
         """Handles all the function names to operator stack in correct composition."""
@@ -90,7 +79,7 @@ class ShuntingYard:
     def _process_negative(self) -> None:
         """Handles all the negative values."""
         # Check if previous symbol is not a number and next one is
-        if not self._prev_is_number and self._next_is_number:
+        if not self._previous_not_operator and self._next_not_operator:
             # If true, append negative operator to output_stack
             self._output_stack.append(self._current_symbol)
             # Set state of negative integer flag to True
@@ -101,7 +90,7 @@ class ShuntingYard:
     def _process_numerals(self) -> None:
         """Handles all numerals."""
         # Check if previous symbol is a number or negative number flag is True
-        if self._prev_is_number or self._is_negative:
+        if self._previous_not_operator or self._is_negative:
             # If true, pop output_stack and add it back with current_symbol
             try:
                 self._output_stack.append(self._output_stack.pop() + self._current_symbol)
@@ -145,7 +134,10 @@ class ShuntingYard:
         """
         # If the symbol is a left parenthesis, push it to the operator stack
         if self._current_symbol in '(':
-            self._operator_stack.append(self._current_symbol)
+            if self._operator_stack and self._operator_stack[-1] in '-':
+                self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
+            else:
+                self._operator_stack.append(self._current_symbol)
         # If the symbol is a right parenthesis, pop operators from the stack
         # and add them to the output stack until a left parenthesis is found
         else:
@@ -161,3 +153,14 @@ class ShuntingYard:
                     # Pop the left parentheses
                     self._operator_stack.pop()
                     break
+
+    def _remaining_operators(self) -> None:
+        """
+        Pop any remaining operators from the stack and add them to the output
+        and raise an ExpressionError if left parentheses has been found.
+        """
+        while self._operator_stack:
+            if self._operator_stack[-1] != '(':
+                self._output_stack.append(self._operator_stack.pop())
+            else:
+                raise ExpressionError('Error: Not a valid expression!')
