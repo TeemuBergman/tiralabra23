@@ -16,11 +16,11 @@ class ArithmeticOperations:
             '-': self._perform_subtraction,
             '*': self._perform_multiplication,
             '/': self._perform_division,
-            '^': self._perform_exponentitation,
-            '-(': self._perform_negation
+            '^': self._perform_exponentitation
         }
 
         self.functions = {
+            '-(': self._perform_negation,
             'sinr': self._perform_sinr,
             'cosr': self._perform_cosr,
             'tanr': self._perform_tanr,

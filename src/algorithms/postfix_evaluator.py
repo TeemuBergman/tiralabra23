@@ -19,7 +19,7 @@ class PostfixEvaluator:
         self.stack = []
         self.result = Decimal()
 
-    def evaluate(self, calculation: Calculation):
+    def evaluate(self, calculation: Calculation) -> None:
         """
         Evaluate a postfix expression.
 
@@ -42,22 +42,23 @@ class PostfixEvaluator:
 
         # Iterate over each symbol in the expression
         for step, symbol in enumerate(self.symbols):
-            # Is it safe to probe in to the future
-            probing_distance = (step + 1) <= len(symbol)
-            # If symbol is a negative sign, then probe if next one is a numeral
-            if symbol[0] == '-' and probing_distance:
+            # If symbol has a length > 1 and its second character is a numeric
+            # then append it to stack
+            if len(symbol) > 1 and symbol[1].isnumeric():
                 try:
                     # Convert the symbol to a Decimal and push it into the stack
                     self.stack.append(Decimal(symbol))
                 except InvalidOperation as exc:
                     raise ExpressionError('Error: Not in decimal format, too many dots!') from exc
-            # If the symbol starts with a digit or a minus symbol it's a numeral
+
+            # If the symbol starts with a digit append it to stack
             elif symbol[0].isnumeric():
                 try:
                     # Convert the symbol to a Decimal and push it into the stack
                     self.stack.append(Decimal(symbol))
                 except InvalidOperation as exc:
                     raise ExpressionError('Error: Not in decimal format, too many dots!') from exc
+
             # If the symbol is NaN, then it must bea an operator
             else:
                 if symbol in self.operations.functions:
