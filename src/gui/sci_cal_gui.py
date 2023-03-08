@@ -3,7 +3,6 @@
 import sys
 import pathlib
 import pygubu
-from _collections import deque
 
 # Custom classes
 from algorithms.scientific_calculator import ScientificCalculator
@@ -87,7 +86,7 @@ class SciCalGui:
         self.output_history.set(self.history)
 
     def call_calculate(self, event=None):
-        """Excecute the given excpression and print its output to GUIs output fields."""
+        """Execute the given expression and print its output to GUIs output fields."""
         # Create new calculator
         calculator = ScientificCalculator()
         # Get variables 'expression' and 'variables' from GUI
@@ -97,9 +96,6 @@ class SciCalGui:
         try:
             # Calculate
             self.result = calculator.calculate(self.expression, self.variables)
-            # Convert to string
-            # TODO - Remove this?
-            # self.result = self._clean_output_string(self.result)
             # Set results to GUI
             self.output_result.set(self.result)
             self.output_result_rpn.set(calculator.calculation.result_rpn)
@@ -113,16 +109,6 @@ class SciCalGui:
     def call_memory(self):
         # TODO - Complete this.
         ...
-
-    # Todo - Move this to another class!
-    def _clean_output_string(self, value) -> str:
-        """Convert given value to a string and modify if it ends at .0"""
-        cleaned = str(value)
-        # If input value is a decimal with .0 at the end
-        if cleaned.endswith('.0'):
-            # remove '.0' from end of string
-            return cleaned[:-2]
-        return cleaned
 
     def call_numpad(self, widget_id):
         """Handles all the corresponding button presses from GUI."""
