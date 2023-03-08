@@ -16,11 +16,11 @@ class ArithmeticOperations:
             '-': self._perform_subtraction,
             '*': self._perform_multiplication,
             '/': self._perform_division,
-            '^': self._perform_exponentitation
+            '^': self._perform_exponentitation,
+            '-(': self._perform_negation
         }
 
         self.functions = {
-            'neg':  self._perform_neg,
             'sinr': self._perform_sinr,
             'cosr': self._perform_cosr,
             'tanr': self._perform_tanr,
@@ -84,7 +84,7 @@ class ArithmeticOperations:
 
     # FUNCTIONS
 
-    def _perform_neg(self, value_1) -> None:
+    def _perform_negation(self, value_1) -> None:
         self.result = Decimal(-value_1)
 
     def _perform_sinr(self, value_1) -> None:
