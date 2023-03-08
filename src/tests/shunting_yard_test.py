@@ -82,15 +82,20 @@ class TestShuntingYard(unittest.TestCase):
         self.shunting_yard.convert(self.calculation.new('x+y', 'x=1,y=2'))
         self.assertEqual(self.calculation.result_rpn, '1 2 +')
 
-    def test_quite_many_parentheses_1(self):
+    def test_too_many_parentheses_1(self):
         """Test if the class converts '((((((((((1+1))))))))))' expression to '1 1 +'"""
         self.shunting_yard.convert(self.calculation.new('((((((((((1+1))))))))))', ''))
         self.assertEqual(self.calculation.result_rpn, '1 1 +')
 
-    def test_quite_many_parentheses_2(self):
+    def test_too_many_parentheses_2(self):
         """Test if the class converts '(((((((((((-1)+(1.010101)))))))))))' correctly.'"""
         self.shunting_yard.convert(self.calculation.new('(((((((((((-1)+(1.010101)))))))))))', ''))
         self.assertEqual(self.calculation.result_rpn, '-1 1.010101 +')
+
+    def test_negative_parentheses(self):
+        """Test if the class converts '(((((((((((-1)+(1.010101)))))))))))' correctly.'"""
+        self.shunting_yard.convert(self.calculation.new('-(1)', ''))
+        self.assertEqual(self.calculation.result_rpn, '1 -(')
 
     # FUNCTIONS
 
