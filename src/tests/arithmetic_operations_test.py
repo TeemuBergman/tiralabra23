@@ -118,7 +118,7 @@ class TestArithmeticOperations(unittest.TestCase):
         self.assertEqual(self.error_message.get('division by zero'),
                          str(exc.exception))
 
-    def test_no_operator(self):
+    def test_no_operand(self):
         """Test if the function works with no operator at all."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('', 0)
@@ -139,128 +139,135 @@ class TestArithmeticOperations(unittest.TestCase):
         self.assertEqual(self.error_message.get('missing operand'),
                          str(exc.exception))
 
-    def test_negative_square_root(self):
+    def test_function_square_root_negative(self):
         """Test if the function resolves negative values to error."""
         with self.assertRaises(OperationError) as exc:
-            self.operations.perform_on('sqrt', -4, 0)
+            self.operations.perform_on('sqrt', -4)
         self.assertEqual(self.error_message.get('square root'),
                          str(exc.exception))
 
-    def test_negative_logarithm(self):
+    def test_function_logarithm_negative(self):
         """Test if the function resolves negative values to error."""
         with self.assertRaises(OperationError) as exc:
-            self.operations.perform_on('log', -4, 0)
+            self.operations.perform_on('log', -4)
         self.assertEqual(self.error_message.get('logarithm'),
                          str(exc.exception))
 
-    def test_negative_random(self):
-        """Test if the function resolves negative values to error."""
-        with self.assertRaises(OperationError) as exc:
-            self.operations.perform_on('rand', -4, 0)
-        self.assertEqual(self.error_message.get('random'),
-                         str(exc.exception))
-
-    def test_function_sine_radians_error(self):
+    def test_function_sine_radians_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('sinr')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_function_sine_degrees_error(self):
+    def test_function_sine_degrees_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('sind')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_function_cosine_radians_error(self):
+    def test_function_cosine_radians_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('cosr')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_function_cosine_degrees_error(self):
+    def test_function_cosine_degrees_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('cosd')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_function_tangent_radians_error(self):
+    def test_function_tangent_radians_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('tanr')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_function_tangent_degrees_error(self):
+    def test_function_tangent_degrees_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('tand')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_function_logarithm_error(self):
+    def test_function_logarithm_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('log')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_function_square_root_error(self):
+    def test_function_square_root_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('sqrt')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_function_negation_error(self):
+    def test_function_negation_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('-(')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_function_random_error(self):
-        """Test if the function handles errors on functions correctly."""
-        with self.assertRaises(OperationError) as exc:
-            self.operations.perform_on('rand')
-        self.assertEqual(self.error_message.get('missing value'),
-                         str(exc.exception))
-
-    def test_operation_addition_error(self):
+    def test_operation_addition_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('+')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_operation_subtraction_error(self):
+    def test_operation_subtraction_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('-')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_operation_multiplication_error(self):
+    def test_operation_multiplication_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('*')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_operation_division_error(self):
+    def test_operation_division_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('/')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
-    def test_operation_exponentitation_error(self):
+    def test_operation_exponentitation_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('^')
         self.assertEqual(self.error_message.get('missing value'),
+                         str(exc.exception))
+
+    def test_function_random_no_value(self):
+        """Test if the function handles errors on functions correctly."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('rand')
+        self.assertEqual(self.error_message.get('missing value'),
+                         str(exc.exception))
+
+    def test_function_random_negative(self):
+        """Test if the function resolves negative values to error."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('rand', -4)
+        self.assertEqual(self.error_message.get('random'),
+                         str(exc.exception))
+
+    def test_function_random_decimal(self):
+        """Test if the function resolves negative values to error."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('rand', 1.2)
+        self.assertEqual(self.error_message.get('use integer'),
                          str(exc.exception))
