@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "tieteellinen laskin"
+name = "Tieteellinen laskin"
 version = "0.5.0"
 description = "Helsingin yliopiston Aineopintojen harjoitustyö: Tietorakenteet ja algoritmit -kurssille tehty harjoitustyö."
 authors = ["Teemu Bergman <teemu.bergman@helsinki.fi>"]
