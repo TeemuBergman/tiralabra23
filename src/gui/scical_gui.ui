@@ -4,7 +4,7 @@
     <property name="geometry">600x800</property>
     <property name="height">200</property>
     <property name="minsize">550|800</property>
-    <property name="padx">1</property>
+    <property name="padx">3</property>
     <property name="pady">5</property>
     <property name="relief">raised</property>
     <property name="resizable">none</property>
@@ -15,10 +15,10 @@
     </containerlayout>
     <child>
       <object class="tk.Frame" id="frame_history" named="True">
-        <property name="height">350</property>
+        <property name="height">355</property>
         <property name="padx">5</property>
-        <property name="pady">5</property>
-        <property name="width">350</property>
+        <property name="pady">2</property>
+        <property name="width">600</property>
         <layout manager="pack">
           <property name="fill">x</property>
           <property name="side">top</property>
@@ -35,7 +35,6 @@
             <layout manager="pack">
               <property name="expand">true</property>
               <property name="fill">both</property>
-              <property name="ipady">2</property>
               <property name="side">top</property>
             </layout>
             <containerlayout manager="pack">
@@ -66,8 +65,8 @@
       <object class="tk.Frame" id="frame_keypad" named="True">
         <property name="height">200</property>
         <property name="padx">5</property>
-        <property name="pady">5</property>
-        <property name="width">200</property>
+        <property name="pady">2</property>
+        <property name="width">600</property>
         <layout manager="pack">
           <property name="expand">false</property>
           <property name="fill">x</property>
@@ -628,12 +627,13 @@
     </child>
     <child>
       <object class="tk.Frame" id="frame_io" named="True">
-        <property name="height">250</property>
+        <property name="height">235</property>
         <property name="padx">5</property>
-        <property name="pady">5</property>
+        <property name="pady">2</property>
+        <property name="width">600</property>
         <layout manager="pack">
           <property name="expand">false</property>
-          <property name="fill">x</property>
+          <property name="fill">both</property>
           <property name="side">bottom</property>
         </layout>
         <child>
