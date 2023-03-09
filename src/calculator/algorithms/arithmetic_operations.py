@@ -127,4 +127,7 @@ class ArithmeticOperations:
     def _perform_random(self, value_1) -> None:
         if value_1 <= 0:
             raise OperationError(self.error_message.get('random'))
-        self.result = random.randint(0, value_1)
+        try:
+            self.result = random.randint(0, value_1)
+        except ValueError as exc:
+            raise OperationError(self.error_message.get('use integer')) from exc
