@@ -63,20 +63,35 @@ class TestArithmeticOperations(unittest.TestCase):
 
     # FUNCTIONS
 
-    def test_function_sine(self):
+    def test_function_sine_radians(self):
         """Test if the class evaluates given expression correctly."""
         result = self.operations.perform_on('sinr', 12)
         self.assertAlmostEqual(float(result), -0.5365729180004349)
 
-    def test_function_cosine(self):
+    def test_function_sine_degrees(self):
+        """Test if the class evaluates given expression correctly."""
+        result = self.operations.perform_on('sind', 12)
+        self.assertAlmostEqual(float(result), 0.20791169081775934)
+
+    def test_function_cosine_radians(self):
         """Test if the class evaluates given expression correctly."""
         result = self.operations.perform_on('cosr', 12)
         self.assertAlmostEqual(float(result), 0.8438539587324921)
 
-    def test_function_tangent(self):
+    def test_function_cosine_degrees(self):
+        """Test if the class evaluates given expression correctly."""
+        result = self.operations.perform_on('cosd', 12)
+        self.assertAlmostEqual(float(result), 0.9781476007338057)
+
+    def test_function_tangent_radians(self):
         """Test if the class evaluates given expression correctly."""
         result = self.operations.perform_on('tanr', 12)
         self.assertAlmostEqual(float(result), -0.6358599286615808)
+
+    def test_function_tangent_degrees(self):
+        """Test if the class evaluates given expression correctly."""
+        result = self.operations.perform_on('tand', 12)
+        self.assertAlmostEqual(float(result), 0.21255656167002213)
 
     def test_function_square_root(self):
         """Test if the class evaluates given expression correctly."""
@@ -116,34 +131,96 @@ class TestArithmeticOperations(unittest.TestCase):
         """Test if the function can divide with zero"""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('/', 1, 0)
-        self.assertEqual(self.error_message['division by zero'], str(exc.exception))
+        self.assertEqual(self.error_message['division by zero'],
+                         str(exc.exception))
 
     def test_no_operator(self):
         """Test if the function works with no operator at all."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('', 0)
-        self.assertEqual(self.error_message['missing operand'], str(exc.exception))
+        self.assertEqual(self.error_message['missing operand'],
+                         str(exc.exception))
 
     def test_invalid_operator_1(self):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('%', 1, 0)
-        self.assertEqual(self.error_message['missing operand'], str(exc.exception))
+        self.assertEqual(self.error_message['missing operand'],
+                         str(exc.exception))
 
     def test_invalid_operator_2(self):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('s', 4, 4)
-        self.assertEqual(self.error_message['missing operand'], str(exc.exception))
+        self.assertEqual(self.error_message['missing operand'],
+                         str(exc.exception))
 
     def test_negative_square_root(self):
         """Test if the function resolves negative values to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('sqrt', -4, 0)
-        self.assertEqual(self.error_message['square root'], str(exc.exception))
+        self.assertEqual(self.error_message['square root'],
+                         str(exc.exception))
 
     def test_negative_logarithm(self):
         """Test if the function resolves negative values to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('log', -4, 0)
-        self.assertEqual(self.error_message['logarithm'], str(exc.exception))
+        self.assertEqual(self.error_message['logarithm'],
+                         str(exc.exception))
+
+    def test_function_sine_radians_error(self):
+        """Test if the class evaluates given expression correctly."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('sinr')
+        self.assertEqual(self.error_message['missing value'],
+                         str(exc.exception))
+
+    def test_function_sine_degrees_error(self):
+        """Test if the class evaluates given expression correctly."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('sind')
+        self.assertEqual(self.error_message['missing value'],
+                         str(exc.exception))
+
+    def test_function_cosine_radians_error(self):
+        """Test if the class evaluates given expression correctly."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('cosr')
+        self.assertEqual(self.error_message['missing value'],
+                         str(exc.exception))
+
+    def test_function_cosine_degrees_error(self):
+        """Test if the class evaluates given expression correctly."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('cosd')
+        self.assertEqual(self.error_message['missing value'],
+                         str(exc.exception))
+
+    def test_function_tangent_radians_error(self):
+        """Test if the class evaluates given expression correctly."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('tanr')
+        self.assertEqual(self.error_message['missing value'],
+                         str(exc.exception))
+
+    def test_function_tangent_degrees_error(self):
+        """Test if the class evaluates given expression correctly."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('tand')
+        self.assertEqual(self.error_message['missing value'],
+                         str(exc.exception))
+
+    def test_function_logarithm_error(self):
+        """Test if the class evaluates given expression correctly."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('log')
+        self.assertEqual(self.error_message['missing value'],
+                         str(exc.exception))
+
+    def test_function_square_root_error(self):
+        """Test if the class evaluates given expression correctly."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('sqrt')
+        self.assertEqual(self.error_message['missing value'],
+                         str(exc.exception))
