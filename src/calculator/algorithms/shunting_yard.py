@@ -1,5 +1,7 @@
 """Shunting Yard class."""
 
+from collections import deque
+
 # Custom classes
 from utils.error_handling import ErrorMessages, ExpressionError
 from .calculation import Calculation
@@ -12,12 +14,10 @@ class ShuntingYard:
 
     def __init__(self):
         self._error_message = ErrorMessages()
-        self._operator_precedence = {'^': 3, '*': 2, '/': 2, '+': 1, '-': 1}
         self._operator_stack = []
         self._output_stack = []
         self._current_symbol = ''
-        self._previous_symbol = ''
-        self._next_symbol = ''
+        self._history = deque(' ')
         self._negative_value = False
         self._decimal_value = False
         self.operator_stack_has_function = False
@@ -40,7 +40,7 @@ class ShuntingYard:
 
             # Check if next symbol is a number
             if step < expression_length:
-                self._next_symbol = calculation.expression[step + 1]
+                self._history.append(calculation.expression[step + 1])
 
             # Process expressions different symbols
             if self._current_symbol == '-':
@@ -49,7 +49,7 @@ class ShuntingYard:
                 self._process_values()
             elif self._current_symbol == '.':
                 self._process_decimals()
-            elif self._current_symbol in self._operator_precedence:
+            elif self._current_symbol in ['+', '-', '*', '/', '^']:
                 self._process_operators()
             elif self._current_symbol in ('(', ')'):
                 self._process_parenthesis()
@@ -57,7 +57,7 @@ class ShuntingYard:
                 self._process_functions()
 
             # Save current symbol as previous
-            self._previous_symbol = symbol
+            self._history.appendleft(symbol)
 
         # Pop any remaining operators from the stack and add them to the output
         self._remaining_operators()
@@ -66,8 +66,8 @@ class ShuntingYard:
         calculation.result_rpn = ' '.join(self._output_stack)
 
     def _process_functions(self) -> None:
-        """Handles all the function names to operator stack in correct composition."""
-        if self._operator_stack and self.operator_stack_has_function and self._operator_stack[-1] not in '(':
+        """Handles all the functions to operator stack in correct composition."""
+        if self._operator_stack and self.operator_stack_has_function and self._operator_stack[-1] != '(':
             self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
         else:
             self._operator_stack.append(self._current_symbol)
@@ -76,7 +76,7 @@ class ShuntingYard:
     def _process_negative_values(self) -> None:
         """Handles all the negative values."""
         # Check that the previous symbol is not ')' or number and the next one is a number
-        if not self._previous_symbol == ')' and not self._previous_symbol.isnumeric() and self._next_symbol.isnumeric():
+        if not self._history[0] == ')' and not self._history[0].isnumeric() and self._history[-1].isnumeric():
             # If true, append negative operator to output_stack
             self._output_stack.append(self._current_symbol)
             # Set state of negative integer flag to True
@@ -86,14 +86,14 @@ class ShuntingYard:
 
     def _process_decimals(self) -> None:
         """Handles dots in decimal values."""
-        if  self._previous_symbol.isnumeric():
+        if self._history[0].isnumeric():
             self._output_stack.append(self._output_stack.pop() + self._current_symbol)
         self._decimal_value = True
 
     def _process_values(self) -> None:
         """Handles all values."""
         # Check if previous symbol is a number or the negative value state is True
-        if self._previous_symbol.isnumeric() or self._negative_value or self._decimal_value:
+        if self._history[0].isnumeric() or self._negative_value or self._decimal_value:
             # If true, pop output_stack and add it back with current_symbol
             try:
                 self._output_stack.append(self._output_stack.pop() + self._current_symbol)
@@ -117,10 +117,11 @@ class ShuntingYard:
         level of the input symbol and the operators on the stack.Once the correct position for
         the input symbol is found, it is added to the operator stack.
         """
+        operator_precedence = {'^': 3, '*': 2, '/': 2, '+': 1, '-': 1}
         # If the symbol is an operator, pop operators from the stack
         # and add them to the output until a lower precedence operator is found
-        while self._operator_stack and self._operator_precedence.get(
-                self._current_symbol) <= self._operator_precedence.get(
+        while self._operator_stack and operator_precedence.get(
+                self._current_symbol) <= operator_precedence.get(
                     self._operator_stack[-1], 0):
             self._output_stack.append(self._operator_stack.pop())
         self._operator_stack.append(self._current_symbol)
@@ -135,9 +136,9 @@ class ShuntingYard:
         open parenthesis is also popped from the stack but not added to the output.
         """
         # If the symbol is a left parenthesis, push it to the operator stack
-        if self._current_symbol in '(':
+        if self._current_symbol == '(':
             # Check if the negative operator is the first in expression
-            if self._operator_stack and not self._output_stack and self._operator_stack[-1] in '-':
+            if self._operator_stack and not self._output_stack and self._operator_stack[-1] == '-':
                 self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
             else:
                 self._operator_stack.append(self._current_symbol)
