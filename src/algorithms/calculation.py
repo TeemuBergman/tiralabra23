@@ -18,12 +18,14 @@ class Calculation:
         # Original values
         self.expression = ''
         self.variables = ''
+        # Handled variables
         self.variables_dictionary = {}
         # Variables for storing RPN and result
-        self.result_rpn = ''
+        self.result_rpn = None
         self.result = None
 
     def new(self, expression: str, variables: str = None):
+        # Handle expression
         if expression:
             # Modify given expression
             self.expression = self._remove_spaces(expression)
@@ -32,12 +34,14 @@ class Calculation:
         else:
             raise ExpressionError('Error: Expression not found!')
 
-        # Modify given variables_dictionary
+        # Handle variables
         if variables:
+            # Clean given variables for whitespace and uppercase characters
             self.variables = self._remove_spaces(variables)
             self.variables = self._convert_to_lowercase(self.variables)
             # Add variables_dictionary to a dictionary and process expression with them
-            self.variables_dictionary = self._variables_to_dictionary(self.variables)
+            self._variables_to_dictionary(self.variables)
+            # Process given variables to given expression
             self._introduce_variables()
         else:
             self.variables = ''
@@ -61,15 +65,12 @@ class Calculation:
         """Convert given string to lowercase."""
         return string.lower()
 
-    def _variables_to_dictionary(self, variables: str) -> dict:
+    def _variables_to_dictionary(self, variables: str) -> None:
         """
         Convert a string of variables to a dictionary.
 
         Args:
             variables (str): A string of variables.
-
-        Returns:
-            dict: A dictionary representation of the variables string.
         """
         variables_list = variables.split(',')
         variables_dictionary = {}
@@ -93,7 +94,7 @@ class Calculation:
             else:
                 variables_dictionary[key] = value
 
-        return variables_dictionary
+        self.variables_dictionary = variables_dictionary
 
     # Todo - Is this needed?
     def _clean_output_string(self, value) -> str:
