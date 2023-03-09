@@ -76,6 +76,12 @@ class TestScientificCalculator(unittest.TestCase):
         result = self.scientific_calculator.calculate(expression)
         self.assertAlmostEqual(float(result), -0.14159265358979)
 
+    def test_constant_pi_3(self):
+        """Test if the class returns correct answer with given expression."""
+        expression = '-pi-3'
+        result = self.scientific_calculator.calculate(expression)
+        self.assertAlmostEqual(float(result), -6.141592653589793)
+
     # EXCEPTIONS
 
     def test_empty_input(self):
