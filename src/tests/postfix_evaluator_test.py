@@ -133,6 +133,32 @@ class TestPostfixEvaluator(unittest.TestCase):
         self.postfix_evaluator.evaluate(self.calculation)
         self.assertAlmostEqual(float(self.calculation.result), 3.172908552159191)
 
+    # CONSTANTS
+
+    def test_constant_pi(self):
+        """Test if the class returns a correct value of given expression."""
+        self.calculation.result_rpn = 'pi'
+        self.postfix_evaluator.evaluate(self.calculation)
+        self.assertAlmostEqual(float(self.calculation.result), 3.1415926535897932)
+
+    def test_constant_tau(self):
+        """Test if the class returns a correct value of given expression."""
+        self.calculation.result_rpn = 'tau'
+        self.postfix_evaluator.evaluate(self.calculation)
+        self.assertAlmostEqual(float(self.calculation.result), 6.2831853071795864)
+
+    def test_constant_phi(self):
+        """Test if the class returns a correct value of given expression."""
+        self.calculation.result_rpn = 'phi'
+        self.postfix_evaluator.evaluate(self.calculation)
+        self.assertAlmostEqual(float(self.calculation.result), 1.6180339887498948)
+
+    def test_constant_euler(self):
+        """Test if the class returns a correct value of given expression."""
+        self.calculation.result_rpn = 'e'
+        self.postfix_evaluator.evaluate(self.calculation)
+        self.assertAlmostEqual(float(self.calculation.result), 2.7182818284590452)
+
     # EXCEPTIONS
 
     def test_empty_input(self):
