@@ -17,7 +17,6 @@ class ScientificCalculator:
     """
 
     def __init__(self):
-        self.memory = ''
         self.shunting_yard = ShuntingYard()
         self.postfix_evaluator = PostfixEvaluator()
 

@@ -11,7 +11,7 @@ class ShuntingYard:
     """
 
     def __init__(self):
-        self._error_message = ErrorMessages().expression_errors
+        self._error_message = ErrorMessages()
         self._operator_precedence = {'^': 3, '*': 2, '/': 2, '+': 1, '-': 1}
         self._operator_stack = []
         self._output_stack = []
@@ -96,7 +96,7 @@ class ShuntingYard:
             try:
                 self._output_stack.append(self._output_stack.pop() + self._current_symbol)
             except IndexError as exc:
-                raise ExpressionError(self._error_message['not a valid expression']) from exc
+                raise ExpressionError(self._error_message.get('not a valid expression')) from exc
             # Set negative number flag to False (normal state)
             self._is_negative = False
         else:
@@ -162,4 +162,4 @@ class ShuntingYard:
             if self._operator_stack[-1] != '(':
                 self._output_stack.append(self._operator_stack.pop())
             else:
-                raise ExpressionError(self._error_message['not a valid expression'])
+                raise ExpressionError(self._error_message.get('not a valid expression'))

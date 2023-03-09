@@ -34,7 +34,7 @@ class Calculation:
             self.expression = self._convert_dot_to_comma(self.expression)
             self.expression = self._convert_to_lowercase(self.expression)
         else:
-            raise ExpressionError(self._error_messages.expression_errors['expression not found'])
+            raise ExpressionError(self._error_messages.get('expression not found'))
 
         # Handle variables
         if variables:
@@ -82,17 +82,17 @@ class Calculation:
             try:
                 key, value = variable.split('=')
             except ValueError as exc:
-                raise VariableError(self._error_messages.variable_errors['no value']) from exc
+                raise VariableError(self._error_messages.get('no value')) from exc
 
             # Check that there is a value
             if not value:
-                raise VariableError(self._error_messages.variable_errors['no value'])
+                raise VariableError(self._error_messages.get('no value'))
 
             # Check that value is a numeral and add it to dictionary
             try:
                 float(value)
             except ValueError as exc:
-                raise VariableError(self._error_messages.variable_errors['not a number']) from exc
+                raise VariableError(self._error_messages.get('not a variable')) from exc
             else:
                 variables_dictionary[key] = value
 

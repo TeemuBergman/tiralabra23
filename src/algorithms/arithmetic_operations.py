@@ -39,7 +39,7 @@ class ArithmeticOperations:
         }
 
         # Error messages
-        self.error_message = ErrorMessages().operation_errors
+        self.error_message = ErrorMessages()
 
         self.result = None
 
@@ -68,14 +68,14 @@ class ArithmeticOperations:
             try:
                 self.functions[operand](value_1)
             except TypeError as exc:
-                raise OperationError(self.error_message['missing value']) from exc
+                raise OperationError(self.error_message.get('missing value')) from exc
         elif operand in self.arithmetic:
             try:
                 self.arithmetic[operand](value_1, value_2)
             except TypeError as exc:
-                raise OperationError(self.error_message['missing value']) from exc
+                raise OperationError(self.error_message.get('missing value')) from exc
         else:
-            raise OperationError(self.error_message['missing operand'])
+            raise OperationError(self.error_message.get('missing operand'))
 
         # Return the calculation result
         return self.result
@@ -93,7 +93,7 @@ class ArithmeticOperations:
 
     def _perform_division(self, value_1, value_2) -> None:
         if value_2 == 0:
-            raise OperationError(self.error_message['division by zero'])
+            raise OperationError(self.error_message.get('division by zero'))
         self.result = Decimal(value_1 / value_2)
 
     def _perform_exponentitation(self, value_1, value_2) -> None:
@@ -124,12 +124,12 @@ class ArithmeticOperations:
 
     def _perform_sqrt(self, value_1) -> None:
         if value_1 <= 0:
-            raise OperationError(self.error_message['square root'])
+            raise OperationError(self.error_message.get('square root'))
         self.result = Decimal(math.sqrt(value_1))
 
     def _perform_log(self, value_1) -> None:
         if value_1 <= 0:
-            raise OperationError(self.error_message['logarithm'])
+            raise OperationError(self.error_message.get('logarithm'))
         self.result = Decimal(math.log(value_1))
 
     # CONSTANTS
