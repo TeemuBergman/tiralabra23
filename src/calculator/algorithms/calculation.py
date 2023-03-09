@@ -1,6 +1,7 @@
 """Calculation class."""
 
 # Custom classes
+from .constants import Constants
 from utils.error_handling import ErrorMessages, VariableError, ExpressionError
 
 
@@ -15,7 +16,7 @@ class Calculation:
             expression (str): A string representing the mathematical expression.
             variables (str): A string containing the variables_dictionary used in the expression.
         """
-        # Error messages
+        self._constants = Constants()
         self._error_messages = ErrorMessages()
         # Original values
         self.expression = ''
@@ -33,6 +34,8 @@ class Calculation:
             self.expression = self._remove_spaces(expression)
             self.expression = self._convert_dot_to_comma(self.expression)
             self.expression = self._convert_to_lowercase(self.expression)
+            # Process given constants to values in expression
+            self._introduce_constants()
         else:
             raise ExpressionError(self._error_messages.get('expression not found'))
 
@@ -50,8 +53,15 @@ class Calculation:
 
         return self
 
+    def _introduce_constants(self) -> None:
+        """Replace given constant names with values."""
+        # Introduce mathematical constants
+        for key, value in self._constants.mathematical.items():
+            self.expression = self.expression.replace(key, value)
+
     def _introduce_variables(self) -> None:
-        """Replace variables_dictionary in an expression with values from a dictionary."""
+        """Replace given user variable names with values."""
+        # Introduce user variables
         for key, value in self.variables_dictionary.items():
             self.expression = self.expression.replace(key, value)
 

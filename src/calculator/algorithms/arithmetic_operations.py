@@ -1,6 +1,7 @@
 """Arithmetic Operations class."""
 
 import math
+import random
 from decimal import Decimal
 
 # Custom classes
@@ -11,6 +12,8 @@ class ArithmeticOperations:
     """This class handles all arithmetic operations."""
 
     def __init__(self):
+        self.error_message = ErrorMessages()
+
         self.arithmetic = {
             '+': self._perform_add,
             '-': self._perform_subtraction,
@@ -28,18 +31,9 @@ class ArithmeticOperations:
             'cosd': self._perform_cosd,
             'tand': self._perform_tand,
             'sqrt': self._perform_sqrt,
-            'log':  self._perform_log
+            'log':  self._perform_log,
+            'rand':  self._perform_random
         }
-
-        self.constants = {
-            'pi': self._return_pi,
-            'tau': self._return_tau,
-            'phi': self._return_phi,
-            'e': self._return_euler
-        }
-
-        # Error messages
-        self.error_message = ErrorMessages()
 
         self.result = None
 
@@ -62,9 +56,7 @@ class ArithmeticOperations:
             OperationError: If logarithm operation has value smaller than zero.
         """
         # Check the type of given operand
-        if operand in self.constants:
-            self.constants[operand]()
-        elif operand in self.functions:
+        if operand in self.functions:
             try:
                 self.functions[operand](value_1)
             except TypeError as exc:
@@ -132,16 +124,7 @@ class ArithmeticOperations:
             raise OperationError(self.error_message.get('logarithm'))
         self.result = Decimal(math.log(value_1))
 
-    # CONSTANTS
-
-    def _return_pi(self) -> None:
-        self.result = Decimal(3.1415926535897932384626433832795028841971693993751058209749445923)
-
-    def _return_tau(self) -> None:
-        self.result = Decimal(6.2831853071795864769252867665590057683943387987502116419498891846)
-
-    def _return_phi(self) -> None:
-        self.result = Decimal(1.6180339887498948482045868343656381177203091798057628621354486227)
-
-    def _return_euler(self) -> None:
-        self.result = Decimal(2.7182818284590452353602874713526624977572470936999595749669676277)
+    def _perform_random(self, value_1) -> None:
+        if value_1 <= 0:
+            raise OperationError(self.error_message.get('random'))
+        self.result = random.randint(0, value_1)

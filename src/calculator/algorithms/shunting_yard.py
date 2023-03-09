@@ -23,13 +23,11 @@ class ShuntingYard:
 
     def convert(self, calculation: Calculation) -> None:
         """
-        Convert an infix mathematical expression to a Reverse Polish Notation (RPN).
+        Converts an infix mathematical expression to a Reverse Polish Notation (RPN).
 
         Args:
-            calculation (Calculation): The expression to be converted to a RPN.
-
-        Returns:
-            output_queue (str): Reverse Polish Notation (RPN).
+            calculation (Calculation): Takes the Calculation class as argument and saves
+            the result to it as Reverse Polish Notation.
         """
         # List of arithmetic symbols and functions needed for iteration
         symbols = ['+', '-', '*', '/', '^', '(', ')']
@@ -133,6 +131,7 @@ class ShuntingYard:
         """
         # If the symbol is a left parenthesis, push it to the operator stack
         if self._current_symbol in '(':
+            # Check if symbol it is a negation
             if self._operator_stack and self._operator_stack[-1] in '-':
                 self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
             else:

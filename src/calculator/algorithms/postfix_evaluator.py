@@ -57,11 +57,7 @@ class PostfixEvaluator:
 
             # If the symbol is not a number, then it must be a operator or a function
             else:
-                if symbol in self.operations.constants:
-                    # If symbol is a constant, pop nothing
-                    value_2 = None
-                    value_1 = None
-                elif symbol in self.operations.functions:
+                if symbol in self.operations.functions:
                     # If symbol is a function, pop only one value
                     value_2 = None
                     value_1 = self.stack.pop()
