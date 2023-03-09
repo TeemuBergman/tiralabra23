@@ -34,7 +34,7 @@ def pep(ctx):
 
 @task
 def coverage(ctx):
-    ctx.run('coverage run --branch -m pytest src', pty=IS_LINUX)
+    ctx.run('coverage run --branch -m pytest src -W ignore::DeprecationWarning', pty=IS_LINUX)
     ctx.run('coverage report -m', pty=IS_LINUX)
     ctx.run('coverage html', pty=IS_LINUX)
 
