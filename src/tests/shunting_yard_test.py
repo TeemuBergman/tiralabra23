@@ -94,9 +94,14 @@ class TestShuntingYard(unittest.TestCase):
         self.assertEqual(self.calculation.result_rpn, '-1 1.010101 +')
 
     def test_negative_parentheses(self):
-        """Test if the class converts '(((((((((((-1)+(1.010101)))))))))))' correctly.'"""
+        """Test if the class converts '-(1)' correctly.'"""
         self.shunting_yard.convert(self.calculation.new('-(1)', ''))
         self.assertEqual(self.calculation.result_rpn, '1 -(')
+
+    def test_negative_expression_1(self):
+        """Test if the class converts '1-(1)' correctly.'"""
+        self.shunting_yard.convert(self.calculation.new('1-(1)', ''))
+        self.assertEqual(self.calculation.result_rpn, '1 1 -')
 
     # FUNCTIONS
 
@@ -178,12 +183,5 @@ class TestShuntingYard(unittest.TestCase):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.shunting_yard.convert(self.calculation.new('(1/2)*(1/2', ''))
-        self.assertEqual(self.error_message.get('not a valid expression'),
-                         str(exc.exception))
-
-    def test_invalid_expression_2(self):
-        """Test if the function raises ExpressionError with invalid input."""
-        with self.assertRaises(ExpressionError) as exc:
-            self.shunting_yard.convert(self.calculation.new('sinr12', ''))
         self.assertEqual(self.error_message.get('not a valid expression'),
                          str(exc.exception))

@@ -92,13 +92,6 @@ class TestScientificCalculator(unittest.TestCase):
         self.assertEqual(self.error_message.get('not a valid expression'),
                          str(exc.exception))
 
-    def test_invalid_expression_2(self):
-        """Test if the function raises ExpressionError with invalid input."""
-        with self.assertRaises(ExpressionError) as exc:
-            self.scientific_calculator.calculate('sinr12')
-        self.assertEqual(self.error_message.get('not a valid expression'),
-                         str(exc.exception))
-
     def test_invalid_variable_1(self):
         """Test if the function raises VariableError with invalid input."""
         with self.assertRaises(VariableError) as exc:

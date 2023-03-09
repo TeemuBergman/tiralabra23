@@ -47,7 +47,7 @@ class PostfixEvaluator:
                     raise ExpressionError(self.error_message.get('not a number')) from exc
 
             # If symbol has a length > 1 and its second character is a numeric,
-            # its a negative value and not a negation (that is an operator)
+            # it is a negative value and not a negation (that is an operator)
             elif len(symbol) > 1 and symbol[1].isnumeric():
                 try:
                     # Convert the symbol to a Decimal and push it into the stack
