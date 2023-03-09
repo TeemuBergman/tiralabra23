@@ -4,7 +4,7 @@ import math
 from decimal import Decimal
 
 # Custom classes
-from .error_handling import OperationError
+from .error_handling import ErrorMessages, OperationError
 
 
 class ArithmeticOperations:
@@ -38,6 +38,9 @@ class ArithmeticOperations:
             'e': self._return_euler
         }
 
+        # Error messages
+        self.error_message = ErrorMessages().operation_errors
+
         self.result = None
 
     def perform_on(self, operand: str, value_1: Decimal = None, value_2: Decimal = None) -> Decimal:
@@ -66,7 +69,7 @@ class ArithmeticOperations:
         elif operand in self.arithmetic:
             self.arithmetic[operand](value_1, value_2)
         else:
-            raise OperationError("Error: Invalid or missing operator, function or constant!")
+            raise OperationError(self.error_message['missing operand'])
 
         # Return the calculation result
         return self.result
@@ -84,7 +87,7 @@ class ArithmeticOperations:
 
     def _perform_division(self, value_1, value_2) -> None:
         if value_2 == 0:
-            raise OperationError("Error: Division by zero!")
+            raise OperationError(self.error_message['division by zero'])
         self.result = Decimal(value_1 / value_2)
 
     def _perform_exponentitation(self, value_1, value_2) -> None:
@@ -115,12 +118,12 @@ class ArithmeticOperations:
 
     def _perform_sqrt(self, value_1) -> None:
         if value_1 <= 0:
-            raise OperationError('Error: Square root has a value equal or smaller than zero!')
+            raise OperationError(self.error_message['square root'])
         self.result = Decimal(math.sqrt(value_1))
 
     def _perform_log(self, value_1) -> None:
         if value_1 <= 0:
-            raise OperationError('Error: Logarithm has a value equal or smaller than zero!')
+            raise OperationError(self.error_message['logarithm'])
         self.result = Decimal(math.log(value_1))
 
     # CONSTANTS

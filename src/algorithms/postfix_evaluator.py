@@ -3,7 +3,7 @@
 from decimal import Decimal, InvalidOperation
 
 # Custom classes
-from .error_handling import ExpressionError
+from .error_handling import ErrorMessages, ExpressionError
 from .calculation import Calculation
 from .arithmetic_operations import ArithmeticOperations
 
@@ -14,6 +14,7 @@ class PostfixEvaluator:
     """
 
     def __init__(self):
+        self.error_message = ErrorMessages().expression_errors
         self.operations = ArithmeticOperations()
         self.stack = []
 
@@ -30,7 +31,7 @@ class PostfixEvaluator:
         """
         # Check that expression exists
         if not calculation.result_rpn:
-            raise ExpressionError("Error: Expression not found!")
+            raise ExpressionError(self.error_message['expression not found'])
 
         # Split the input expression into symbols using whitespace as a separator
         symbols = calculation.result_rpn.split(' ')
@@ -43,7 +44,7 @@ class PostfixEvaluator:
                     # Convert the symbol to a Decimal and push it into the stack
                     self.stack.append(Decimal(symbol))
                 except InvalidOperation as exc:
-                    raise ExpressionError('Error: Not a rational number!') from exc
+                    raise ExpressionError(self.error_message['not a number']) from exc
 
             # If symbol has a length > 1 and its second character is a numeric,
             # its a negative value and not a negation (that is an operator)
@@ -52,7 +53,7 @@ class PostfixEvaluator:
                     # Convert the symbol to a Decimal and push it into the stack
                     self.stack.append(Decimal(symbol))
                 except InvalidOperation as exc:
-                    raise ExpressionError('Error: Not a rational number!') from exc
+                    raise ExpressionError(self.error_message['not a number']) from exc
 
             # If the symbol is not a number, then it must be a operator or a function
             else:
@@ -69,7 +70,7 @@ class PostfixEvaluator:
                     value_2 = self.stack.pop()
                     value_1 = self.stack.pop()
                 else:
-                    raise ExpressionError('Error: Not a valid expression!')
+                    raise ExpressionError(self.error_message['not valid expression'])
 
                 # Perform the operation with the current symbol and two values {None, rational number}
                 result = self.operations.perform_on(symbol, value_1, value_2)

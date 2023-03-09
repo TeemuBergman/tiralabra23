@@ -3,7 +3,7 @@
 import unittest
 
 # Custom classes
-from algorithms.error_handling import ExpressionError
+from algorithms.error_handling import ErrorMessages, ExpressionError
 from algorithms.calculation import Calculation
 from algorithms.shunting_yard import ShuntingYard
 
@@ -12,6 +12,7 @@ class TestShuntingYard(unittest.TestCase):
     """Tests for ShuntingYard class."""
 
     def setUp(self):
+        self.error_message = ErrorMessages().expression_errors
         self.calculation = Calculation()
         self.shunting_yard = ShuntingYard()
 
@@ -170,16 +171,19 @@ class TestShuntingYard(unittest.TestCase):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.shunting_yard.convert(self.calculation.new('', ''))
-        self.assertEqual('Error: Expression not found!', str(exc.exception))
+        self.assertEqual(self.error_message['expression not found'],
+                         str(exc.exception))
 
     def test_invalid_expression_1(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.shunting_yard.convert(self.calculation.new('(1/2)*(1/2', ''))
-        self.assertEqual('Error: Not a valid expression!', str(exc.exception))
+        self.assertEqual(self.error_message['not valid expression'],
+                         str(exc.exception))
 
     def test_invalid_expression_2(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.shunting_yard.convert(self.calculation.new('sinr12', ''))
-        self.assertEqual('Error: Not a valid expression or syntax!', str(exc.exception))
+        self.assertEqual(self.error_message['not valid expression'],
+                         str(exc.exception))

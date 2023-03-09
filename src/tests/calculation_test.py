@@ -3,7 +3,7 @@
 import unittest
 
 # Custom classes
-from algorithms.error_handling import VariableError
+from algorithms.error_handling import ErrorMessages, VariableError
 from algorithms.calculation import Calculation
 
 
@@ -13,6 +13,7 @@ class TestCalculation(unittest.TestCase):
     # TESTS INIT
 
     def setUp(self):
+        self.error_message = ErrorMessages().variable_errors
         self.calculation = Calculation()
 
     # BASIC TESTS
@@ -89,16 +90,19 @@ class TestCalculation(unittest.TestCase):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             self.calculation.new('1+1', 'x=,')
-        self.assertEqual('Error: Variable \'x\' has a missing value!', str(exc.exception))
+        self.assertEqual(self.error_message['no value'],
+                         str(exc.exception))
 
     def test_invalid_variables_2(self):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             self.calculation.new('1+1', 'x=%')
-        self.assertEqual('Error: Value \'%\' is not a number!', str(exc.exception))
+        self.assertEqual(self.error_message['not a number'],
+                         str(exc.exception))
 
     def test_invalid_variables_3(self):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             self.calculation.new('1+1', 'x=1,y')
-        self.assertEqual('Error: Variable(s) with value missing!', str(exc.exception))
+        self.assertEqual(self.error_message['no value'],
+                         str(exc.exception))

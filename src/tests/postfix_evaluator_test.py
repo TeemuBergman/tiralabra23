@@ -4,7 +4,7 @@ import unittest
 
 # Custom classes
 from algorithms.calculation import Calculation
-from algorithms.error_handling import ExpressionError
+from algorithms.error_handling import ErrorMessages, ExpressionError
 from algorithms.postfix_evaluator import PostfixEvaluator
 
 
@@ -12,6 +12,7 @@ class TestPostfixEvaluator(unittest.TestCase):
     """Tests for PostfixEvaluator class."""
 
     def setUp(self):
+        self.error_message = ErrorMessages().expression_errors
         self.calculation = Calculation()
         self.postfix_evaluator = PostfixEvaluator()
 
@@ -166,32 +167,37 @@ class TestPostfixEvaluator(unittest.TestCase):
         with self.assertRaises(ExpressionError) as exc:
             self.calculation.result_rpn = ''
             self.postfix_evaluator.evaluate(self.calculation)
-        self.assertEqual('Error: Expression not found!', str(exc.exception))
+        self.assertEqual(self.error_message['expression not found'],
+                         str(exc.exception))
 
     def test_invalid_input_1(self):
         """Test if the function raises OperationError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.calculation.result_rpn = '1 2 / 1 2 / ( *'
             self.postfix_evaluator.evaluate(self.calculation)
-        self.assertEqual('Error: Not a valid expression!', str(exc.exception))
+        self.assertEqual(self.error_message['not valid expression'],
+                         str(exc.exception))
 
     def test_invalid_input_2(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.calculation.result_rpn = 'sin'
             self.postfix_evaluator.evaluate(self.calculation)
-        self.assertEqual('Error: Not a valid expression!', str(exc.exception))
+        self.assertEqual(self.error_message['not valid expression'],
+                         str(exc.exception))
 
     def test_invalid_decimals_1(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.calculation.result_rpn = '1.1.1.1'
             self.postfix_evaluator.evaluate(self.calculation)
-        self.assertEqual('Error: Not a rational number!', str(exc.exception))
+        self.assertEqual(self.error_message['not a number'],
+                         str(exc.exception))
 
     def test_invalid_decimals_2(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.calculation.result_rpn = '-2..2'
             self.postfix_evaluator.evaluate(self.calculation)
-        self.assertEqual('Error: Not a rational number!', str(exc.exception))
+        self.assertEqual(self.error_message['not a number'],
+                         str(exc.exception))

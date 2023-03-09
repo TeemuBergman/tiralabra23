@@ -1,7 +1,7 @@
 """Calculation class."""
 
 # Custom classes
-from .error_handling import VariableError, ExpressionError
+from .error_handling import ErrorMessages, VariableError, ExpressionError
 
 
 class Calculation:
@@ -15,6 +15,8 @@ class Calculation:
             expression (str): A string representing the mathematical expression.
             variables (str): A string containing the variables_dictionary used in the expression.
         """
+        # Error messages
+        self._error_messages = ErrorMessages()
         # Original values
         self.expression = ''
         self.variables = ''
@@ -32,7 +34,7 @@ class Calculation:
             self.expression = self._convert_dot_to_comma(self.expression)
             self.expression = self._convert_to_lowercase(self.expression)
         else:
-            raise ExpressionError('Error: Expression not found!')
+            raise ExpressionError(self._error_messages.expression_errors['expression not found'])
 
         # Handle variables
         if variables:
@@ -80,17 +82,17 @@ class Calculation:
             try:
                 key, value = variable.split('=')
             except ValueError as exc:
-                raise VariableError('Error: Variable(s) with value missing!') from exc
+                raise VariableError(self._error_messages.variable_errors['no value']) from exc
 
             # Check that there is a value
             if not value:
-                raise VariableError(f'Error: Variable \'{key}\' has a missing value!')
+                raise VariableError(self._error_messages.variable_errors['no value'])
 
             # Check that value is a numeral and add it to dictionary
             try:
                 float(value)
             except ValueError as exc:
-                raise VariableError(f'Error: Value \'{value}\' is not a number!') from exc
+                raise VariableError(self._error_messages.variable_errors['not a number']) from exc
             else:
                 variables_dictionary[key] = value
 
