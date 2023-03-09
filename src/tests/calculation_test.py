@@ -3,8 +3,8 @@
 import unittest
 
 # Custom classes
-from algorithms.error_handling import ErrorMessages, VariableError
-from algorithms.calculation import Calculation
+from utils.error_handling import ErrorMessages, VariableError
+from calculator.algorithms.calculation import Calculation
 
 
 class TestCalculation(unittest.TestCase):

@@ -3,8 +3,8 @@
 import unittest
 
 # Custom classes
-from algorithms.error_handling import ErrorMessages, OperationError
-from algorithms.arithmetic_operations import ArithmeticOperations
+from utils.error_handling import ErrorMessages, OperationError
+from calculator.algorithms.arithmetic_operations import ArithmeticOperations
 
 
 class TestArithmeticOperations(unittest.TestCase):

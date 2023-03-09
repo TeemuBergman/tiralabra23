@@ -3,7 +3,7 @@
 from decimal import Decimal, InvalidOperation
 
 # Custom classes
-from .error_handling import ErrorMessages, ExpressionError
+from utils.error_handling import ErrorMessages, ExpressionError
 from .calculation import Calculation
 from .arithmetic_operations import ArithmeticOperations
 

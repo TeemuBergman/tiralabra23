@@ -3,9 +3,9 @@
 import unittest
 
 # Custom classes
-from algorithms.error_handling import ErrorMessages, ExpressionError
-from algorithms.calculation import Calculation
-from algorithms.shunting_yard import ShuntingYard
+from utils.error_handling import ErrorMessages, ExpressionError
+from calculator.algorithms.calculation import Calculation
+from calculator.algorithms.shunting_yard import ShuntingYard
 
 
 class TestShuntingYard(unittest.TestCase):

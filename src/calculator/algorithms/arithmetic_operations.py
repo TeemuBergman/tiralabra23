@@ -4,7 +4,7 @@ import math
 from decimal import Decimal
 
 # Custom classes
-from .error_handling import ErrorMessages, OperationError
+from utils.error_handling import ErrorMessages, OperationError
 
 
 class ArithmeticOperations:

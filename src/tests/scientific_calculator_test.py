@@ -3,9 +3,9 @@
 import unittest
 
 # Custom classes
-from algorithms.error_handling import ErrorMessages, ExpressionError, VariableError, OperationError
-from algorithms.calculation import Calculation
-from algorithms.scientific_calculator import ScientificCalculator
+from utils.error_handling import ErrorMessages, ExpressionError, VariableError, OperationError
+from calculator.algorithms.calculation import Calculation
+from calculator.scientific_calculator import ScientificCalculator
 
 
 class TestScientificCalculator(unittest.TestCase):

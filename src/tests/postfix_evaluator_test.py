@@ -3,9 +3,9 @@
 import unittest
 
 # Custom classes
-from algorithms.calculation import Calculation
-from algorithms.error_handling import ErrorMessages, ExpressionError
-from algorithms.postfix_evaluator import PostfixEvaluator
+from calculator.algorithms.calculation import Calculation
+from utils.error_handling import ErrorMessages, ExpressionError
+from calculator.algorithms.postfix_evaluator import PostfixEvaluator
 
 
 class TestPostfixEvaluator(unittest.TestCase):

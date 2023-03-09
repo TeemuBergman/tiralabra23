@@ -3,9 +3,9 @@
 from decimal import Decimal
 
 # Custom classes
-from .postfix_evaluator import PostfixEvaluator
-from .shunting_yard import ShuntingYard
-from .calculation import Calculation
+from .algorithms.postfix_evaluator import PostfixEvaluator
+from .algorithms.shunting_yard import ShuntingYard
+from .algorithms.calculation import Calculation
 
 
 class ScientificCalculator:

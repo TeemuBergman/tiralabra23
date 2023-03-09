@@ -5,7 +5,7 @@ import pathlib
 import pygubu
 
 # Custom classes
-from algorithms.scientific_calculator import ScientificCalculator
+from calculator.scientific_calculator import ScientificCalculator
 from .gui_functions import GUIFunctions
 
 # Set GUI constants
