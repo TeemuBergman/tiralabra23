@@ -40,14 +40,14 @@ class ArithmeticOperations:
 
         self.result = None
 
-    def perform_on(self, operator: str, value_1 = None, value_2 = None) -> Decimal:
+    def perform_on(self, operand: str, value_1: Decimal = None, value_2: Decimal = None) -> Decimal:
         """
-        Perform various mathematical operations.
+        Perform calculations with given operators, functions or constants on 0-2 values {None, Decimal}.
 
         Args:
-            operator (str): The symbol representing the desired operation (+, -, *, /, or ^).
-            value_1 (Decimal): The first value to be operated on.
-            value_2 (Decimal): The second value to be operated on.
+            operand (str): Representing the desired operator, function or constant.
+            value_1 (Decimal): The first value to be perform calculation on.
+            value_2 (Decimal): The second value to be perform calculation  on.
 
         Returns:
             result (Decimal): The result of the operation, as a float.
@@ -58,17 +58,17 @@ class ArithmeticOperations:
             OperationError: If square root operation has value smaller than zero.
             OperationError: If logarithm operation has value smaller than zero.
         """
-        # Perform arithmetics with given values and operator
-        if operator in self.constants:
-            self.constants[operator]()
-        elif operator in self.functions:
-            self.functions[operator](value_1)
-        elif operator in self.arithmetic:
-            self.arithmetic[operator](value_1, value_2)
+        # Check the type of given operand
+        if operand in self.constants:
+            self.constants[operand]()
+        elif operand in self.functions:
+            self.functions[operand](value_1)
+        elif operand in self.arithmetic:
+            self.arithmetic[operand](value_1, value_2)
         else:
-            raise OperationError("Error: Invalid or missing operator or function!")
+            raise OperationError("Error: Invalid or missing operator, function or constant!")
 
-        # Return the operation result
+        # Return the calculation result
         return self.result
 
     # ARITHMETIC
@@ -83,10 +83,9 @@ class ArithmeticOperations:
         self.result = Decimal(value_1 * value_2)
 
     def _perform_division(self, value_1, value_2) -> None:
-        try:
-            self.result = Decimal(value_1 / value_2)
-        except ZeroDivisionError as exc:
-            raise OperationError("Error: Division by zero!") from exc
+        if value_2 == 0:
+            raise OperationError("Error: Division by zero!")
+        self.result = Decimal(value_1 / value_2)
 
     def _perform_exponentitation(self, value_1, value_2) -> None:
         self.result = Decimal(value_1 ** value_2)
@@ -115,13 +114,13 @@ class ArithmeticOperations:
         self.result = Decimal(math.tan(math.radians(value_1)))
 
     def _perform_sqrt(self, value_1) -> None:
-        if value_1 < 0:
-            raise OperationError('Error: Square root operation has value smaller than zero!')
+        if value_1 <= 0:
+            raise OperationError('Error: Square root has a value equal or smaller than zero!')
         self.result = Decimal(math.sqrt(value_1))
 
     def _perform_log(self, value_1) -> None:
-        if value_1 < 0:
-            raise OperationError('Error: Logarithm operation has value smaller than zero!')
+        if value_1 <= 0:
+            raise OperationError('Error: Logarithm has a value equal or smaller than zero!')
         self.result = Decimal(math.log(value_1))
 
     # CONSTANTS
