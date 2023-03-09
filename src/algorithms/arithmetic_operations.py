@@ -65,9 +65,15 @@ class ArithmeticOperations:
         if operand in self.constants:
             self.constants[operand]()
         elif operand in self.functions:
-            self.functions[operand](value_1)
+            try:
+                self.functions[operand](value_1)
+            except TypeError as exc:
+                raise OperationError(self.error_message['missing value']) from exc
         elif operand in self.arithmetic:
-            self.arithmetic[operand](value_1, value_2)
+            try:
+                self.arithmetic[operand](value_1, value_2)
+            except TypeError as exc:
+                raise OperationError(self.error_message['missing value']) from exc
         else:
             raise OperationError(self.error_message['missing operand'])
 
