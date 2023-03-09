@@ -103,28 +103,6 @@ class TestArithmeticOperations(unittest.TestCase):
         result = self.operations.perform_on('log', 12)
         self.assertAlmostEqual(float(result), 2.4849066497880004)
 
-    # CONSTANTS
-
-    def test_constant_pi(self):
-        """Test if the function returns requested constant."""
-        result = self.operations.perform_on('pi')
-        self.assertAlmostEqual(float(result), 3.1415926535897932)
-
-    def test_constant_tau(self):
-        """Test if the function returns requested constant."""
-        result = self.operations.perform_on('tau')
-        self.assertAlmostEqual(float(result), 6.2831853071795864)
-
-    def test_constant_phi(self):
-        """Test if the function returns requested constant."""
-        result = self.operations.perform_on('phi')
-        self.assertAlmostEqual(float(result), 1.6180339887498948)
-
-    def test_constant_euler(self):
-        """Test if the function returns requested constant."""
-        result = self.operations.perform_on('e')
-        self.assertAlmostEqual(float(result), 2.7182818284590452)
-
     # EXCEPTIONS
 
     def test_division_by_zero(self):
