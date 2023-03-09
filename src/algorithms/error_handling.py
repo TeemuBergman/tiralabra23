@@ -17,23 +17,37 @@ class ErrorMessages:
     """This class contains all the error messages."""
 
     def __init__(self):
-        _msg_prefix = 'Err: '
+        self._msg_prefix = 'Err: '
+        self._msg_postfix = '!'
 
-        self.operation_errors = {
-            'division by zero': f'{_msg_prefix}Division by zero!',
-            'square root':      f'{_msg_prefix}Square root has a value equal or smaller than zero!',
-            'logarithm':        f'{_msg_prefix}Logarithm has a value equal or smaller than zero!',
-            'missing operand':  f'{_msg_prefix}Invalid or missing operator, function or constant!',
-            'missing value':    f'{_msg_prefix}Invalid or missing value!',
+        self._operation_errors = {
+            'division by zero': 'Division by zero',
+            'square root':      'Square root has a value equal or smaller than zero',
+            'logarithm':        'Logarithm has a value equal or smaller than zero',
+            'missing operand':  'Invalid or missing operator, function or constant',
+            'missing value':    'Invalid or missing value'
         }
 
-        self.expression_errors = {
-            'expression not found': f'{_msg_prefix}Expression not found!',
-            'not a valid expression': f'{_msg_prefix}Not a valid expression!',
-            'not a number':  f'{_msg_prefix}Not a rational number!',
+        self._expression_errors = {
+            'expression not found': 'Expression not found',
+            'not a valid expression': 'Not a valid expression',
+            'not a number':  'Not a rational number'
         }
 
-        self.variable_errors = {
-            'no value': f'{_msg_prefix}Variable has no value!',
-            'not a number': f'{_msg_prefix}Variable value is not a rational number!',
+        self._variable_errors = {
+            'no value': 'Variable has no value',
+            'not a variable': 'Variable value is not a rational number'
         }
+
+    def get(self, error: str) -> str:
+        """Finds a correct error message and adds a prefix and postfix to it."""
+        if error in self._operation_errors:
+            error_message = self._operation_errors[error]
+        elif error in self._expression_errors:
+            error_message = self._expression_errors[error]
+        elif error in self._variable_errors:
+            error_message = self._variable_errors[error]
+        else:
+            return 'Error message not found!'
+
+        return f'{self._msg_prefix}{error_message}{self._msg_postfix}'
