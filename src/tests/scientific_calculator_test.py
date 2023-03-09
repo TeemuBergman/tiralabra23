@@ -51,16 +51,30 @@ class TestScientificCalculator(unittest.TestCase):
     # FUNCTIONS
 
     def test_functions_1(self):
-        """Test if the class returns correct answer with simple input."""
+        """Test if the class returns correct answer with given expression."""
         expression = 'sinr(sqrt(12))*23'
         result = self.scientific_calculator.calculate(expression)
         self.assertAlmostEqual(float(result), -7.289784753629491631521375439)
 
     def test_functions_2(self):
-        """Test if the class returns correct answer with simple input."""
+        """Test if the class returns correct answer with given expression."""
         expression = 'sqrt(6^64)'
         result = self.scientific_calculator.calculate(expression)
         self.assertAlmostEqual(float(result), 7.958661109946401e+24)
+
+    # CONSTANTS
+
+    def test_constant_pi_1(self):
+        """Test if the class returns correct answer with given expression."""
+        expression = 'pi'
+        result = self.scientific_calculator.calculate(expression)
+        self.assertAlmostEqual(float(result), 3.141592653589793)
+
+    def test_constant_pi_2(self):
+        """Test if the class returns correct answer with given expression."""
+        expression = '3-(pi)'
+        result = self.scientific_calculator.calculate(expression)
+        self.assertAlmostEqual(float(result), -0.14159265358979)
 
     # EXCEPTIONS
 

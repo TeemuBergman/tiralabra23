@@ -104,14 +104,19 @@ class TestShuntingYard(unittest.TestCase):
         self.assertEqual(self.calculation.result_rpn, '1 1 -')
 
     def test_negative_expression_2(self):
-        """Test if the class converts '1-(1)' correctly.'"""
+        """Test if the class converts '-(1-(1))' correctly.'"""
         self.shunting_yard.convert(self.calculation.new('-(1-(1))', ''))
         self.assertEqual(self.calculation.result_rpn, '1 1 - -(')
 
     def test_negative_expression_3(self):
-        """Test if the class converts '1-(1)' correctly.'"""
+        """Test if the class converts '-(1/2)-2' correctly.'"""
         self.shunting_yard.convert(self.calculation.new('-(1/2)-2', ''))
         self.assertEqual(self.calculation.result_rpn, '1 2 / -( 2 -')
+
+    def test_negative_expression_4(self):
+        """Test if the class converts '-(-1-(-1))' correctly.'"""
+        self.shunting_yard.convert(self.calculation.new('-(-1-(-1))', ''))
+        self.assertEqual(self.calculation.result_rpn, '-1 -1 - -(')
 
     # FUNCTIONS
 
