@@ -16,8 +16,8 @@ class ShuntingYard:
         self._operator_stack = []
         self._output_stack = []
         self._current_symbol = ''
-        self._next_is_a_value = False
-        self._previous_is_a_value = False
+        self._previous_symbol = ''
+        self._next_symbol = ''
         self._negative_value = False
         self._decimal_value = False
         self.operator_stack_has_function = False
@@ -40,7 +40,7 @@ class ShuntingYard:
 
             # Check if next symbol is a number
             if step < expression_length:
-                self._next_is_a_value = calculation.expression[step + 1].isnumeric()
+                self._next_symbol = calculation.expression[step + 1]
 
             # Process expressions different symbols
             if self._current_symbol == '-':
@@ -53,11 +53,11 @@ class ShuntingYard:
                 self._process_operators()
             elif self._current_symbol in ('(', ')'):
                 self._process_parenthesis()
-            else:  # If it's not any above, then it must be an function
+            else:  # If it's not any above, then it must be a function
                 self._process_functions()
 
-            # Check if current symbol is a number
-            self._previous_is_a_value = self._current_symbol.isnumeric()
+            # Save current symbol as previous
+            self._previous_symbol = symbol
 
         # Pop any remaining operators from the stack and add them to the output
         self._remaining_operators()
@@ -75,8 +75,8 @@ class ShuntingYard:
 
     def _process_negative_values(self) -> None:
         """Handles all the negative values."""
-        # Check if previous symbol is not a number and next one is
-        if not self._previous_is_a_value and self._next_is_a_value:
+        # Check that the previous symbol is not ')' or number and the next one is a number
+        if not self._previous_symbol == ')' and not self._previous_symbol.isnumeric() and self._next_symbol.isnumeric():
             # If true, append negative operator to output_stack
             self._output_stack.append(self._current_symbol)
             # Set state of negative integer flag to True
@@ -86,14 +86,14 @@ class ShuntingYard:
 
     def _process_decimals(self) -> None:
         """Handles dots in decimal values."""
-        if self._previous_is_a_value:
+        if  self._previous_symbol.isnumeric():
             self._output_stack.append(self._output_stack.pop() + self._current_symbol)
         self._decimal_value = True
 
     def _process_values(self) -> None:
         """Handles all values."""
         # Check if previous symbol is a number or the negative value state is True
-        if self._previous_is_a_value or self._negative_value or self._decimal_value:
+        if self._previous_symbol.isnumeric() or self._negative_value or self._decimal_value:
             # If true, pop output_stack and add it back with current_symbol
             try:
                 self._output_stack.append(self._output_stack.pop() + self._current_symbol)
@@ -136,11 +136,8 @@ class ShuntingYard:
         """
         # If the symbol is a left parenthesis, push it to the operator stack
         if self._current_symbol in '(':
-            # ( - ( 1 - ( 1 ) ) )
-            # Check if the symbol before current one is a negation
-            if self._operator_stack and self._output_stack and self._operator_stack[-1] in '-':
-                self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
-            elif self._operator_stack and self._operator_stack[-1] in '-':
+            # Check if the negative operator is the first in expression
+            if self._operator_stack and not self._output_stack and self._operator_stack[-1] in '-':
                 self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
             else:
                 self._operator_stack.append(self._current_symbol)

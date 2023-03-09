@@ -103,6 +103,16 @@ class TestShuntingYard(unittest.TestCase):
         self.shunting_yard.convert(self.calculation.new('1-(1)', ''))
         self.assertEqual(self.calculation.result_rpn, '1 1 -')
 
+    def test_negative_expression_2(self):
+        """Test if the class converts '1-(1)' correctly.'"""
+        self.shunting_yard.convert(self.calculation.new('-(1-(1))', ''))
+        self.assertEqual(self.calculation.result_rpn, '1 1 - -(')
+
+    def test_negative_expression_3(self):
+        """Test if the class converts '1-(1)' correctly.'"""
+        self.shunting_yard.convert(self.calculation.new('-(1/2)-2', ''))
+        self.assertEqual(self.calculation.result_rpn, '1 2 / -( 2 -')
+
     # FUNCTIONS
 
     def test_function_sine_1(self):
