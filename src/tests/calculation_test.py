@@ -13,7 +13,7 @@ class TestCalculation(unittest.TestCase):
     # TESTS INIT
 
     def setUp(self):
-        self.error_message = ErrorMessages().variable_errors
+        self.error_message = ErrorMessages()
         self.calculation = Calculation()
 
     # BASIC TESTS
@@ -90,19 +90,19 @@ class TestCalculation(unittest.TestCase):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             self.calculation.new('1+1', 'x=,')
-        self.assertEqual(self.error_message['no value'],
+        self.assertEqual(self.error_message.get('no value'),
                          str(exc.exception))
 
     def test_invalid_variables_2(self):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             self.calculation.new('1+1', 'x=%')
-        self.assertEqual(self.error_message['not a number'],
+        self.assertEqual(self.error_message.get('not a variable'),
                          str(exc.exception))
 
     def test_invalid_variables_3(self):
         """Test if the function returns correct variables."""
         with self.assertRaises(VariableError) as exc:
             self.calculation.new('1+1', 'x=1,y')
-        self.assertEqual(self.error_message['no value'],
+        self.assertEqual(self.error_message.get('no value'),
                          str(exc.exception))

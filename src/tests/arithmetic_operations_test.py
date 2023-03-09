@@ -11,7 +11,7 @@ class TestArithmeticOperations(unittest.TestCase):
     """Tests for ArithmeticOperations class."""
 
     def setUp(self):
-        self.error_message = ErrorMessages().operation_errors
+        self.error_message = ErrorMessages()
         self.operations = ArithmeticOperations()
 
     # BASIC TESTS
@@ -131,138 +131,138 @@ class TestArithmeticOperations(unittest.TestCase):
         """Test if the function can divide with zero"""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('/', 1, 0)
-        self.assertEqual(self.error_message['division by zero'],
+        self.assertEqual(self.error_message.get('division by zero'),
                          str(exc.exception))
 
     def test_no_operator(self):
         """Test if the function works with no operator at all."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('', 0)
-        self.assertEqual(self.error_message['missing operand'],
+        self.assertEqual(self.error_message.get('missing operand'),
                          str(exc.exception))
 
     def test_invalid_operator_1(self):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('%', 1, 0)
-        self.assertEqual(self.error_message['missing operand'],
+        self.assertEqual(self.error_message.get('missing operand'),
                          str(exc.exception))
 
     def test_invalid_operator_2(self):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('s', 4, 4)
-        self.assertEqual(self.error_message['missing operand'],
+        self.assertEqual(self.error_message.get('missing operand'),
                          str(exc.exception))
 
     def test_negative_square_root(self):
         """Test if the function resolves negative values to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('sqrt', -4, 0)
-        self.assertEqual(self.error_message['square root'],
+        self.assertEqual(self.error_message.get('square root'),
                          str(exc.exception))
 
     def test_negative_logarithm(self):
         """Test if the function resolves negative values to error."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('log', -4, 0)
-        self.assertEqual(self.error_message['logarithm'],
+        self.assertEqual(self.error_message.get('logarithm'),
                          str(exc.exception))
 
     def test_function_sine_radians_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('sinr')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_function_sine_degrees_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('sind')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_function_cosine_radians_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('cosr')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_function_cosine_degrees_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('cosd')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_function_tangent_radians_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('tanr')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_function_tangent_degrees_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('tand')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_function_logarithm_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('log')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_function_square_root_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('sqrt')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_function_negation_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('-(')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_operation_addition_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('+')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_operation_subtraction_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('-')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_operation_multiplication_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('*')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_operation_division_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('/')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
     def test_operation_exponentitation_error(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('^')
-        self.assertEqual(self.error_message['missing value'],
+        self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
