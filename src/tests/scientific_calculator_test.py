@@ -82,21 +82,21 @@ class TestScientificCalculator(unittest.TestCase):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('1%1')
-        self.assertEqual(self.error_message.expression_errors['not valid expression'],
+        self.assertEqual(self.error_message.expression_errors['not a valid expression'],
                          str(exc.exception))
 
     def test_invalid_expression_1(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('(1/2)*(1/2')
-        self.assertEqual(self.error_message.expression_errors['not valid expression'],
+        self.assertEqual(self.error_message.expression_errors['not a valid expression'],
                          str(exc.exception))
 
     def test_invalid_expression_2(self):
         """Test if the function raises ExpressionError with invalid input."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('sinr12')
-        self.assertEqual(self.error_message.expression_errors['not valid expression'],
+        self.assertEqual(self.error_message.expression_errors['not a valid expression'],
                          str(exc.exception))
 
     def test_invalid_variable_1(self):
@@ -124,7 +124,7 @@ class TestScientificCalculator(unittest.TestCase):
         """Test if the function resolves negative values to error."""
         with self.assertRaises(ExpressionError) as exc:
             self.scientific_calculator.calculate('x+1', '')
-        self.assertEqual(self.error_message.expression_errors['not valid expression'],
+        self.assertEqual(self.error_message.expression_errors['not a valid expression'],
                          str(exc.exception))
 
     def test_negative_square_root(self):

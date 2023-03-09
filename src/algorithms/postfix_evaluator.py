@@ -70,7 +70,7 @@ class PostfixEvaluator:
                     value_2 = self.stack.pop()
                     value_1 = self.stack.pop()
                 else:
-                    raise ExpressionError(self.error_message['not valid expression'])
+                    raise ExpressionError(self.error_message['not a valid expression'])
 
                 # Perform the operation with the current symbol and two values {None, rational number}
                 result = self.operations.perform_on(symbol, value_1, value_2)

@@ -175,7 +175,7 @@ class TestPostfixEvaluator(unittest.TestCase):
         with self.assertRaises(ExpressionError) as exc:
             self.calculation.result_rpn = '1 2 / 1 2 / ( *'
             self.postfix_evaluator.evaluate(self.calculation)
-        self.assertEqual(self.error_message['not valid expression'],
+        self.assertEqual(self.error_message['not a valid expression'],
                          str(exc.exception))
 
     def test_invalid_input_2(self):
@@ -183,7 +183,7 @@ class TestPostfixEvaluator(unittest.TestCase):
         with self.assertRaises(ExpressionError) as exc:
             self.calculation.result_rpn = 'sin'
             self.postfix_evaluator.evaluate(self.calculation)
-        self.assertEqual(self.error_message['not valid expression'],
+        self.assertEqual(self.error_message['not a valid expression'],
                          str(exc.exception))
 
     def test_invalid_decimals_1(self):

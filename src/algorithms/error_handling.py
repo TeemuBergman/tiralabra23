@@ -28,7 +28,7 @@ class ErrorMessages:
 
         self.expression_errors = {
             'expression not found': f'{_msg_prefix}Expression not found!',
-            'not valid expression': f'{_msg_prefix}Not a valid expression!',
+            'not a valid expression': f'{_msg_prefix}Not a valid expression!',
             'not a number':  f'{_msg_prefix}Not a rational number!',
         }
 
