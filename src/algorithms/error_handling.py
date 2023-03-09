@@ -24,6 +24,7 @@ class ErrorMessages:
             'square root':      f'{_msg_prefix}Square root has a value equal or smaller than zero!',
             'logarithm':        f'{_msg_prefix}Logarithm has a value equal or smaller than zero!',
             'missing operand':  f'{_msg_prefix}Invalid or missing operator, function or constant!',
+            'missing value':    f'{_msg_prefix}Invalid or missing value!',
         }
 
         self.expression_errors = {
