@@ -24,6 +24,7 @@ class ErrorMessages:
             'division by zero': 'Division by zero',
             'square root':      'Square root has a value equal or smaller than zero',
             'logarithm':        'Logarithm has a value equal or smaller than zero',
+            'random':           'Random has a value equal or smaller than zero',
             'missing operand':  'Invalid or missing operator, function or constant',
             'missing value':    'Invalid or missing value'
         }
