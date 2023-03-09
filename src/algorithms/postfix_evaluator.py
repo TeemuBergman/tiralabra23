@@ -28,7 +28,7 @@ class PostfixEvaluator:
             ValueError: If there are not enough values in the expression to perform_on
                 the arithmetic operation.complete
         """
-        # Check if the input expression is empty
+        # Check that expression exists
         if not calculation.result_rpn:
             raise ExpressionError("Error: Expression not found!")
 
@@ -45,7 +45,8 @@ class PostfixEvaluator:
                 except InvalidOperation as exc:
                     raise ExpressionError('Error: Not in decimal format, too many dots!') from exc
 
-            # If symbol has a length > 1 and its second character is a numeric, its a negative value
+            # If symbol has a length > 1 and its second character is a numeric,
+            # its a negative value and not a negation (that is an operator)
             elif len(symbol) > 1 and symbol[1].isnumeric():
                 try:
                     # Convert the symbol to a Decimal and push it into the stack
@@ -53,26 +54,26 @@ class PostfixEvaluator:
                 except InvalidOperation as exc:
                     raise ExpressionError('Error: Not in decimal format, too many dots!') from exc
 
-            # If the symbol is not a number, then it must be a operator
+            # If the symbol is not a number, then it must be a operator or a function
             else:
                 if symbol in self.operations.constants:
-                    # If operator is a function, pop only one value
+                    # If symbol is a constant, pop nothing
                     value_2 = None
                     value_1 = None
                 elif symbol in self.operations.functions:
-                    # If operator is a function, pop only one value
+                    # If symbol is a function, pop only one value
                     value_2 = None
                     value_1 = self.stack.pop()
                 elif symbol in self.operations.arithmetic and len(self.stack) >= 2:
-                    # Pop the last two values from the stack
+                    # If symbol is an operator, pop two values
                     value_2 = self.stack.pop()
                     value_1 = self.stack.pop()
                 else:
                     raise ExpressionError('Error: Not a valid expression!')
 
-                # Perform the operation with the symbol and the two values
+                # Perform the operation with the current symbol and 0-2 values
                 result = self.operations.perform_on(symbol, value_1, value_2)
-                # Push the result onto the stack
+                # Push the result into the stack
                 self.stack.append(result)
 
         # The final result is the only value remaining on the stack
