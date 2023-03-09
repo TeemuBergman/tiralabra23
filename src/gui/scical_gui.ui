@@ -7,6 +7,7 @@
     <property name="padx">1</property>
     <property name="pady">5</property>
     <property name="relief">raised</property>
+    <property name="resizable">none</property>
     <property name="takefocus">true</property>
     <property name="title" translatable="yes">Scientific calculator</property>
     <containerlayout manager="pack">
