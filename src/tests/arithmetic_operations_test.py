@@ -103,6 +103,12 @@ class TestArithmeticOperations(unittest.TestCase):
         result = self.operations.perform_on('log', 12)
         self.assertAlmostEqual(float(result), 2.4849066497880004)
 
+    def test_function_random(self):
+        """Test if the function evaluates given expression correctly."""
+        result = self.operations.perform_on('rand', 200)
+        self.assertGreaterEqual(result, 0)
+        self.assertLessEqual(result, 200)
+
     # EXCEPTIONS
 
     def test_division_by_zero(self):
@@ -145,6 +151,13 @@ class TestArithmeticOperations(unittest.TestCase):
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('log', -4, 0)
         self.assertEqual(self.error_message.get('logarithm'),
+                         str(exc.exception))
+
+    def test_negative_random(self):
+        """Test if the function resolves negative values to error."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('rand', -4, 0)
+        self.assertEqual(self.error_message.get('random'),
                          str(exc.exception))
 
     def test_function_sine_radians_error(self):
@@ -207,6 +220,13 @@ class TestArithmeticOperations(unittest.TestCase):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
             self.operations.perform_on('-(')
+        self.assertEqual(self.error_message.get('missing value'),
+                         str(exc.exception))
+
+    def test_function_random_error(self):
+        """Test if the function handles errors on functions correctly."""
+        with self.assertRaises(OperationError) as exc:
+            self.operations.perform_on('rand')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 
