@@ -20,7 +20,7 @@ class ShuntingYard:
         self._history = deque(' ')
         self._negative_value = False
         self._decimal_value = False
-        self.operator_stack_has_function = False
+        self._operator_stack_has_function = False
 
     def convert(self, calculation: Calculation) -> None:
         """
@@ -67,11 +67,11 @@ class ShuntingYard:
 
     def _process_functions(self) -> None:
         """Handles all the functions to operator stack in correct composition."""
-        if self._operator_stack and self.operator_stack_has_function and self._operator_stack[-1] != '(':
+        if self._operator_stack and self._operator_stack_has_function and self._operator_stack[-1] != '(':
             self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
         else:
             self._operator_stack.append(self._current_symbol)
-            self.operator_stack_has_function = True
+            self._operator_stack_has_function = True
 
     def _process_negative_values(self) -> None:
         """Handles all the negative values."""
@@ -148,11 +148,11 @@ class ShuntingYard:
             while self._operator_stack:
                 if self._operator_stack[-1] != '(':
                     self._output_stack.append(self._operator_stack.pop())
-                elif self.operator_stack_has_function:
+                elif self._operator_stack_has_function:
                     # There is a function after left parentheses
                     self._operator_stack.pop()
                     self._output_stack.append(self._operator_stack.pop())
-                    self.operator_stack_has_function = False
+                    self._operator_stack_has_function = False
                 else:
                     # Pop the left parentheses
                     self._operator_stack.pop()
