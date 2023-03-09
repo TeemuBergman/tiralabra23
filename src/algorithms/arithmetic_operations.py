@@ -31,9 +31,16 @@ class ArithmeticOperations:
             'log':  self._perform_log
         }
 
+        self.constants = {
+            'pi': self._return_pi,
+            'tau': self._return_tau,
+            'phi': self._return_phi,
+            'e': self._return_euler
+        }
+
         self.result = None
 
-    def perform_on(self, operator: str, value_1, value_2 = None) -> Decimal:
+    def perform_on(self, operator: str, value_1 = None, value_2 = None) -> Decimal:
         """
         Perform various mathematical operations.
 
@@ -52,7 +59,9 @@ class ArithmeticOperations:
             OperationError: If logarithm operation has value smaller than zero.
         """
         # Perform arithmetics with given values and operator
-        if operator in self.functions:
+        if operator in self.constants:
+            self.constants[operator]()
+        elif operator in self.functions:
             self.functions[operator](value_1)
         elif operator in self.arithmetic:
             self.arithmetic[operator](value_1, value_2)
@@ -114,3 +123,17 @@ class ArithmeticOperations:
         if value_1 < 0:
             raise OperationError('Error: Logarithm operation has value smaller than zero!')
         self.result = Decimal(math.log(value_1))
+
+    # CONSTANTS
+
+    def _return_pi(self) -> None:
+        self.result = Decimal(3.1415926535897932384626433832795028841971693993751058209749445923)
+
+    def _return_tau(self) -> None:
+        self.result = Decimal(6.2831853071795864769252867665590057683943387987502116419498891846)
+
+    def _return_phi(self) -> None:
+        self.result = Decimal(1.6180339887498948482045868343656381177203091798057628621354486227)
+
+    def _return_euler(self) -> None:
+        self.result = Decimal(2.7182818284590452353602874713526624977572470936999595749669676277)

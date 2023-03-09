@@ -95,9 +95,7 @@ class ShuntingYard:
             try:
                 self._output_stack.append(self._output_stack.pop() + self._current_symbol)
             except IndexError as exc:
-                raise ExpressionError(
-                    'Error: Not a valid expression or syntax!'
-                ) from exc
+                raise ExpressionError('Error: Not a valid expression or syntax!') from exc
             # Set negative number flag to False (normal state)
             self._is_negative = False
         else:
@@ -119,7 +117,7 @@ class ShuntingYard:
         # and add them to the output until a lower precedence operator is found
         while self._operator_stack and self._operator_precedence.get(
                 self._current_symbol) <= self._operator_precedence.get(
-                self._operator_stack[-1], 0):
+                    self._operator_stack[-1], 0):
             self._output_stack.append(self._operator_stack.pop())
         self._operator_stack.append(self._current_symbol)
 

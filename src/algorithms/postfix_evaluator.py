@@ -10,14 +10,12 @@ from .arithmetic_operations import ArithmeticOperations
 
 class PostfixEvaluator:
     """
-    Postfix evaluator takes an postfix expressions as input and evaluates it.
+    Postfix evaluator takes a postfix expressions as input and evaluates it.
     """
 
     def __init__(self):
         self.operations = ArithmeticOperations()
-        self.symbols = []
         self.stack = []
-        self.result = Decimal()
 
     def evaluate(self, calculation: Calculation) -> None:
         """
@@ -25,9 +23,6 @@ class PostfixEvaluator:
 
         Args:
             calculation (Calculation): Object contains the RPN expression to be evaluated.
-
-        Returns:
-            Decimal: The result of the expression.
 
         Raises:
             ValueError: If there are not enough values in the expression to perform_on
@@ -38,31 +33,34 @@ class PostfixEvaluator:
             raise ExpressionError("Error: Expression not found!")
 
         # Split the input expression into symbols using whitespace as a separator
-        self.symbols = calculation.result_rpn.split(' ')
+        symbols = calculation.result_rpn.split(' ')
 
         # Iterate over each symbol in the expression
-        for step, symbol in enumerate(self.symbols):
-            # If symbol has a length > 1 and its second character is a numeric
-            # then append it to stack
-            if len(symbol) > 1 and symbol[1].isnumeric():
+        for step, symbol in enumerate(symbols):
+            # If the symbol starts with a numeral, append it to stack
+            if symbol[0].isnumeric():
                 try:
                     # Convert the symbol to a Decimal and push it into the stack
                     self.stack.append(Decimal(symbol))
                 except InvalidOperation as exc:
                     raise ExpressionError('Error: Not in decimal format, too many dots!') from exc
 
-            # If the symbol starts with a digit append it to stack
-            elif symbol[0].isnumeric():
+            # If symbol has a length > 1 and its second character is a numeric, its a negative value
+            elif len(symbol) > 1 and symbol[1].isnumeric():
                 try:
                     # Convert the symbol to a Decimal and push it into the stack
                     self.stack.append(Decimal(symbol))
                 except InvalidOperation as exc:
                     raise ExpressionError('Error: Not in decimal format, too many dots!') from exc
 
-            # If the symbol is NaN, then it must bea an operator
+            # If the symbol is not a number, then it must be a operator
             else:
-                if symbol in self.operations.functions:
-                    # If operator is a function
+                if symbol in self.operations.constants:
+                    # If operator is a function, pop only one value
+                    value_2 = None
+                    value_1 = None
+                elif symbol in self.operations.functions:
+                    # If operator is a function, pop only one value
                     value_2 = None
                     value_1 = self.stack.pop()
                 elif symbol in self.operations.arithmetic and len(self.stack) >= 2:
