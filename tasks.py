@@ -19,7 +19,7 @@ def start(ctx):
 
 @task
 def test(ctx):
-    ctx.run('pytest src', pty=IS_LINUX)
+    ctx.run('pytest src -W ignore::DeprecationWarning', pty=IS_LINUX)
 
 
 @task
