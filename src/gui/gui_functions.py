@@ -37,6 +37,7 @@ class GUIFunctions:
             'input_button_tand':              'tand(x)',
             'input_button_square_root':       'sqrt(x)',
             'input_button_log':               'log(x)',
+            'input_button_rand':              'rand(x)',
             'input_button_demo_1':            '((kissa) * (koira))',
             'input_button_demo_2':            '(sind(x) * x)',
             'input_button_demo_3':            '(x * y + (2 * x ^ (x - (z / 0.5))))',
