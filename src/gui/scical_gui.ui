@@ -15,12 +15,13 @@
     </containerlayout>
     <child>
       <object class="tk.Frame" id="frame_history" named="True">
-        <property name="height">355</property>
+        <property name="height">155</property>
         <property name="padx">5</property>
         <property name="pady">2</property>
         <property name="width">600</property>
         <layout manager="pack">
-          <property name="fill">x</property>
+          <property name="expand">true</property>
+          <property name="fill">both</property>
           <property name="side">top</property>
         </layout>
         <containerlayout manager="pack">
@@ -633,7 +634,7 @@
         <property name="width">600</property>
         <layout manager="pack">
           <property name="expand">false</property>
-          <property name="fill">both</property>
+          <property name="fill">x</property>
           <property name="side">bottom</property>
         </layout>
         <child>
