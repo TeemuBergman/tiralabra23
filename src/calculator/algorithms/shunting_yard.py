@@ -18,7 +18,6 @@ class ShuntingYard:
         self._output_stack = []
         self._current_symbol = ''
         self._history = deque(' ')
-        self._negative_value = False
         self._decimal_value = False
         self._operator_stack_has_function = False
 
@@ -76,13 +75,17 @@ class ShuntingYard:
     def _process_negative_values(self) -> None:
         """Handles all the negative values."""
         # Check that the previous symbol is not ')' or number and the next one is a number
-        if not self._history[0] == ')' and not self._history[0].isnumeric() and self._history[-1].isnumeric():
-            # If true, append negative operator to output_stack
-            self._output_stack.append(self._current_symbol)
-            # Set state of negative integer flag to True
-            self._negative_value = True
-        else:  # If false, process it as a regular operator
-            self._process_operators()
+        # Case: -(
+        if self._history[0] == ' ' and self._history[-1] == '(':
+            self._output_stack.append('0')
+        # Case: (-(
+        elif self._history[0] == '(' and self._history[-1] == '(':
+            self._output_stack.append('0')
+        # Cases: -n, (-n
+        elif self._history[0] in [' ', '('] and self._history[-1].isnumeric():
+            self._output_stack.append('0')
+        # Process negative operator as normal
+        self._process_operators()
 
     def _process_decimals(self) -> None:
         """Handles dots in decimal values."""
@@ -93,14 +96,12 @@ class ShuntingYard:
     def _process_values(self) -> None:
         """Handles all values."""
         # Check if previous symbol is a number or the negative value state is True
-        if self._history[0].isnumeric() or self._negative_value or self._decimal_value:
+        if self._history[0].isnumeric() or self._decimal_value:
             # If true, pop output_stack and add it back with current_symbol
             try:
                 self._output_stack.append(self._output_stack.pop() + self._current_symbol)
             except IndexError as exc:
                 raise ExpressionError(self._error_message.get('not a valid expression')) from exc
-            # Set the negative and decimal value states to False (normal state)
-            self._negative_value = False
             self._decimal_value = False
         else:
             self._output_stack.append(self._current_symbol)
@@ -137,11 +138,7 @@ class ShuntingYard:
         """
         # If the symbol is a left parenthesis, push it to the operator stack
         if self._current_symbol == '(':
-            # Check if the negative operator is the first in expression
-            if self._operator_stack and not self._output_stack and self._operator_stack[-1] == '-':
-                self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
-            else:
-                self._operator_stack.append(self._current_symbol)
+            self._operator_stack.append(self._current_symbol)
         # If the symbol is a right parenthesis, pop operators from the stack
         # and add them to the output stack until a left parenthesis is found
         else:
