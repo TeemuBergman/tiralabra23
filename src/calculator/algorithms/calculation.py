@@ -107,13 +107,3 @@ class Calculation:
                 variables_dictionary[key] = value
 
         self.variables_dictionary = variables_dictionary
-
-    # Todo - Is this needed?
-    def _clean_output_string(self, value) -> str:
-        """Convert given value to a string and modify if it ends at .0"""
-        cleaned = str(value)
-        # If input value is a decimal with .0 at the end
-        if cleaned.endswith('.0'):
-            # remove '.0' from end of string
-            return cleaned[:-2]
-        return cleaned
