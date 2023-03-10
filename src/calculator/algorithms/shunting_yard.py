@@ -47,7 +47,7 @@ class ShuntingYard:
             elif self._current_symbol == '.':
                 self._process_decimals()
             elif self._current_symbol == '-':
-                self._process_negative_values()
+                self._process_negatives()
             elif self._current_symbol in ['+', '*', '/', '^']:
                 self._process_operators()
             elif self._current_symbol in ('(', ')'):
@@ -72,14 +72,15 @@ class ShuntingYard:
             self._operator_stack.append(self._current_symbol)
             self._operator_stack_has_function = True
 
-    def _process_negative_values(self) -> None:
-        """Handles all the negative values."""
-        # Check that the previous symbol is not ')' or number and the next one is a number
-        # Case: -(
-        if self._history[0] == ' ' and self._history[-1] == '(':
-            self._output_stack.append('0')
-        # Case: (-(
-        elif self._history[0] == '(' and self._history[-1] == '(':
+    def _process_negatives(self) -> None:
+        """Handles all the negative values and parentheses.
+
+        Check for different cases where negative operator is used without its
+        counterpart value and if some our found add 0 to output stack.
+        """
+
+        # Cases: -(, (-(
+        if self._history[0] in [' ', '('] and self._history[-1] == '(':
             self._output_stack.append('0')
         # Cases: -n, (-n
         elif self._history[0] in [' ', '('] and self._history[-1].isnumeric():
@@ -118,6 +119,7 @@ class ShuntingYard:
         level of the input symbol and the operators on the stack.Once the correct position for
         the input symbol is found, it is added to the operator stack.
         """
+        # Operator precedence to be used when arranging operators in stack
         operator_precedence = {'^': 3, '*': 2, '/': 2, '+': 1, '-': 1}
         # If the symbol is an operator, pop operators from the stack
         # and add them to the output until a lower precedence operator is found
