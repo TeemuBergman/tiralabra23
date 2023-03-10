@@ -42,11 +42,29 @@ class TestScientificCalculator(unittest.TestCase):
         response = self.scientific_calculator.calculate(expression)
         self.assertEqual(response, 1)
 
-    def test_basic_exponentitation(self):
+    def test_exponentitation_1(self):
         """Test if the class returns correct answer with simple input."""
         expression = '2^8'
         response = self.scientific_calculator.calculate(expression)
         self.assertEqual(response, 256)
+
+    def test_exponentiation_2(self):
+        """Test if the class returns correct answer with simple input."""
+        expression = '-2^2'
+        response = self.scientific_calculator.calculate(expression)
+        self.assertEqual(response, -4)
+
+    def test_exponentiation_3(self):
+        """Test if the class returns correct answer with simple input."""
+        expression = '(-2)^2'
+        response = self.scientific_calculator.calculate(expression)
+        self.assertEqual(response, 4)
+
+    def test_arithmetic_1(self):
+        """Test if the class returns correct answer with simple input."""
+        expression = '-(-(-(-2^2)-1)-1)-1'
+        response = self.scientific_calculator.calculate(expression)
+        self.assertEqual(response, 3)
 
     # FUNCTIONS
 
