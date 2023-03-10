@@ -18,7 +18,6 @@ class ShuntingYard:
         self._output_stack = []
         self._current_symbol = ''
         self._symbol_oracle = deque(' ')  # Knows history and sees into future
-        self._decimal_value = False
         self._operator_stack_has_function = False
 
     def convert(self, calculation: Calculation) -> None:
@@ -45,7 +44,7 @@ class ShuntingYard:
             if self._current_symbol.isnumeric():
                 self._process_values()
             elif self._current_symbol == '.':
-                self._process_decimals()
+                self._process_values()
             elif self._current_symbol == '-':
                 self._process_negatives()
             elif self._current_symbol in ['+', '*', '/', '^']:
@@ -64,13 +63,32 @@ class ShuntingYard:
         # Save the result to Calculation
         calculation.result_rpn = ' '.join(self._output_stack)
 
-    def _process_functions(self) -> None:
-        """Handles all the functions to operator stack in correct composition."""
-        if self._operator_stack and self._operator_stack_has_function and self._operator_stack[-1] != '(':
-            self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
+    def _process_values(self) -> None:
+        """Handles all values.
+
+        Check if previous symbol is a number or the negative value state is True
+        """
+        # Case .
+        if self._current_symbol == '.':
+            # Case expression = n.n
+            if self._symbol_oracle[0].isnumeric():
+                self._output_stack.append(self._output_stack.pop() + self._current_symbol)
+            # Case expression = .n
+            else:
+                self._output_stack.append('0' + self._current_symbol)
+        # Case n
+        elif self._current_symbol.isnumeric():
+            # Case .n
+            if self._symbol_oracle[0] == '.':
+                self._output_stack.append(self._output_stack.pop() + self._current_symbol)
+            # Case nn
+            elif self._symbol_oracle[0].isnumeric():
+                self._output_stack.append(self._output_stack.pop() + self._current_symbol)
+            # Case no value
+            else:
+                self._output_stack.append(self._current_symbol)
         else:
-            self._operator_stack.append(self._current_symbol)
-            self._operator_stack_has_function = True
+            raise ExpressionError(self._error_message.get('not a valid expression'))
 
     def _process_negatives(self) -> None:
         """Handles all the negative values and parentheses.
@@ -85,27 +103,16 @@ class ShuntingYard:
         elif self._symbol_oracle[0] in [' ', '('] and self._symbol_oracle[-1].isnumeric():
             self._output_stack.append('0')
 
-        # Process negative operator as normal
+        # Process negative operator like any other
         self._process_operators()
 
-    def _process_decimals(self) -> None:
-        """Handles dots in decimal values."""
-        if self._symbol_oracle[0].isnumeric():
-            self._output_stack.append(self._output_stack.pop() + self._current_symbol)
-        self._decimal_value = True
-
-    def _process_values(self) -> None:
-        """Handles all values."""
-        # Check if previous symbol is a number or the negative value state is True
-        if self._symbol_oracle[0].isnumeric() or self._decimal_value:
-            # If true, pop output_stack and add it back with current_symbol
-            try:
-                self._output_stack.append(self._output_stack.pop() + self._current_symbol)
-            except IndexError as exc:
-                raise ExpressionError(self._error_message.get('not a valid expression')) from exc
-            self._decimal_value = False
+    def _process_functions(self) -> None:
+        """Handles all the functions to operator stack in correct composition."""
+        if self._operator_stack and self._operator_stack_has_function and self._operator_stack[-1] != '(':
+            self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
         else:
-            self._output_stack.append(self._current_symbol)
+            self._operator_stack.append(self._current_symbol)
+            self._operator_stack_has_function = True
 
     def _process_operators(self) -> None:
         """

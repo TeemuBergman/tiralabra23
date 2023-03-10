@@ -158,6 +158,11 @@ class TestShuntingYard(unittest.TestCase):
         self.shunting_yard.convert(self.calculation.new('2/(-2)'))
         self.assertEqual(self.calculation.result_rpn, '2 0 2 - /')
 
+    def test_negative_expression_9(self):
+        """Test if the class converts the given expression correctly to RPN.'"""
+        self.shunting_yard.convert(self.calculation.new('1+.2'))
+        self.assertEqual(self.calculation.result_rpn, '1 0.2 +')
+
     # FUNCTIONS
 
     def test_function_sine_1(self):
