@@ -23,7 +23,6 @@ class ArithmeticOperations:
         }
 
         self.functions = {
-            '-(': self._perform_negation,
             'sinr': self._perform_sinr,
             'cosr': self._perform_cosr,
             'tanr': self._perform_tanr,
@@ -92,9 +91,6 @@ class ArithmeticOperations:
         self.result = Decimal(value_1 ** value_2)
 
     # FUNCTIONS
-
-    def _perform_negation(self, value_1) -> None:
-        self.result = Decimal(-value_1)
 
     def _perform_sinr(self, value_1) -> None:
         self.result = Decimal(math.sin(value_1))
