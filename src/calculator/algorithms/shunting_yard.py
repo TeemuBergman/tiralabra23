@@ -42,9 +42,9 @@ class ShuntingYard:
 
             # Process expressions different symbols
             if self._current_symbol.isnumeric():
-                self._process_values()
+                self._process_integers()
             elif self._current_symbol == '.':
-                self._process_values()
+                self._process_decimals()
             elif self._current_symbol == '-':
                 self._process_negatives()
             elif self._current_symbol in ['+', '*', '/', '^']:
@@ -63,32 +63,33 @@ class ShuntingYard:
         # Save the result to Calculation
         calculation.result_rpn = ' '.join(self._output_stack)
 
-    def _process_values(self) -> None:
-        """Handles all values.
+    def _process_integers(self) -> None:
+        """Handles all integers.
 
-        Check if previous symbol is a number or the negative value state is True
+        Check if current_symbol is integer and if it is a part of rational number.
         """
-        # Case .
-        if self._current_symbol == '.':
-            # Case expression = n.n
-            if self._symbol_oracle[0].isnumeric():
-                self._output_stack.append(self._output_stack.pop() + self._current_symbol)
-            # Case expression = .n
-            else:
-                self._output_stack.append('0' + self._current_symbol)
-        # Case n
-        elif self._current_symbol.isnumeric():
-            # Case .n
-            if self._symbol_oracle[0] == '.':
-                self._output_stack.append(self._output_stack.pop() + self._current_symbol)
-            # Case nn
-            elif self._symbol_oracle[0].isnumeric():
-                self._output_stack.append(self._output_stack.pop() + self._current_symbol)
-            # Case no value
-            else:
-                self._output_stack.append(self._current_symbol)
+        # Case .n
+        if self._symbol_oracle[0] == '.':
+            self._output_stack.append(self._output_stack.pop() + self._current_symbol)
+        # Case nn
+        elif self._symbol_oracle[0].isnumeric():
+            self._output_stack.append(self._output_stack.pop() + self._current_symbol)
+        # Case no previous n
         else:
-            raise ExpressionError(self._error_message.get('not a valid expression'))
+            self._output_stack.append(self._current_symbol)
+
+    def _process_decimals(self):
+        """Handles the dot in rational numbers.
+
+        Check if previous symbol is integer or if it just a dot,
+        then add 0 as the first value.
+        """
+        # Expression contains n.
+        if self._symbol_oracle[0].isnumeric():
+            self._output_stack.append(self._output_stack.pop() + self._current_symbol)
+        # Expression contains .n
+        else:
+            self._output_stack.append('0' + self._current_symbol)
 
     def _process_negatives(self) -> None:
         """Handles all the negative values and parentheses.
@@ -103,7 +104,7 @@ class ShuntingYard:
         elif self._symbol_oracle[0] in [' ', '('] and self._symbol_oracle[-1].isnumeric():
             self._output_stack.append('0')
 
-        # Process negative operator like any other
+        # Process negative operator just like any other of its kind
         self._process_operators()
 
     def _process_functions(self) -> None:
@@ -124,6 +125,7 @@ class ShuntingYard:
         """
         # Operator precedence to be used when arranging operators in stack
         operator_precedence = {'^': 3, '*': 2, '/': 2, '+': 1, '-': 1}
+
         # If the symbol is an operator, pop operators from the stack
         # and add them to the output until a lower precedence operator is found
         while self._operator_stack and operator_precedence.get(
@@ -144,6 +146,7 @@ class ShuntingYard:
         # If the symbol is a left parenthesis, push it to the operator stack
         if self._current_symbol == '(':
             self._operator_stack.append(self._current_symbol)
+
         # If the symbol is a right parenthesis, pop operators from the stack
         # and add them to the output stack until a left parenthesis is found
         else:
