@@ -17,7 +17,7 @@ class ShuntingYard:
         self._operator_stack = []
         self._output_stack = []
         self._current_symbol = ''
-        self._history = deque(' ')
+        self._symbol_oracle = deque(' ')  # Knows history and sees into future
         self._decimal_value = False
         self._operator_stack_has_function = False
 
@@ -39,7 +39,7 @@ class ShuntingYard:
 
             # Check if next symbol is a number
             if step < expression_length:
-                self._history.append(calculation.expression[step + 1])
+                self._symbol_oracle.append(calculation.expression[step + 1])
 
             # Process expressions different symbols
             if self._current_symbol.isnumeric():
@@ -50,13 +50,13 @@ class ShuntingYard:
                 self._process_negatives()
             elif self._current_symbol in ['+', '*', '/', '^']:
                 self._process_operators()
-            elif self._current_symbol in ('(', ')'):
+            elif self._current_symbol in ['(', ')']:
                 self._process_parenthesis()
             else:  # If it's not any above, then it must be a function
                 self._process_functions()
 
             # Save current symbol as previous
-            self._history.appendleft(symbol)
+            self._symbol_oracle.appendleft(symbol)
 
         # Pop any remaining operators from the stack and add them to the output
         self._remaining_operators()
@@ -78,26 +78,26 @@ class ShuntingYard:
         Check for different cases where negative operator is used without its
         counterpart value and if some our found add 0 to output stack.
         """
-
         # Cases: -(, (-(
-        if self._history[0] in [' ', '('] and self._history[-1] == '(':
+        if self._symbol_oracle[0] in [' ', '('] and self._symbol_oracle[-1] == '(':
             self._output_stack.append('0')
         # Cases: -n, (-n
-        elif self._history[0] in [' ', '('] and self._history[-1].isnumeric():
+        elif self._symbol_oracle[0] in [' ', '('] and self._symbol_oracle[-1].isnumeric():
             self._output_stack.append('0')
+
         # Process negative operator as normal
         self._process_operators()
 
     def _process_decimals(self) -> None:
         """Handles dots in decimal values."""
-        if self._history[0].isnumeric():
+        if self._symbol_oracle[0].isnumeric():
             self._output_stack.append(self._output_stack.pop() + self._current_symbol)
         self._decimal_value = True
 
     def _process_values(self) -> None:
         """Handles all values."""
         # Check if previous symbol is a number or the negative value state is True
-        if self._history[0].isnumeric() or self._decimal_value:
+        if self._symbol_oracle[0].isnumeric() or self._decimal_value:
             # If true, pop output_stack and add it back with current_symbol
             try:
                 self._output_stack.append(self._output_stack.pop() + self._current_symbol)
@@ -106,10 +106,6 @@ class ShuntingYard:
             self._decimal_value = False
         else:
             self._output_stack.append(self._current_symbol)
-
-    def _update_last_value_on_output_stack(self) -> None:
-        """Pop a value from output_stack and add current_symbol to it and then append it back."""
-        self._output_stack.append(self._output_stack.pop() + self._current_symbol)
 
     def _process_operators(self) -> None:
         """
