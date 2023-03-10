@@ -43,13 +43,13 @@ class ShuntingYard:
                 self._history.append(calculation.expression[step + 1])
 
             # Process expressions different symbols
-            if self._current_symbol == '-':
-                self._process_negative_values()
-            elif self._current_symbol.isnumeric():
+            if self._current_symbol.isnumeric():
                 self._process_values()
             elif self._current_symbol == '.':
                 self._process_decimals()
-            elif self._current_symbol in ['+', '-', '*', '/', '^']:
+            elif self._current_symbol == '-':
+                self._process_negative_values()
+            elif self._current_symbol in ['+', '*', '/', '^']:
                 self._process_operators()
             elif self._current_symbol in ('(', ')'):
                 self._process_parenthesis()
