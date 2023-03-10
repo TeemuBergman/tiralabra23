@@ -212,7 +212,7 @@ class TestArithmeticOperations(unittest.TestCase):
     def test_function_negation_no_value(self):
         """Test if the function handles errors on functions correctly."""
         with self.assertRaises(OperationError) as exc:
-            self.operations.perform_on('-(')
+            self.operations.perform_on('-')
         self.assertEqual(self.error_message.get('missing value'),
                          str(exc.exception))
 

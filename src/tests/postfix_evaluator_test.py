@@ -86,7 +86,7 @@ class TestPostfixEvaluator(unittest.TestCase):
 
     def test_negation_1(self):
         """Test if the function correctly evaluates the given RPN expression."""
-        self.calculation.result_rpn = '1 -('
+        self.calculation.result_rpn = '0 1 -'
         self.postfix_evaluator.evaluate(self.calculation)
         self.assertEqual(self.calculation.result, -1)
 
