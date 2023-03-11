@@ -43,7 +43,7 @@ class TestCalculation(unittest.TestCase):
     def test_variables_dictionary_1(self):
         """Test if the function returns correct dictionary with a string of variables."""
         self.calculation.new('0', 'x=1, y=2, z=3')
-        self.assertEqual(self.calculation.variables_dictionary, {'x': '1', 'y': '2', 'z': '3'})
+        self.assertEqual(self.calculation.variables, {'x': '1', 'y': '2', 'z': '3'})
 
     def test_variables_in_expression_1(self):
         """Test if the function returns correct expression with set variables."""
@@ -55,10 +55,10 @@ class TestCalculation(unittest.TestCase):
         self.calculation.new('x+y+z', 'x=1.2, y=2.4, z=3.6')
         self.assertEqual(self.calculation.expression, '1.2+2.4+3.6')
 
-    def est_variables_2(self):
+    def test_variables_2(self):
         """Test if the function returns correct dictionary with a string of variables."""
-        self.calculation.new('', 'kg=1.5,meter=2,negative=-3')
-        self.assertEqual(self.calculation.variables_dictionary, {
+        self.calculation.new('1+1', 'kg=1.5,meter=2,negative=-3')
+        self.assertEqual(self.calculation.variables, {
             'kg': '1.5', 'meter': '2', 'negative': '-3'
         })
 
@@ -83,6 +83,54 @@ class TestCalculation(unittest.TestCase):
         """Test if the function returns correct expression."""
         self.calculation.new('tan(12)', '')
         self.assertEqual(self.calculation.expression, 'tan(12)')
+
+    # MEMORY OPERATIONS
+
+    def test_save_to_memory_1(self):
+        """Test if memory operations work as intended."""
+        self.calculation.result = 1010
+        self.calculation.save_to_memory()
+        self.assertEqual(self.calculation.result, self.calculation.memory)
+
+    def test_save_to_memory_2(self):
+        """Test if memory operations work as intended."""
+        self.calculation.result = -1010
+        self.calculation.save_to_memory()
+        self.assertEqual(self.calculation.result, self.calculation.memory)
+
+    def test_add_to_memory_1(self):
+        """Test if memory operations work as intended."""
+        self.calculation.memory = 1010
+        self.calculation.result = 101
+        self.calculation.add_to_memory()
+        self.assertEqual(1111, self.calculation.memory)
+
+    def test_add_to_memory_2(self):
+        """Test if memory operations work as intended."""
+        self.calculation.memory = 1010
+        self.calculation.result = -101
+        self.calculation.add_to_memory()
+        self.assertEqual(909, self.calculation.memory)
+
+    def test_subtract_from_memory_1(self):
+        """Test if memory operations work as intended."""
+        self.calculation.memory = 1010
+        self.calculation.result = 101
+        self.calculation.subtract_from_memory()
+        self.assertEqual(909, self.calculation.memory)
+
+    def test_subtract_from_memory_2(self):
+        """Test if memory operations work as intended."""
+        self.calculation.memory = 1010
+        self.calculation.result = -101
+        self.calculation.subtract_from_memory()
+        self.assertEqual(1111, self.calculation.memory)
+
+    def test_clear_memory(self):
+        """Test if memory operations work as intended."""
+        self.calculation.memory = 1010
+        self.calculation.clear_memory()
+        self.assertEqual(0, self.calculation.memory)
 
     # EXCEPTIONS
 
