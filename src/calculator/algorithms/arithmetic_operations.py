@@ -8,7 +8,7 @@ from decimal import Decimal
 from utils.error_handling import ErrorMessages, OperationError
 
 
-class ArithmeticOperations:
+class ArithmeticOperations:  # pylint: disable=too-few-public-methods
     """This class handles all arithmetic operations."""
 
     def __init__(self):
@@ -37,8 +37,8 @@ class ArithmeticOperations:
         self.result = None
 
     def perform_on(self, operand: str, value_1: Decimal = None, value_2: Decimal = None) -> Decimal:
-        """
-        Perform calculations with given operators, functions or constants on 0-2 values {None, Decimal}.
+        """Perform calculations with given operators, functions or constants
+        on 0-2 values {None, Decimal}.
 
         Args:
             operand (str): Representing the desired operator, function or constant.
@@ -54,17 +54,21 @@ class ArithmeticOperations:
             OperationError: If square root operation has value smaller than zero.
             OperationError: If logarithm operation has value smaller than zero.
         """
-        # Check the type of given operand
+        # Process functions
         if operand in self.functions:
             try:
                 self.functions[operand](value_1)
             except TypeError as exc:
                 raise OperationError(self.error_message.get('missing value')) from exc
+
+        # Process arithmetic operations
         elif operand in self.arithmetic:
             try:
                 self.arithmetic[operand](value_1, value_2)
             except TypeError as exc:
                 raise OperationError(self.error_message.get('missing value')) from exc
+
+        # Given expression is invalid
         else:
             raise OperationError(self.error_message.get('missing operand'))
 

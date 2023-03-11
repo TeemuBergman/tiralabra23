@@ -1,7 +1,9 @@
 """Class containing mathematical constants."""
 
 
-class Constants:
+class Constants:  # pylint: disable=too-few-public-methods
+    """This class contains constants to be used in operations."""
+
     def __init__(self):
         self.mathematical = {
             'pi':  '3.1415926535897932384626433832795',

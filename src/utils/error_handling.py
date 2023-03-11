@@ -13,7 +13,7 @@ class OperationError(Exception):
     """This class handles all the errors concerning operations."""
 
 
-class ErrorMessages:
+class ErrorMessages:  # pylint: disable=too-few-public-methods
     """This class contains all the error messages."""
 
     def __init__(self):
@@ -52,4 +52,5 @@ class ErrorMessages:
         else:
             return 'Error message not found!'
 
+        # Return stylized error message
         return f'{self._msg_prefix}{error_message}{self._msg_postfix}'

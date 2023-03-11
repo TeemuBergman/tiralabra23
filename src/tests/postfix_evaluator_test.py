@@ -187,3 +187,11 @@ class TestPostfixEvaluator(unittest.TestCase):
             self.postfix_evaluator.evaluate(self.calculation)
         self.assertEqual(self.error_message.get('not a number'),
                          str(exc.exception))
+
+    def test_missing_operator_1(self):
+        """Test if the function raises ExpressionError with invalid input."""
+        with self.assertRaises(ExpressionError) as exc:
+            self.calculation.result_rpn = '1 2'
+            self.postfix_evaluator.evaluate(self.calculation)
+        self.assertEqual(self.error_message.get('not a valid expression'),
+                         str(exc.exception))
