@@ -17,7 +17,7 @@ class ErrorMessages:
     """This class contains all the error messages."""
 
     def __init__(self):
-        self._msg_prefix = 'Err: '
+        self._msg_prefix = 'ERROR: '
         self._msg_postfix = '!'
 
         self._operation_errors = {
@@ -31,13 +31,13 @@ class ErrorMessages:
         }
 
         self._expression_errors = {
-            'expression not found': 'Expression not found',
+            'expression not found':   'Expression not found',
             'not a valid expression': 'Not a valid expression',
-            'not a number':  'Not a rational number'
+            'not a number':           'Not a rational number'
         }
 
         self._variable_errors = {
-            'no value': 'Variable has no value',
+            'no value':       'Variable has no value',
             'not a variable': 'Variable value is not a rational number'
         }
 

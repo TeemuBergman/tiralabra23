@@ -182,8 +182,8 @@ class TestShuntingYard(unittest.TestCase):
 
     def test_function_sine_4(self):
         """Test if the class converts the given expression correctly to RPN.'"""
-        self.shunting_yard.convert(self.calculation.new('sinr(1) + sinr(1)'))
-        self.assertEqual(self.calculation.result_rpn, '1 sinr 1 sinr +')
+        self.shunting_yard.convert(self.calculation.new('sind(1) + sind(1)'))
+        self.assertEqual(self.calculation.result_rpn, '1 sind 1 sind +')
 
     def test_function_sine_5(self):
         """Test if the class converts the given expression correctly to RPN.'"""

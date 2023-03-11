@@ -17,8 +17,7 @@ class ShuntingYard:
         self._operator_stack = []
         self._output_stack = []
         self._current_symbol = ''
-        self._symbol_oracle = deque(' ')  # Knows history and sees into future
-        self._operator_stack_has_function = False
+        self._symbol_oracle = deque(' ')  # Knows its history and sees into the future
 
     def convert(self, calculation: Calculation) -> None:
         """
@@ -51,8 +50,10 @@ class ShuntingYard:
                 self._process_operators()
             elif self._current_symbol in ['(', ')']:
                 self._process_parenthesis()
-            else:  # If it's not any above, then it must be a function
+            elif self._current_symbol.isalpha():
                 self._process_functions()
+            else:
+                raise ExpressionError(self._error_message.get('not a valid expression'))
 
             # Save current symbol as previous
             self._symbol_oracle.appendleft(symbol)
@@ -68,13 +69,13 @@ class ShuntingYard:
 
         Check if current_symbol is integer and if it is a part of rational number.
         """
-        # Case .n
+        # Case: '.n'
         if self._symbol_oracle[0] == '.':
             self._output_stack.append(self._output_stack.pop() + self._current_symbol)
-        # Case nn
+        # Case: 'nn'
         elif self._symbol_oracle[0].isnumeric():
             self._output_stack.append(self._output_stack.pop() + self._current_symbol)
-        # Case no previous n
+        # Case: ' n'
         else:
             self._output_stack.append(self._current_symbol)
 
@@ -84,10 +85,10 @@ class ShuntingYard:
         Check if previous symbol is integer or if it just a dot,
         then add 0 as the first value.
         """
-        # Expression contains n.
+        # Case: 'n.'
         if self._symbol_oracle[0].isnumeric():
             self._output_stack.append(self._output_stack.pop() + self._current_symbol)
-        # Expression contains .n
+        # Case: '.n'
         else:
             self._output_stack.append('0' + self._current_symbol)
 
@@ -97,10 +98,10 @@ class ShuntingYard:
         Check for different cases where negative operator is used without its
         counterpart value and if some our found add 0 to output stack.
         """
-        # Cases: -(, (-(
+        # Cases: '-(', '(-('
         if self._symbol_oracle[0] in [' ', '('] and self._symbol_oracle[-1] == '(':
             self._output_stack.append('0')
-        # Cases: -n, (-n
+        # Cases: '-n', '(-n'
         elif self._symbol_oracle[0] in [' ', '('] and self._symbol_oracle[-1].isnumeric():
             self._output_stack.append('0')
 
@@ -109,11 +110,12 @@ class ShuntingYard:
 
     def _process_functions(self) -> None:
         """Handles all the functions to operator stack in correct composition."""
-        if self._operator_stack and self._operator_stack_has_function and self._operator_stack[-1] != '(':
-            self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
-        else:
+        # Case: ' c'
+        if not self._symbol_oracle[0].isalpha():
             self._operator_stack.append(self._current_symbol)
-            self._operator_stack_has_function = True
+        # Case: 'cc'
+        else:
+            self._operator_stack.append(self._operator_stack.pop() + self._current_symbol)
 
     def _process_operators(self) -> None:
         """
@@ -145,7 +147,9 @@ class ShuntingYard:
         """
         # If the symbol is a left parenthesis, push it to the operator stack
         if self._current_symbol == '(':
-            self._operator_stack.append(self._current_symbol)
+            # If last character was not part of function, append to operator stack
+            if not self._symbol_oracle[0].isalpha():
+                self._operator_stack.append(self._current_symbol)
 
         # If the symbol is a right parenthesis, pop operators from the stack
         # and add them to the output stack until a left parenthesis is found
@@ -153,11 +157,6 @@ class ShuntingYard:
             while self._operator_stack:
                 if self._operator_stack[-1] != '(':
                     self._output_stack.append(self._operator_stack.pop())
-                elif self._operator_stack_has_function:
-                    # There is a function after left parentheses
-                    self._operator_stack.pop()
-                    self._output_stack.append(self._operator_stack.pop())
-                    self._operator_stack_has_function = False
                 else:
                     # Pop the left parentheses
                     self._operator_stack.pop()
@@ -166,7 +165,7 @@ class ShuntingYard:
     def _remaining_operators(self) -> None:
         """
         Pop any remaining operators from the stack and add them to the output
-        and raise an ExpressionError if left parentheses has been found.
+        and raise an ExpressionError if left parentheses is found.
         """
         while self._operator_stack:
             if self._operator_stack[-1] != '(':
