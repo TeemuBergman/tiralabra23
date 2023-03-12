@@ -44,16 +44,18 @@
             <child>
               <object class="tk.Listbox" id="output_history" named="True">
                 <property name="activestyle">none</property>
+                <property name="exportselection">true</property>
                 <property name="font">TkFixedFont</property>
                 <property name="justify">right</property>
                 <property name="listvariable">string:list_history</property>
-                <property name="relief">flat</property>
+                <property name="selectmode">single</property>
+                <property name="state">normal</property>
                 <property name="takefocus">false</property>
                 <layout manager="pack">
                   <property name="expand">true</property>
                   <property name="fill">both</property>
-                  <property name="ipady">3</property>
                   <property name="padx">3</property>
+                  <property name="pady">6</property>
                   <property name="side">top</property>
                 </layout>
               </object>
@@ -92,46 +94,50 @@
               <property type="row" id="all" name="weight">1</property>
             </containerlayout>
             <child>
-              <object class="tk.Button" id="input_button_1" named="True">
+              <object class="tk.Button" id="button_1" named="True">
+                <property name="background">#f7f7f7</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
+                <property name="height">1</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">1</property>
                 <layout manager="grid">
                   <property name="column">0</property>
-                  <property name="row">0</property>
+                  <property name="row">1</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_2" named="True">
+              <object class="tk.Button" id="button_2" named="True">
+                <property name="background">#f7f7f7</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">2</property>
                 <layout manager="grid">
                   <property name="column">1</property>
-                  <property name="row">0</property>
+                  <property name="row">1</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_3" named="True">
+              <object class="tk.Button" id="button_3" named="True">
+                <property name="background">#f7f7f7</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">3</property>
                 <layout manager="grid">
                   <property name="column">2</property>
-                  <property name="row">0</property>
+                  <property name="row">1</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_divide" named="True">
+              <object class="tk.Button" id="button_divide" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
@@ -139,52 +145,56 @@
                 <property name="text" translatable="yes">/</property>
                 <layout manager="grid">
                   <property name="column">3</property>
-                  <property name="row">0</property>
-                  <property name="sticky">nsew</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="tk.Button" id="input_button_4" named="True">
-                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">TkFixedFont</property>
-                <property name="takefocus">false</property>
-                <property name="text" translatable="yes">4</property>
-                <layout manager="grid">
-                  <property name="column">0</property>
                   <property name="row">1</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_5" named="True">
+              <object class="tk.Button" id="button_4" named="True">
+                <property name="background">#f7f7f7</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
+                <property name="font">TkFixedFont</property>
+                <property name="height">1</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">4</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="row">2</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_5" named="True">
+                <property name="background">#f7f7f7</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">5</property>
                 <layout manager="grid">
                   <property name="column">1</property>
-                  <property name="row">1</property>
+                  <property name="row">2</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_6" named="True">
+              <object class="tk.Button" id="button_6" named="True">
+                <property name="background">#f7f7f7</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">6</property>
                 <layout manager="grid">
                   <property name="column">2</property>
-                  <property name="row">1</property>
+                  <property name="row">2</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_multiply" named="True">
+              <object class="tk.Button" id="button_multiply" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
@@ -192,52 +202,56 @@
                 <property name="text" translatable="yes">*</property>
                 <layout manager="grid">
                   <property name="column">3</property>
-                  <property name="row">1</property>
-                  <property name="sticky">nsew</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="tk.Button" id="input_button_7" named="True">
-                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">TkFixedFont</property>
-                <property name="takefocus">false</property>
-                <property name="text" translatable="yes">7</property>
-                <layout manager="grid">
-                  <property name="column">0</property>
                   <property name="row">2</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_8" named="True">
+              <object class="tk.Button" id="button_7" named="True">
+                <property name="background">#f7f7f7</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
+                <property name="font">TkFixedFont</property>
+                <property name="height">1</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">7</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="row">3</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_8" named="True">
+                <property name="background">#f7f7f7</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">8</property>
                 <layout manager="grid">
                   <property name="column">1</property>
-                  <property name="row">2</property>
+                  <property name="row">3</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_9" named="True">
+              <object class="tk.Button" id="button_9" named="True">
+                <property name="background">#f7f7f7</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">9</property>
                 <layout manager="grid">
                   <property name="column">2</property>
-                  <property name="row">2</property>
+                  <property name="row">3</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_subtract" named="True">
+              <object class="tk.Button" id="button_subtract" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
@@ -245,40 +259,43 @@
                 <property name="text" translatable="yes">-</property>
                 <layout manager="grid">
                   <property name="column">3</property>
-                  <property name="row">2</property>
-                  <property name="sticky">nsew</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="tk.Button" id="input_button_0" named="True">
-                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">TkFixedFont</property>
-                <property name="takefocus">false</property>
-                <property name="text" translatable="yes">0</property>
-                <layout manager="grid">
-                  <property name="column">0</property>
-                  <property name="columnspan">2</property>
                   <property name="row">3</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_dot" named="True">
+              <object class="tk.Button" id="button_0" named="True">
+                <property name="background">#f7f7f7</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
+                <property name="font">TkFixedFont</property>
+                <property name="height">1</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">0</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="columnspan">2</property>
+                  <property name="row">4</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_dot" named="True">
+                <property name="background">#f7f7f7</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">.</property>
                 <layout manager="grid">
                   <property name="column">2</property>
-                  <property name="row">3</property>
+                  <property name="row">4</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_add" named="True">
+              <object class="tk.Button" id="button_add" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
@@ -286,32 +303,18 @@
                 <property name="text" translatable="yes">+</property>
                 <layout manager="grid">
                   <property name="column">3</property>
-                  <property name="row">3</property>
+                  <property name="row">4</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_left_parentheses" named="True">
+              <object class="tk.Button" id="button_left_parentheses" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">(</property>
-                <layout manager="grid">
-                  <property name="column">5</property>
-                  <property name="row">0</property>
-                  <property name="sticky">nsew</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="tk.Button" id="input_button_right_parentheses" named="True">
-                <property name="background">#e7e9ef</property>
-                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
-                <property name="font">TkFixedFont</property>
-                <property name="takefocus">false</property>
-                <property name="text" translatable="yes">)</property>
                 <layout manager="grid">
                   <property name="column">5</property>
                   <property name="row">1</property>
@@ -320,12 +323,12 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_exponent" named="True">
+              <object class="tk.Button" id="button_right_parentheses" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">^</property>
+                <property name="text" translatable="yes">)</property>
                 <layout manager="grid">
                   <property name="column">5</property>
                   <property name="row">2</property>
@@ -334,12 +337,12 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_square_root" named="True">
+              <object class="tk.Button" id="button_exponent" named="True">
                 <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">√</property>
+                <property name="text" translatable="yes">^</property>
                 <layout manager="grid">
                   <property name="column">5</property>
                   <property name="row">3</property>
@@ -348,7 +351,21 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_clearall" named="True">
+              <object class="tk.Button" id="button_modulo" named="True">
+                <property name="background">#e7e9ef</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
+                <property name="font">TkFixedFont</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">%</property>
+                <layout manager="grid">
+                  <property name="column">5</property>
+                  <property name="row">4</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_clearall" named="True">
                 <property name="background">#efe7e7</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
@@ -363,7 +380,7 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_equals" named="True">
+              <object class="tk.Button" id="button_equals" named="True">
                 <property name="background">#e9efe7</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
@@ -372,7 +389,78 @@
                 <layout manager="grid">
                   <property name="column">6</property>
                   <property name="row">2</property>
-                  <property name="rowspan">2</property>
+                  <property name="rowspan">3</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_m_clear" named="True">
+                <property name="background">#f2eae1</property>
+                <property name="command" type="command" cbtype="with_wid">call_memory</property>
+                <property name="font">TkFixedFont</property>
+                <property name="height">1</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">MC</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="row">0</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_m_read" named="True">
+                <property name="background">#f2eae1</property>
+                <property name="command" type="command" cbtype="with_wid">call_memory</property>
+                <property name="font">TkFixedFont</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">MR</property>
+                <layout manager="grid">
+                  <property name="column">1</property>
+                  <property name="row">0</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_m_save" named="True">
+                <property name="background">#f2eae1</property>
+                <property name="command" type="command" cbtype="with_wid">call_memory</property>
+                <property name="font">TkFixedFont</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">MS</property>
+                <layout manager="grid">
+                  <property name="column">2</property>
+                  <property name="row">0</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_m_add" named="True">
+                <property name="background">#f2eae1</property>
+                <property name="command" type="command" cbtype="with_wid">call_memory</property>
+                <property name="font">TkFixedFont</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">M+</property>
+                <layout manager="grid">
+                  <property name="column">3</property>
+                  <property name="row">0</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_m_subtract" named="True">
+                <property name="background">#f2eae1</property>
+                <property name="command" type="command" cbtype="with_wid">call_memory</property>
+                <property name="font">TkFixedFont</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">M-</property>
+                <layout manager="grid">
+                  <property name="column">5</property>
+                  <property name="row">0</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
@@ -396,12 +484,14 @@
               <property type="row" id="all" name="weight">1</property>
             </containerlayout>
             <child>
-              <object class="tk.Button" id="input_button_demo_1" named="True">
-                <property name="background">#e8d4c0</property>
+              <object class="tk.Button" id="button_sind" named="True">
+                <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
+                <property name="height">1</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">D1</property>
+                <property name="text" translatable="yes">sind</property>
+                <property name="width">4</property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="row">0</property>
@@ -410,12 +500,13 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_sind" named="True">
+              <object class="tk.Button" id="button_cosd" named="True">
                 <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">sind</property>
+                <property name="text" translatable="yes">cosd</property>
+                <property name="width">4</property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">0</property>
@@ -424,12 +515,13 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_sinr" named="True">
+              <object class="tk.Button" id="button_tand" named="True">
                 <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">sinr</property>
+                <property name="text" translatable="yes">tand</property>
+                <property name="width">4</property>
                 <layout manager="grid">
                   <property name="column">2</property>
                   <property name="row">0</property>
@@ -438,12 +530,13 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_x" named="True">
-                <property name="background">#e0e0e0</property>
+              <object class="tk.Button" id="button_x" named="True">
+                <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
                 <property name="text" translatable="yes">x</property>
+                <property name="width">4</property>
                 <layout manager="grid">
                   <property name="column">3</property>
                   <property name="row">0</property>
@@ -452,12 +545,13 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_demo_2" named="True">
-                <property name="background">#e8d4c0</property>
+              <object class="tk.Button" id="button_sinr" named="True">
+                <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
+                <property name="height">1</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">D2</property>
+                <property name="text" translatable="yes">sinr</property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="row">1</property>
@@ -466,12 +560,12 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_cosd" named="True">
+              <object class="tk.Button" id="button_cosr" named="True">
                 <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">cosd</property>
+                <property name="text" translatable="yes">cosr</property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">1</property>
@@ -480,12 +574,12 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_cosr" named="True">
+              <object class="tk.Button" id="button_tanr" named="True">
                 <property name="background">#e8dbe6</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">cosr</property>
+                <property name="text" translatable="yes">tanr</property>
                 <layout manager="grid">
                   <property name="column">2</property>
                   <property name="row">1</property>
@@ -494,8 +588,8 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_y" named="True">
-                <property name="background">#e0e0e0</property>
+              <object class="tk.Button" id="button_y" named="True">
+                <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
@@ -508,13 +602,13 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_demo_3" named="True">
-                <property name="background">#e8d4c0</property>
+              <object class="tk.Button" id="button_sqrt" named="True">
+                <property name="background">#e9eee8</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
-                <property name="state">normal</property>
+                <property name="height">1</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">D3</property>
+                <property name="text" translatable="yes">sqrt</property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="row">2</property>
@@ -523,12 +617,12 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_tand" named="True">
-                <property name="background">#e8dbe6</property>
+              <object class="tk.Button" id="button_log" named="True">
+                <property name="background">#e9eee8</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">tand</property>
+                <property name="text" translatable="yes">log</property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">2</property>
@@ -537,12 +631,12 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_tanr" named="True">
-                <property name="background">#e8dbe6</property>
+              <object class="tk.Button" id="button_ln" named="True">
+                <property name="background">#e9eee8</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">tanr</property>
+                <property name="text" translatable="yes">ln</property>
                 <layout manager="grid">
                   <property name="column">2</property>
                   <property name="row">2</property>
@@ -551,8 +645,8 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_z" named="True">
-                <property name="background">#e0e0e0</property>
+              <object class="tk.Button" id="button_z" named="True">
+                <property name="background">#e7e9ef</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
                 <property name="takefocus">false</property>
@@ -565,13 +659,13 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_demo_4" named="True">
-                <property name="background">#e8d4c0</property>
+              <object class="tk.Button" id="button_rand" named="True">
+                <property name="background">#dbe6e8</property>
                 <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
-                <property name="state">normal</property>
+                <property name="height">1</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">D4</property>
+                <property name="text" translatable="yes">rand</property>
                 <layout manager="grid">
                   <property name="column">0</property>
                   <property name="row">3</property>
@@ -580,12 +674,12 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_memory_add" named="True">
-                <property name="background">#e0e0e0</property>
-                <property name="command" type="command" cbtype="with_wid">call_memory</property>
+              <object class="tk.Button" id="button_fact" named="True">
+                <property name="background">#dbe6e8</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
                 <property name="font">TkFixedFont</property>
-                <property name="state">disabled</property>
                 <property name="takefocus">false</property>
+                <property name="text" translatable="yes">n!</property>
                 <layout manager="grid">
                   <property name="column">1</property>
                   <property name="row">3</property>
@@ -594,13 +688,10 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_log" named="True">
-                <property name="background">#dbe6e8</property>
-                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
+              <object class="tk.Button" id="button_25">
                 <property name="font">TkFixedFont</property>
-                <property name="state">normal</property>
+                <property name="state">disabled</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes">log</property>
                 <layout manager="grid">
                   <property name="column">2</property>
                   <property name="row">3</property>
@@ -609,15 +700,70 @@
               </object>
             </child>
             <child>
-              <object class="tk.Button" id="input_button_361" named="True">
-                <property name="background">#e0e0e0</property>
+              <object class="tk.Button" id="button_27">
                 <property name="font">TkFixedFont</property>
                 <property name="state">disabled</property>
                 <property name="takefocus">false</property>
-                <property name="text" translatable="yes"> </property>
                 <layout manager="grid">
                   <property name="column">3</property>
                   <property name="row">3</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_pi" named="True">
+                <property name="background">#f2eae1</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
+                <property name="font">TkFixedFont</property>
+                <property name="height">1</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">π</property>
+                <layout manager="grid">
+                  <property name="column">0</property>
+                  <property name="row">4</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_phi" named="True">
+                <property name="background">#f2eae1</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
+                <property name="font">TkFixedFont</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">Φ</property>
+                <layout manager="grid">
+                  <property name="column">1</property>
+                  <property name="row">4</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_tau" named="True">
+                <property name="background">#f2eae1</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
+                <property name="font">TkFixedFont</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">τ</property>
+                <layout manager="grid">
+                  <property name="column">2</property>
+                  <property name="row">4</property>
+                  <property name="sticky">nsew</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="tk.Button" id="button_euler" named="True">
+                <property name="background">#f2eae1</property>
+                <property name="command" type="command" cbtype="with_wid">call_numpad</property>
+                <property name="font">TkFixedFont</property>
+                <property name="takefocus">false</property>
+                <property name="text" translatable="yes">ℇ</property>
+                <layout manager="grid">
+                  <property name="column">3</property>
+                  <property name="row">4</property>
                   <property name="sticky">nsew</property>
                 </layout>
               </object>
@@ -664,10 +810,11 @@
                 </layout>
                 <child>
                   <object class="tk.Entry" id="output_result" named="True">
+                    <property name="exportselection">true</property>
                     <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
-                    <property name="relief">flat</property>
-                    <property name="state">normal</property>
+                    <property name="readonlybackground">#ffffff</property>
+                    <property name="state">readonly</property>
                     <property name="takefocus">false</property>
                     <property name="textvariable">string:string_result</property>
                     <layout manager="pack">
@@ -697,10 +844,11 @@
                 </layout>
                 <child>
                   <object class="tk.Entry" id="output_rpn" named="True">
+                    <property name="exportselection">true</property>
                     <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
-                    <property name="relief">flat</property>
-                    <property name="state">normal</property>
+                    <property name="readonlybackground">#ffffff</property>
+                    <property name="state">readonly</property>
                     <property name="takefocus">false</property>
                     <property name="textvariable">string:string_result_rpn</property>
                     <layout manager="pack">
@@ -730,9 +878,9 @@
                 </layout>
                 <child>
                   <object class="tk.Entry" id="input_variables" named="True">
+                    <property name="exportselection">true</property>
                     <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
-                    <property name="relief">flat</property>
                     <property name="takefocus">true</property>
                     <property name="textvariable">string:string_variables</property>
                     <bind sequence="&lt;KeyPress-Return&gt;" handler="call_calculate" add="" />
@@ -763,9 +911,9 @@
                 </layout>
                 <child>
                   <object class="tk.Entry" id="input_expression" named="True">
+                    <property name="exportselection">true</property>
                     <property name="font">TkFixedFont</property>
                     <property name="justify">right</property>
-                    <property name="relief">flat</property>
                     <property name="takefocus">true</property>
                     <property name="textvariable">string:string_expression</property>
                     <bind sequence="&lt;KeyPress-Return&gt;" handler="call_calculate" add="" />
