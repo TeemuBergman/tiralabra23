@@ -20,6 +20,8 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
     def convert(self, calculation: Calculation) -> None:
         """Converts an infix mathematical expression to a Reverse Polish Notation (RPN).
 
+        Time complexity: O(n).
+
         Args:
             calculation (Calculation): Takes the Calculation class as argument and saves
             the result to it as Reverse Polish Notation.
@@ -65,6 +67,8 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
         """Handles all integers.
 
         Check if current_symbol is integer and if it is a part of rational number.
+
+        Time complexity: O(1).
         """
         # {'.n'}
         if self._symbol_oracle[0] == '.':
@@ -81,6 +85,8 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
 
         Check if previous symbol is integer or if it just a dot,
         then add 0 as the first value.
+
+        Time complexity: O(1).
         """
         # {'n.'}
         if self._symbol_oracle[0].isnumeric():
@@ -90,10 +96,12 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
             self._output_rpn.append('0' + self._current_symbol)
 
     def _process_negatives(self) -> None:
-        """Handles all the negative values and parentheses.
+        """Handles all the negative values, parentheses and functions.
 
         Check for different cases where negative operator is used without its
         counterpart value and if some our found add 0 to output stack.
+
+        Time complexity: O(1).
         """
         # {'-(', '(-('}
         if self._symbol_oracle[0] in [' ', '('] and self._symbol_oracle[-1] == '(':
@@ -109,7 +117,10 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
         self._process_operators()
 
     def _process_functions(self) -> None:
-        """Handles all the functions to operator stack in correct composition."""
+        """Handles all the functions to operator stack in correct composition.
+
+        Time complexity: O(1).
+        """
         # {' '}
         if not self._symbol_oracle[0].isalpha():
             self._operands.append(self._current_symbol)
@@ -121,8 +132,10 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
         """Process an operator symbol and update the operator stack and output queue.
 
         The function uses the `operator_precedence` dictionary to determine the precedence
-        level of the input symbol and the operators on the stack.Once the correct position for
-        the input symbol is found, it is added to the operator stack.
+        level of the input symbol and the operators on the stack.Once the correct position
+        for the input symbol is found, it is added to the operator stack.
+
+        Time complexity: O(1).
         """
         # Operator precedence to be used when arranging operators in stack
         operator_precedence = {'%': 3, '^': 3, '*': 2, '/': 2, '+': 1, '-': 1}
@@ -145,6 +158,8 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
         If the symbol is a close parenthesis, pop operators from the stack and
         add them to the output queue until an open parenthesis is found. The
         open parenthesis is also popped from the stack but not added to the output.
+
+        Time complexity: O(n).
         """
         # If the symbol is a left parenthesis, push it to the operator stack
         if self._current_symbol == '(':
@@ -167,6 +182,8 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
         """
         Pop any remaining operators from the stack and add them to the output
         and raise an ExpressionError if left parentheses is found.
+
+        Time complexity: O(n).
         """
         while self._operands:
             if self._operands[-1] != '(':

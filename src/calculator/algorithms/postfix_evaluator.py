@@ -16,8 +16,11 @@ class PostfixEvaluator:  # pylint: disable=too-few-public-methods
         self._operations = ArithmeticOperations()
         self._values_stack = []
 
-    def evaluate(self, calculation: Calculation) -> None:
-        """Evaluate a postfix expression.
+    def evaluate(self, calculation: Calculation) -> Calculation:
+        """Get RPN from Calculation class, evaluates it and returns the result back
+        to Calculation class.
+
+        Time complexity: O(n).
 
         Args:
             calculation (Calculation): Object contains the RPN expression to be evaluated.

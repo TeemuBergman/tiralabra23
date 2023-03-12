@@ -22,9 +22,14 @@ class Calculation:  # pylint: disable=too-few-public-methods
         """This adds constants and user given variables to expression,
            before its sent to Shunting Yard algorithm.
 
+        Time complexity: O(n^2)
+
         Args:
             expression (str): A string representing the mathematical expression.
             variables (str): A string of variables.
+
+        Returns:
+            self (Calculation): Returns its self.
         """
         # Handle expression
         if expression:
@@ -50,22 +55,29 @@ class Calculation:  # pylint: disable=too-few-public-methods
         return self
 
     def _remove_spaces(self, string: str) -> str:
-        """Remove spaces from given string."""
+        """Remove spaces from given string and return a sting.
+        Time complexity: O(n)."""
         return string.replace(' ', '')
 
     def _convert_dot_to_comma(self, string: str) -> str:
-        """Convert commas to dots in given string."""
+        """Convert commas to dots in given string and return a sting.
+        Time complexity: O(n)."""
         return string.replace(',', '.')
 
     def _convert_to_lowercase(self, string: str) -> str:
-        """Convert given string to lowercase."""
+        """Convert given string to lowercase and return a sting.
+        Time complexity: O(n)."""
         return string.lower()
 
     def _variables_to_dictionary(self, variables: str) -> dict:
-        """Convert a string of variables to a dictionary.
+        """Convert a string of variables to a dictionary and return a dictionary.
+        Time complexity: O(n).
 
         Args:
             variables (str): A string of variables.
+
+        Returns:
+            variables_dictionary (dict): Dictionary with converted variables.
         """
         variables_list = variables.split(',')
         variables_dictionary = {}
@@ -77,7 +89,7 @@ class Calculation:  # pylint: disable=too-few-public-methods
             except ValueError as exc:
                 raise VariableError(self._error_messages.get('no value')) from exc
 
-            # Check that there is a value
+            # Check that is there a value
             if not value:
                 raise VariableError(self._error_messages.get('no value'))
 
@@ -92,13 +104,15 @@ class Calculation:  # pylint: disable=too-few-public-methods
         return variables_dictionary
 
     def _introduce_constants(self) -> None:
-        """Replace given constant names with values."""
+        """Replace given constant names with their corresponding values.
+        Time complexity: O(n^2)."""
         # Introduce mathematical constants
         for key, value in self._constants.mathematical.items():
             self.expression = self.expression.replace(key, value)
 
     def _introduce_variables(self, variables_dictionary: dict) -> None:
-        """Replace given user variable names with values."""
+        """Replace given user variable names with their given values.
+        Time complexity: O(n^2)."""
         # Introduce user variables
         for key, value in variables_dictionary.items():
             self.expression = self.expression.replace(key, value)

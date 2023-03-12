@@ -23,6 +23,8 @@ class ScientificCalculator:  # pylint: disable=too-few-public-methods
     def calculate(self, expression: str, variables = None) -> Decimal:
         """Evaluate the expression provided in the constructor.
 
+        Time complexity: O(n^2)
+
         Args:
             expression (str): A string representing the mathematical expression,
             with or without variables.

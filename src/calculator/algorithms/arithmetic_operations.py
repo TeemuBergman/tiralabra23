@@ -46,6 +46,8 @@ class ArithmeticOperations:  # pylint: disable=too-few-public-methods
         """Perform calculations with given operators, functions or constants
         on 0-2 values {None, Decimal}.
 
+        Time complexity: O(1).
+
         Args:
             operand (str): Representing the desired operator, function or constant.
             value_1 (Decimal): The first value to be perform calculation on.

@@ -44,7 +44,8 @@ class ErrorMessages:  # pylint: disable=too-few-public-methods
         }
 
     def get(self, error: str) -> str:
-        """Finds a correct error message and adds a prefix and postfix to it."""
+        """Finds a correct error message from dictionaries, adds a prefix and
+        postfix to it and returns a string."""
         if error in self._operation_errors:
             error_message = self._operation_errors[error]
         elif error in self._expression_errors:
