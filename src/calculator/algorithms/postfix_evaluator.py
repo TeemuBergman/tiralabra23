@@ -74,6 +74,7 @@ class PostfixEvaluator:  # pylint: disable=too-few-public-methods
 
         if len(self._values_stack) == 1:
             # The final result is the only value remaining on the stack
-            calculation.result = self._values_stack.pop()
+            final_result = self._values_stack.pop()
+            calculation.result = final_result
         else:
             raise ExpressionError(self._error_message.get('not a valid expression'))

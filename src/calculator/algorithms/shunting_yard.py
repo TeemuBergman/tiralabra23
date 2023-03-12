@@ -43,7 +43,7 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
                 self._process_decimals()
             elif self._current_symbol == '-':
                 self._process_negatives()
-            elif self._current_symbol in ['+', '*', '/', '^']:
+            elif self._current_symbol in ['+', '*', '/', '^', '%']:
                 self._process_operators()
             elif self._current_symbol in ['(', ')']:
                 self._process_parenthesis()
@@ -101,6 +101,9 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
         # {'-n', '(-n'}
         elif self._symbol_oracle[0] in [' ', '('] and self._symbol_oracle[-1].isnumeric():
             self._output_rpn.append('0')
+        # {'-function'}
+        elif self._symbol_oracle[-1].isalpha():
+            self._output_rpn.append('0')
 
         # Process negative operator just like any other of its kind
         self._process_operators()
@@ -122,7 +125,7 @@ class ShuntingYard:  # pylint: disable=too-few-public-methods
         the input symbol is found, it is added to the operator stack.
         """
         # Operator precedence to be used when arranging operators in stack
-        operator_precedence = {'^': 3, '*': 2, '/': 2, '+': 1, '-': 1}
+        operator_precedence = {'%': 3, '^': 3, '*': 2, '/': 2, '+': 1, '-': 1}
 
         # If the symbol is an operator, pop operators from the stack and
         # add them to the output until a lower precedence operator is found

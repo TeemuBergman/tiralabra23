@@ -17,8 +17,6 @@ class Calculation:  # pylint: disable=too-few-public-methods
         # Variables for storing RPN and result
         self.result_rpn = None
         self.result = None
-        # Memory
-        self.memory = ''
 
     def new(self, expression: str, variables: str = None):
         """This adds constants and user given variables to expression,
@@ -48,8 +46,6 @@ class Calculation:  # pylint: disable=too-few-public-methods
             self.variables = self._variables_to_dictionary(self.variables)
             # Process given variables to given expression
             self._introduce_variables(self.variables)
-        else:
-            self.variables = ''
 
         return self
 
@@ -106,21 +102,3 @@ class Calculation:  # pylint: disable=too-few-public-methods
         # Introduce user variables
         for key, value in variables_dictionary.items():
             self.expression = self.expression.replace(key, value)
-
-    # MEMORY OPERATIONS
-
-    def save_to_memory(self) -> None:
-        """..."""
-        self.memory = self.result
-
-    def add_to_memory(self) -> None:
-        """..."""
-        self.memory += self.result
-
-    def subtract_from_memory(self) -> None:
-        """..."""
-        self.memory -= self.result
-
-    def clear_memory(self) -> None:
-        """..."""
-        self.memory = 0
