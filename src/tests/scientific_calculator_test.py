@@ -76,7 +76,7 @@ class TestScientificCalculator(unittest.TestCase):
 
     def test_functions_2(self):
         """Test if the class returns correct answer with given expression."""
-        expression = 'sqrt(6^64)'
+        expression = 'sqrt((6^64))'
         result = self.scientific_calculator.calculate(expression)
         self.assertAlmostEqual(float(result), 7.958661109946401e+24)
 
@@ -119,7 +119,7 @@ class TestScientificCalculator(unittest.TestCase):
     def test_invalid_operator_1(self):
         """Test if the function resolves invalid operator to error."""
         with self.assertRaises(ExpressionError) as exc:
-            self.scientific_calculator.calculate('1%1')
+            self.scientific_calculator.calculate('1&1')
         self.assertEqual(self.error_message.get('not a valid expression'),
                          str(exc.exception))
 

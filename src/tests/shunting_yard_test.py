@@ -190,6 +190,11 @@ class TestShuntingYard(unittest.TestCase):
         self.shunting_yard.convert(self.calculation.new('sinr(sinr(1))'))
         self.assertEqual(self.calculation.result_rpn, '1 sinr sinr')
 
+    def test_function_sine_3(self):
+        """Test if the class converts the given expression correctly to RPN.'"""
+        self.shunting_yard.convert(self.calculation.new('-sinr(12)'))
+        self.assertEqual(self.calculation.result_rpn, '0 12 sinr -')
+
     def test_function_cosine_1(self):
         """Test if the class converts the given expression correctly to RPN.'"""
         self.shunting_yard.convert(self.calculation.new('cosr(12)'))
