@@ -21,24 +21,26 @@ class ErrorMessages:  # pylint: disable=too-few-public-methods
         self._msg_postfix = '!'
 
         self._operation_errors = {
-            'division by zero': 'Division by zero',
-            'square root':      'Square root has a value equal or smaller than zero',
-            'logarithm':        'Logarithm has a value equal or smaller than zero',
-            'random':           'Random has a value equal or smaller than zero',
-            'use integer':      'Use a integer value',
-            'missing operand':  'Invalid or missing operator, function or constant',
-            'missing value':    'Invalid or missing value'
+            'division by zero':   'Division by zero',
+            'square root':        'Square root has a value equal or smaller than zero',
+            'logarithm':          'Logarithm has a value equal or smaller than zero',
+            'random':             'Random has a value equal or smaller than zero',
+            'factorial negative': 'Factorial has a value equal or smaller than zero',
+            'factorial decimal':  'Use a integer value with factorial',
+            'use integer':        'Use a integer value',
+            'missing operand':    'Invalid or missing operator, function or constant',
+            'missing value':      'Invalid or missing value'
         }
 
         self._expression_errors = {
             'expression not found':   'Expression not found',
             'not a valid expression': 'Not a valid expression',
-            'not a number':           'Not a rational number'
+            'not a number':           'Not a number'
         }
 
         self._variable_errors = {
             'no value':       'Variable has no value',
-            'not a variable': 'Variable value is not a rational number'
+            'not a variable': 'Variable value is not a number'
         }
 
     def get(self, error: str) -> str:
