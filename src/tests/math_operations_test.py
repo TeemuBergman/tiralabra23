@@ -3,16 +3,16 @@
 import unittest
 
 # Custom classes
-from utils.error_handling import ErrorMessages, OperationError
-from calculator.algorithms.arithmetic_operations import ArithmeticOperations
+from calculator.error_handling import ErrorMessages, OperationError
+from calculator.algorithms.math_operations import MathOperations
 
 
 class TestArithmeticOperations(unittest.TestCase):
-    """Tests for ArithmeticOperations class."""
+    """Tests for MathOperations class."""
 
     def setUp(self):
         self.error_message = ErrorMessages()
-        self.operations = ArithmeticOperations()
+        self.operations = MathOperations()
 
     # BASIC TESTS
 

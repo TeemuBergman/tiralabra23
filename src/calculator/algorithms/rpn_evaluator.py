@@ -3,17 +3,17 @@
 from decimal import Decimal, InvalidOperation
 
 # Custom classes
-from utils.error_handling import ErrorMessages, ExpressionError
+from calculator.error_handling import ErrorMessages, ExpressionError
 from .calculation import Calculation
-from .arithmetic_operations import ArithmeticOperations
+from .math_operations import MathOperations
 
 
-class PostfixEvaluator:  # pylint: disable=too-few-public-methods
+class RPNEvaluator:  # pylint: disable=too-few-public-methods
     """Postfix evaluator takes a postfix expressions as input and evaluates it."""
 
     def __init__(self):
         self._error_message = ErrorMessages()
-        self._operations = ArithmeticOperations()
+        self._operations = MathOperations()
         self._values_stack = []
 
     def evaluate(self, calculation: Calculation) -> Calculation:

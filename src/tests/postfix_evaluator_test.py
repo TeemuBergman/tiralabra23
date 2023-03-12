@@ -4,17 +4,17 @@ import unittest
 
 # Custom classes
 from calculator.algorithms.calculation import Calculation
-from utils.error_handling import ErrorMessages, ExpressionError
-from calculator.algorithms.postfix_evaluator import PostfixEvaluator
+from calculator.error_handling import ErrorMessages, ExpressionError
+from calculator.algorithms.rpn_evaluator import RPNEvaluator
 
 
 class TestPostfixEvaluator(unittest.TestCase):
-    """Tests for PostfixEvaluator class."""
+    """Tests for RPNEvaluator class."""
 
     def setUp(self):
         self.error_message = ErrorMessages()
         self.calculation = Calculation()
-        self.postfix_evaluator = PostfixEvaluator()
+        self.postfix_evaluator = RPNEvaluator()
 
     # BASIC TESTS
 

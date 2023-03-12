@@ -113,7 +113,9 @@ class SciCalGui:
         self.output_result_rpn.set('')
 
     def update_history(self, calculation) -> None:
-        if len(self.history) >= 18:
+        history_size = 10
+
+        if len(self.history) >= history_size:
             self.history = self.history[2:]
             self.history.append(f'{calculation.expression}=')
             self.history.append(calculation.result)

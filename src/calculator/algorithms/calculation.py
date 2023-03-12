@@ -1,7 +1,7 @@
 """Calculation class."""
 
 # Custom classes
-from utils.error_handling import ErrorMessages, VariableError, ExpressionError
+from calculator.error_handling import ErrorMessages, VariableError, ExpressionError
 from .constants import Constants
 
 

@@ -5,7 +5,7 @@ from decimal import Decimal
 # Custom classes
 from .algorithms.calculation import Calculation
 from .algorithms.shunting_yard import ShuntingYard
-from .algorithms.postfix_evaluator import PostfixEvaluator
+from .algorithms.rpn_evaluator import RPNEvaluator
 
 
 class ScientificCalculator:  # pylint: disable=too-few-public-methods
@@ -18,7 +18,7 @@ class ScientificCalculator:  # pylint: disable=too-few-public-methods
     def __init__(self):
         self.calculation = Calculation()
         self.shunting_yard = ShuntingYard()
-        self.postfix_evaluator = PostfixEvaluator()
+        self.postfix_evaluator = RPNEvaluator()
 
     def calculate(self, expression: str, variables = None) -> Decimal:
         """Evaluate the expression provided in the constructor.

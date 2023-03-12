@@ -2,7 +2,7 @@
 
 
 class Constants:  # pylint: disable=too-few-public-methods
-    """This class contains constants to be used in operations."""
+    """This class contains constants to be used in calculation operations."""
 
     def __init__(self):
         self.mathematical = {

@@ -1,65 +1,44 @@
 <?xml version='1.0' encoding='utf-8'?>
 <interface version="1.3">
   <object class="tk.Toplevel" id="main_window" named="True">
-    <property name="geometry">600x800</property>
+    <property name="geometry">600x715</property>
     <property name="height">200</property>
-    <property name="minsize">550|800</property>
+    <property name="minsize">600|715</property>
     <property name="padx">3</property>
     <property name="pady">5</property>
     <property name="relief">raised</property>
     <property name="resizable">none</property>
     <property name="takefocus">true</property>
     <property name="title" translatable="yes">Scientific calculator</property>
-    <containerlayout manager="pack">
-      <property name="propagate">False</property>
-    </containerlayout>
     <child>
-      <object class="tk.Frame" id="frame_history" named="True">
-        <property name="height">155</property>
-        <property name="padx">5</property>
-        <property name="pady">2</property>
-        <property name="width">600</property>
+      <object class="tk.LabelFrame" id="labelframe_1">
+        <property name="font">TkFixedFont</property>
+        <property name="height">18</property>
+        <property name="labelanchor">ne</property>
+        <property name="text" translatable="yes">History</property>
+        <property name="width">200</property>
         <layout manager="pack">
-          <property name="expand">true</property>
-          <property name="fill">both</property>
+          <property name="fill">x</property>
           <property name="side">top</property>
         </layout>
-        <containerlayout manager="pack">
-          <property name="propagate">False</property>
-        </containerlayout>
         <child>
-          <object class="tk.LabelFrame" id="labelframe_1">
+          <object class="tk.Listbox" id="output_history" named="True">
+            <property name="activestyle">none</property>
+            <property name="exportselection">true</property>
             <property name="font">TkFixedFont</property>
-            <property name="labelanchor">ne</property>
-            <property name="text" translatable="yes">History</property>
-            <property name="width">200</property>
+            <property name="height">10</property>
+            <property name="justify">right</property>
+            <property name="listvariable">string:list_history</property>
+            <property name="selectmode">single</property>
+            <property name="state">normal</property>
+            <property name="takefocus">false</property>
             <layout manager="pack">
               <property name="expand">true</property>
-              <property name="fill">both</property>
-              <property name="side">top</property>
+              <property name="fill">x</property>
+              <property name="padx">3</property>
+              <property name="pady">6</property>
+              <property name="side">left</property>
             </layout>
-            <containerlayout manager="pack">
-              <property name="propagate">False</property>
-            </containerlayout>
-            <child>
-              <object class="tk.Listbox" id="output_history" named="True">
-                <property name="activestyle">none</property>
-                <property name="exportselection">true</property>
-                <property name="font">TkFixedFont</property>
-                <property name="justify">right</property>
-                <property name="listvariable">string:list_history</property>
-                <property name="selectmode">single</property>
-                <property name="state">normal</property>
-                <property name="takefocus">false</property>
-                <layout manager="pack">
-                  <property name="expand">true</property>
-                  <property name="fill">both</property>
-                  <property name="padx">3</property>
-                  <property name="pady">6</property>
-                  <property name="side">top</property>
-                </layout>
-              </object>
-            </child>
           </object>
         </child>
       </object>

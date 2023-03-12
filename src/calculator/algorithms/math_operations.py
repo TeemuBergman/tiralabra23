@@ -1,15 +1,15 @@
-"""Arithmetic Operations class."""
+"""Math Operations class."""
 
 import math
 import random
 from decimal import Decimal, getcontext
 
 # Custom classes
-from utils.error_handling import ErrorMessages, OperationError
+from calculator.error_handling import ErrorMessages, OperationError
 
 
-class ArithmeticOperations:  # pylint: disable=too-few-public-methods
-    """This class handles all arithmetic operations."""
+class MathOperations:  # pylint: disable=too-few-public-methods
+    """This class handles all the mathematical operations."""
 
     def __init__(self):
         self.error_message = ErrorMessages()
