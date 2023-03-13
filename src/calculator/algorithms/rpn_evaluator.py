@@ -57,7 +57,7 @@ class RPNEvaluator:  # pylint: disable=too-few-public-methods
 
             # If the symbol is not a number, then it must be a operator or a function
             else:
-                if symbol in self._operations.functions:
+                if symbol in self._operations.functions and self._values_stack:
                     # If symbol is a function, pop only one value
                     value_2 = None
                     value_1 = self._values_stack.pop()
