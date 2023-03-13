@@ -14,11 +14,11 @@
 
 ## Harjoitustyön kuvaus
 
-Harjoitustyönäni toteutan Dijkstran `Shunting yard` [Dijkstra, 1961] -algoritmia sekä Hamblinin `Postfix expression stack evaluator` [Hamblin, 1962] -algoritmia hyödyntävän tieteellisen laskimen. 
+Harjoitustyönäni toteutan Dijkstran `Shunting yard` -algoritmia sekä Hamblinin `Postfix expression stack evaluator` -algoritmia hyödyntävän tieteellisen laskimen [Dijkstra, 1961] [Hamblin, 1962]. 
 
 Shunting Yard -algoritmi on matemaattisten lausekkeiden uudelleen jäsentämisessä käytetty algoritmi joka muuntaa infix-muotoisen syötteen Reverse Polish notation (RPN)/postfix-muotoon. Postfix expression stack evaluator -algoritmi (harjoitustyössä nimeltään: `RPNEvaluator`) arvioi RPN/postfix-muotoisen lausekkeen arvon suorittamalla pinoa apunaan käyttäen siinä olevat laskutoimitukset. 
 
-Kummatkin algoritmit käyvät syötteen läpi vain kerran ja suorittavat siinä olevat laskutoimituksen vain kerran, joten yksinkertaisina algoritmeina ne ovat verrattain tehokkaita monimutkaistenkin laskutoimitusten ratkaisemiseen.
+Kummatkin algoritmit käyvät syötteen läpi ja suorittavat siinä olevat laskutoimituksen kerran, joten yksinkertaisina algoritmeina ne ovat verrattain tehokkaita monimutkaistenkin laskutoimitusten ratkaisemiseen.
 
 ## Aika- ja tilavaativuudet
 

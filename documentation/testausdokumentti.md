@@ -11,7 +11,7 @@ Paikallisesti kehityksen aikaisessa testauksessa suoritetaan Pytest -yksikkötes
 [![codecov](https://codecov.io/gh/TeemuBergman/tiralabra23/branch/master/graph/badge.svg?token=3LZ03KXZAA)](https://codecov.io/gh/TeemuBergman/tiralabra23)
 
 Pytest -yksikkötestejä on laajennettu koskemaan jokaista ohjelman kannalta oleellista funktiota sekä metodia.
-Yksikkötestejä on tällä hetkellä 155 kappaletta ja ne testaavat oikeita sekä virheellisiä syötteitä. Niillä pyritään 
+Yksikkötestejä on tällä hetkellä 158 kappaletta ja ne testaavat oikeita sekä virheellisiä syötteitä. Niillä pyritään 
 tuottamaan oikeita tuloksia sekä virheilmoituksia. Testeissä mukana olevien laskujen tuloksia on validoitu GeoGebralla,
 Wolfram Alphalla sekä erinäisten käyttöjärjestelmien mukana tulleilla tieteellisillä laskimilla.
 

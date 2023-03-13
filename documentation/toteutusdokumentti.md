@@ -61,8 +61,8 @@ Sovelluksen tietorakenteina käytetään yksittäisiä muuttujia, pinoja sekä s
 
 ## Puutteet ja parannusehdotukset
 
-- Laskimeen voisi lisätä ainakin uusia funktioita. Tämä onneksi on oman `MathOperations` -luokan ansiosta vaivatonta.
-- Käyttöliittymää voisi jälleen muokata käytettävämpään suuntaan, lähinnä painikkeiden ja historianäkymän osalta. Tämä tieteellinen laskin oli siis ensimmäinen projekti jossa käytin Tkinteriä ja sen päälle rakennettua visuaalista suunnittelytyökalua Pygubu-designeria, joten osa sen ominaisuuksista ja rajoitteista selvisi vasta tämän projektin aikana.
+- Laskimeen voisi lisätä uusia funktioita. Tämä on onneksi oman `MathOperations` -luokan ansiosta vaivatonta.
+- Käyttöliittymää voisi jälleen muokata käytettävämpään suuntaan, lähinnä painikkeiden ja historianäkymän osalta.
 
 
 ## Lähteet
