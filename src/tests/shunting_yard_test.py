@@ -3,7 +3,7 @@
 import unittest
 
 # Custom classes
-from calculator.error_handling import ErrorMessages, ExpressionError
+from calculator.algorithms.error_handling import ErrorMessages, ExpressionError
 from calculator.algorithms.calculation import Calculation
 from calculator.algorithms.shunting_yard import ShuntingYard
 

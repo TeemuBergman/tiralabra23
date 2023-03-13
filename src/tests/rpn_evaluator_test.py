@@ -4,7 +4,7 @@ import unittest
 
 # Custom classes
 from calculator.algorithms.calculation import Calculation
-from calculator.error_handling import ErrorMessages, ExpressionError
+from calculator.algorithms.error_handling import ErrorMessages, ExpressionError
 from calculator.algorithms.rpn_evaluator import RPNEvaluator
 
 

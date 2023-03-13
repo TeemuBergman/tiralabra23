@@ -3,7 +3,7 @@
 import unittest
 
 # Custom classes
-from calculator.error_handling import ErrorMessages, VariableError
+from calculator.algorithms.error_handling import ErrorMessages, VariableError
 from calculator.algorithms.calculation import Calculation
 
 
