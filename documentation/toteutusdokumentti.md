@@ -45,13 +45,11 @@ Shunting Yard -algoritmin ei sisällä kovinkaan monimutkaisia rakenteita, jotka
 
 ### RPN Evaluator (Postfix expression stack evaluator)
 
-`RPN Evaluator` -algoritmi arvioi RPN/postfix-muotoisen lausekkeen arvon käyttämällä pinoa ja suorittamalla tarvittavat laskutoimitukset [Stack-oriented programming, n.d.]. Koska algoritmi käy läpi syötteen vain kerran ja suorittaa jokaisen laskutoimituksen vain kerran, sen aikavaativuus on lineaarinen suhteessa syötteen pituuteen.
-
-`RPN Evaluator` -algoritmi käy läpi syötteen merkki kerrallaan, jolloin se tallentaa yhteen pinoon kaikki operandit, kunnes se kohtaa operaattorin. Tällöin se operaattorista riippuen poistaa yksi tai kaksi pinon viimeistä arvoa, joiden avulla se suorittaa tarvittavan laskutoimituksen ja lisää siitä saadun tuloksen edellä mainitun pinon päälle. 
+`RPN Evaluator` -algoritmi käy läpi RPN/postfix-muotoisen lausekkeen merkki kerrallaan, jolloin se tallentaa yhteen pinoon kaikki operandit, kunnes se kohtaa operaattorin. Tällöin se operaattorista riippuen poistaa yksi tai kaksi pinon viimeistä arvoa, joiden avulla se suorittaa tarvittavan laskutoimituksen ja lisää siitä saadun tuloksen edellä mainitun pinon päälle. 
 
 Kun se on käynyt läpi syötteen kaikki merkit, pinossa on jäljellä enää vain yksi arvo, joka on lausekkeen lopullinen arvo.
 
-`RPN Evaluator` -algoritmi on rakenteeltaan myös hyvin suoraviivainen, joten sen aikavaativuus on myös `O(n)` suhteessa syötteen pituuteen.
+Myös `RPN Evaluator` -algoritmi on rakenteeltaan hyvin suoraviivainen, joten sen aikavaativuus on myös `O(n)` suhteessa syötteen pituuteen.
 
 ### Calculation
 
