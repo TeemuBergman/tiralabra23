@@ -9,7 +9,7 @@
 ## Dokumentaatio
 
 - [Käyttöohje](documentation/käyttöohje.md)
-- [Vaatimusmäärittely](documentation/määrittelydokumentti.md)
+- [Määrittelydokumentti](documentation/määrittelydokumentti.md)
 - [Toteutusdokumentti](documentation/toteutusdokumentti.md)
 - [Testausdokumentti](documentation/testausdokumentti.md)
 
