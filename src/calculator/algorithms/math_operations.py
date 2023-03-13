@@ -5,7 +5,7 @@ import random
 from decimal import Decimal, getcontext
 
 # Custom classes
-from calculator.algorithms.error_handling import ErrorMessages, OperationError
+from .error_handling import ErrorMessages, OperationError
 
 
 class MathOperations:  # pylint: disable=too-few-public-methods

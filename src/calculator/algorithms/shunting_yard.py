@@ -3,7 +3,7 @@
 from collections import deque
 
 # Custom classes
-from calculator.algorithms.error_handling import ErrorMessages, ExpressionError
+from .error_handling import ErrorMessages, ExpressionError
 from .calculation import Calculation
 
 
