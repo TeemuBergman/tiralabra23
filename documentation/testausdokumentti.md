@@ -16,13 +16,13 @@ tuottamaan oikeita tuloksia sekä virheilmoituksia. Testeissä mukana olevien la
 Wolfram Alphalla sekä erinäisten käyttöjärjestelmien mukana tulleilla tieteellisillä laskimilla.
 
 - Yksikkötestit löytyvät projektin kansiosta `src/tests`.
-- Yksikkötestit voi toistaa Poetry shellissä* komennolla: `invoke test`. 
-- Raportin testauksesta ja haaraumakattuvudesta voi tuottaa Poetry shellissä* komennolla: `invoke coverage`.
-- Raportin voi avata joko suoraan projektikansiosta `htmlcov/index.html`, tai suorittamalla Poetry shellissä* komennon: `invoke report`.
+- Yksikkötestit voi toistaa Poetryn virtuaaliympäristössä* komennolla: `invoke test`. 
+- Raportin testauksesta ja haaraumakattuvudesta voi tuottaa Poetryn virtuaaliympäristössä* komennolla: `invoke coverage`.
+- Raportin voi avata joko suoraan sovelluksen projektikansiosta `htmlcov/index.html`, tai suorittamalla Poetryn virtuaaliympäristössä* komennon: `invoke report`.
 
 Coveragen luoman raportin mukaan haarautumakattavuus on tällä hetkellä `100%`.
 
-![image-20230311154641335](./images/testausdokumentti/image-20230311154641335.png)
+![image-20230313014058503](./images/testausdokumentti/image-20230313014058503.png)
 
 Ajankohtainen testikattavuusraportti löytyy myös osoitteesta: https://app.codecov.io/gh/TeemuBergman/tiralabra23
 
